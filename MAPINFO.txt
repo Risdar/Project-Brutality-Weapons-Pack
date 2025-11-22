@@ -1,2 +1,0 @@
-gameinfo { AddEventHandlers = "PB_DragonSlayerSpawner" }
-gameinfo { AddEventHandlers = "PB_StormcastSpawner" }

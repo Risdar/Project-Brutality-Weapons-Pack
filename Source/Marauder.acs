@@ -1,9 +1,0 @@
-#include "zcommon.acs"
-
-script "SSGEnableEternal" (void) {
-GiveInventory("SSGUseClassicReload", 1);
-}
-
-script "SSGEnableClassic" (void) {
-TakeInventory("SSGUseClassicReload", 1);
-}
