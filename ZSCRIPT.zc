@@ -7,9 +7,7 @@ version "4.11.3"
 #include "zscript/MergedSpawner.zc"
 #include "ZScript/ChainsawSpawn.zc"
 #Include "Zscript/CSSG/CSSGEvent.zs"
-//#Include "Zscript/Doom4WeaponPack_Spawners.zc" //(MOSTLY) MERGED 
 #include "ZSCRIPT/GORENEST.zs"
-#include "ZScript/IN_SpawnersInjector.zs"
 
 // Player Pawn Insanity (Testing)
 //#include "ZScript/INPlayer.zc"
@@ -78,19 +76,6 @@ class PB_DragonSlayerSpawner : EventHandler
                 e.Replacement = SpawnedWeap;
         }
     }
-}
-
-class Shielsawammo_Injector : PBInjector
-{
-	override void Init(PB_EventHandler handler)
-	{
-		
-		handler.InjectSpawn('PB_SawSpawnerT1', 'ShieldsawAmmo', 255, 1);
-		handler.InjectSpawn('PB_SawSpawnerT2', 'ShieldsawAmmo', 255, 1);
-		handler.InjectSpawn('PB_SawSpawnerT3', 'ShieldsawAmmo', 255, 1);
-		handler.InjectSpawn('PB_SawSpawnerT4', 'ShieldsawAmmo', 255, 1);
-		
-	}
 }
 
 class PB_StormcastSpawner : EventHandler
