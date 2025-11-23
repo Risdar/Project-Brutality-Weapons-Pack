@@ -7,7 +7,7 @@ Dropitem "DemonTechShotgunGiver", 256, 3
 Dropitem "TechBlasterUpgrade", 256, 1
 }
 
-actor PB_DemonTechZombieDTDrop : PB_DemonTechZombieGK  replaces PB_DemonTechZombieGK 
+actor PB_DemonTechZombieDTDrop : PB_DemonTechZombieGK  replaces PB_DemonTechZombieGK // Change to PB_DemonTechZombie for non-GK Version
 {
 	Dropitem "TechBlasterSpawner", 256, 255
 }
