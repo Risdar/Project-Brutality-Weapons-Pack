@@ -823,7 +823,7 @@ class ShieldGrenadeCard : equipmentCard
 	{
 		tags.push("Shield Grenade");
 		tokens.push("WW_ShieldSelected");
-		img.push("graphics/shieldgrenade.PNG");
+		img.push("graphics/Equipments/shieldgrenade.PNG");
 		sx.push(1.3);
 		sy.push(1.3);
 	}
@@ -835,7 +835,7 @@ class VoidGrenadeCard : equipmentCard
 	{
 		tags.push("Void Grenade");
 		tokens.push("WW_VoidGrenadeSelected");
-		img.push("graphics/voidgrenade.png");
+		img.push("graphics/Equipments/voidgrenade.png");
 		sx.push(0.8);
 		sy.push(0.8);
 	}
@@ -847,7 +847,7 @@ class SwarmerCard : equipmentCard
 	{
 		tags.push("Swarmer");
 		tokens.push("WW_SwarmerSelected");
-		img.push("graphics/swarmer.png");
+		img.push("graphics/Equipments/swarmer.png");
 		sx.push(0.8);
 		sy.push(0.8);
 	}
@@ -859,7 +859,7 @@ class LaserChargeCard : equipmentCard
 	{
 		tags.push("Laser Charge");
 		tokens.push("WW_LaserChargeSelected");
-		img.push("graphics/lasercharge.png");
+		img.push("graphics/Equipments/lasercharge.png");
 		sx.push(0.8);
 		sy.push(0.8);
 	}
@@ -871,7 +871,7 @@ class AcidChargeCard : equipmentCard
 	{
 		tags.push("Acid Charge");
 		tokens.push("WW_AcidChargeSelected");
-		img.push("graphics/acidcharge.png");
+		img.push("graphics/Equipments/acidcharge.png");
 		sx.push(0.8);
 		sy.push(0.8);
 	}
@@ -883,7 +883,7 @@ class DetonatorCard : equipmentCard
 	{
 		tags.push("Detonator");
 		tokens.push("WW_DetonatorSelected");
-		img.push("graphics/detonator.png");
+		img.push("graphics/Equipments/detonator.png");
 		sx.push(0.8);
 		sy.push(0.8);
 	}
@@ -895,7 +895,7 @@ class AxeCard : equipmentCard
 	{
 		tags.push("Axe");
 		tokens.push("WW_AxeSelected");
-		img.push("graphics/axe.png");
+		img.push("graphics/Equipments/axe.png");
 		sx.push(0.4);
 		sy.push(0.4);
 	}
@@ -907,7 +907,7 @@ class HookCard : equipmentCard
 	{
 		tags.push("Hook");
 		tokens.push("WW_HookSelected");
-		img.push("graphics/hook.png");
+		img.push("graphics/Equipments/hook.png");
 		sx.push(0.3);
 		sy.push(0.3);
 	}
