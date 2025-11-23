@@ -1,3 +1,6 @@
+// This code makes the DemonTechZombie drops the spawner for Demon-Tech Weapons
+// Basically this is the only way to get the DTech Weapons aside from the injectors
+
 Actor TechBlasterSpawner : RandomSpawner
 {
 Dropitem "HellPistol", 256, 10

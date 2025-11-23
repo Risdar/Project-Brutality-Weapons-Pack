@@ -644,7 +644,6 @@ class MastermindChaingunSpawnerInjector : PBInjector
 	}
 }
 
-
 //Paingiver
 class PaingiverSpawnerInjector : PBInjector
 {
