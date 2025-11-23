@@ -27,6 +27,7 @@ PB Monster Pack - https://drive.google.com/file/d/15qWzKprNk4XBTJ_N1xbPs2Sd4Gs7V
 Assembled by RENEGADE ANDROiD using Insanity's Nightmare as a base combined with Demon-Tech & Fire & Ice Power Fantasy.
 
 
+-----------------
 TEAM MEMBERS:
 
 RENEGADE ANDROiD
@@ -34,7 +35,7 @@ RENEGADE ANDROiD
 Risdar
 
 Warcarlsson
-
+-----------------
 
 
 Most of these weapons have been around the Project Brutality Discord and former Brutal Repository over these previous years.  
