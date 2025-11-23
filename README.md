@@ -4,7 +4,7 @@ New Toggle On/Off feature: Fatality when clicking Fire for addon weapons in the 
 
 Choose which Weapons Spawn or not!
 
-Randome Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
+Random Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
 
 Behold! by BobQuickSaveSmith: Allows you to revive upon death (works when alive as well); giving you a handful of weapons and random Boss Enemies to battle.
 
