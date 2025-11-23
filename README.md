@@ -12,20 +12,23 @@ See PB Weapon Pack Options to configure:
 Load order: Mapwad > Project Brutality Staging > Glory Kills addon > PB Monster Pack > PB Weapon Pack
 
 
-Project Brutality Staging - https://github.com/pa1nki113r/Project_Brutality/tree/PB_Staging 
+- Project Brutality Staging - https://github.com/pa1nki113r/Project_Brutality/tree/PB_Staging 
 
 // Click on the green "Code" button, Click to Download Zip, then load the zip as a pk3 mod.
 
 
-Unofficial Glory Kill Addon Update - https://drive.google.com/file/d/1CdER4BUNFOcBpI2_yVzxsjO0hr6tsjIU/view?usp=drive_link
+- Unofficial Glory Kill Addon Update - https://drive.google.com/file/d/1CdER4BUNFOcBpI2_yVzxsjO0hr6tsjIU/view?usp=drive_link
 
 
-PB Monster Pack - https://drive.google.com/file/d/15qWzKprNk4XBTJ_N1xbPs2Sd4Gs7V9Mi/view
+- PB Monster Pack - https://drive.google.com/file/d/15qWzKprNk4XBTJ_N1xbPs2Sd4Gs7V9Mi/view
 
 
-
+-----------------
 Assembled by RENEGADE ANDROiD using Insanity's Nightmare as a base combined with Demon-Tech & Fire & Ice Power Fantasy.
 
+Most of these weapons have been around the Project Brutality Discord and former Brutal Repository over these previous years.  
+
+Weapons are currently being made compatible with the latest Project Brutality Staging releases.
 
 -----------------
 TEAM MEMBERS:
@@ -37,10 +40,6 @@ Risdar
 Warcarlsson
 
 
-
-Most of these weapons have been around the Project Brutality Discord and former Brutal Repository over these previous years.  
-
-Weapons are currently being made compatible with the latest Project Brutality Staging releases.
 
 -----------------
 ---------------Slot 1 weapons---------------
