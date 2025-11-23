@@ -1,14 +1,14 @@
 See PB Weapon Pack Options to configure:
 
-New Toggle On/Off feature: Fatality when clicking Fire for addon weapons in the pack.
+- New Toggle On/Off feature: Fatality when clicking Fire for addon weapons in the pack.
 
-Choose which Weapons Spawn or not!
+- Choose which Weapons Spawn or not!
 
-Random Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
+- Random Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
 
-Behold! by BobQuickSaveSmith: Allows you to revive upon death (works when alive as well); giving you a handful of weapons and random Boss Enemies to battle.
+- Behold! by BobQuickSaveSmith: Allows you to revive upon death (works when alive as well); giving you a handful of weapons and random Boss Enemies to battle.
 
-
+-----------------
 Load order: Mapwad > Project Brutality Staging > Glory Kills addon > PB Monster Pack > PB Weapon Pack
 
 
