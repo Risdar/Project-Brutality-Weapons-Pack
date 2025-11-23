@@ -26,7 +26,7 @@
 #include actors/Monsters/E1BOSS2.dec
 #include actors/Monsters/GOREN.dec
 //#include actors/Monsters/PaingiverHelltrooper.dec Beef: Only load this if you're making a non-GK version
-#include actors/Monsters/PaingiverHelltrooperGK.dec
+//#include actors/Monsters/PaingiverHelltrooperGK.dec
 #include actors/Monsters/STONEGAR.dec
 
 // Spawners
@@ -41,6 +41,7 @@
 #INCLUDE actors/Weapons/Special/Incinerator_HellBullet.dec
 #INCLUDE actors/Weapons/Special/ShieldSaw.dec
 #INCLUDE actors/Weapons/Special/Unload_Tokens.dec
+#INCLUDE actors/Weapons/Special/OverwhelmingProjectile.dec
 
 //Weapons
 	//Slot-1
@@ -76,6 +77,7 @@
 #include actors/Weapons/Slot-4/BoltRifle.dec
 #include actors/Weapons/Slot-4/Magnum_Sniper_Rifle.dec
 #include actors/Weapons/Doom4WeaponPack/D4Machinegun.dec
+#include actors/Weapons/Slot-4/Overwhelming.dec
 	//Slot-5
 #include actors/Weapons/Slot-5/Dark_Fate.dec
 #include actors/Weapons/Slot-5/Gallary.dec

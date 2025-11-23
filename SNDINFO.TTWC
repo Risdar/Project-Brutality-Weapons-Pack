@@ -1,3 +1,53 @@
+//Power Overwhelming	//4
+Overwhelming/Up		 POWOUP
+Overwhelming/Taunt	 POWOTAUN
+Overwhelming/Start	 POWOSTRT
+Overwhelming/Loop	 POWOLOOP
+Overwhelming/AddLoop POWODLOP
+Overwhelming/Stop	 POWOSTOP
+//
+Overwhelming/AltUp	 POWOAUP
+Overwhelming/AltLoop POWOALOP
+Overwhelming/AltStop POWOASTP
+Overwhelming/Mode	 OVERMODE
+$random Weapons/PushkaFire { Weapons/PushkaFire1 Weapons/PushkaFire2 Weapons/PushkaFire3 }
+Weapons/PushkaFire1	PUSHFIR1
+Weapons/PushkaFire2	PUSHFIR2
+Weapons/PushkaFire3	PUSHFIR3
+//Pushka		//5
+Weapons/PushkaUp		PUSHUP
+Weapons/PushkaReload	PUSHREL
+Weapons/PushkaLoop		PUSHLOOP
+
+$random Weapons/PushkaFire { Weapons/PushkaFire1 Weapons/PushkaFire2 Weapons/PushkaFire3 }
+Weapons/PushkaFire1	PUSHFIR1
+Weapons/PushkaFire2	PUSHFIR2
+Weapons/PushkaFire3	PUSHFIR3
+
+$random Weapons/PushkaFireAdd {
+	Weapons/PushkaFireAdd1
+	Weapons/PushkaFireAdd2
+	Weapons/PushkaFireAdd3
+}
+
+Weapons/PushkaFireAdd1	PUSHDFR1
+Weapons/PushkaFireAdd2	PUSHDFR2
+Weapons/PushkaFireAdd3	PUSHDFR3
+$limit Weapons/PushkaFireAdd 0
+Items/Throw				ITEMTHRW
+//Steamroller
+Steamroller/Up			STRLUP
+Steamroller/Fire		STRLFIRE
+Steamroller/Fly			STRLFLY
+Steamroller/Roll		STRLROLL
+
+Steamroller/AltFire		STRLALT
+$random Steamroller/Reload { Steamroller/Reload1 Steamroller/Reload2 Steamroller/Reload3 }
+Steamroller/Reload1		STRLREL1
+Steamroller/Reload2		STRLREL2
+Steamroller/Reload3		STRLREL3
+Steamroller/Trigger		STRLTRIG
+
 //Meathook for MarauderSSG
 hookshot/loop dspulchn
 hookshot/swish dsswish

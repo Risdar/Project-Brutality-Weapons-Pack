@@ -66,6 +66,7 @@ addslotdefault 4 HeavySniperRifle
 addslotdefault 4 MagnumSniperRifle
 addslotdefault 4 PB_BoltRifle
 addslotdefault 4 M41A
+addslotdefault 4 PowerOverwhelming
 addslotdefault 5 D4Machinegun
 addslotdefault 5 Dark_Fate
 addslotdefault 5 Heavy_Assault_Rifle

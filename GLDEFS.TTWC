@@ -1,5 +1,45 @@
 #INCLUDE Brightmaps.bm
 
+//Overwhelming
+object OverwhelmingTracer
+{
+    frame 10BAA { light PELLET }
+
+    frame TNT1B { light PELLET_X1 }
+    frame TNT1C { light PELLET_X2 }
+    frame TNT1D { light PELLET_X3 }
+}
+
+object OverwhelmingDispenser
+{
+    frame TNT1B { light TANKSHELL_X1 }
+    frame TNT1C { light TANKSHELL_X2 }
+    frame TNT1D { light TANKSHELL_X3 }
+}
+
+pulselight DISPENSEHEAL
+{
+    color 0.09 0.0 0.0
+    size 0
+    secondarySize 128
+    interval 0.6
+}
+
+object DispenserHealingEffect
+{
+    frame TNT1A { light DISPENSEHEAL }
+}
+
+object TankShellBall
+{
+    frame 10BAA { light ROROCKET }
+
+    frame TNT1B { light TANKSHELL_X1 }
+    frame TNT1C { light TANKSHELL_X2 }
+    frame TNT1D { light TANKSHELL_X3 }
+}
+////////
+
 Object CalamitySlice { Frame WP0B { Light SmallOrangeFlare } }
 
 brightmap sprite BLEMA0 { map "Brightmaps/BLEMA0.png" }

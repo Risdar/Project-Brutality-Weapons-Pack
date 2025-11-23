@@ -60,6 +60,7 @@ server int PBSpawnDark_Fate = 1;
 server int PBSpawnHeavySniperRifle = 1;
 server int PBSpawnMagnumSniperRifle = 1;
 server int PBSpawnM41A = 1;
+server int PBSpawnPowerOverwhelming = 1;
 //Slot 5
 server int PBSpawnFire_and_IceDragonSlayer = 1;
 server int PBSpawnINNailGun = 1;

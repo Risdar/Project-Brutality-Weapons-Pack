@@ -56,6 +56,7 @@ OptionMenu "WeaponCollectionSpawnSettings"
 	Option "Spawn Heavy Sniper Rifle", "PBSpawnHeavySniperRifle", "OnOff"
 	Option "Spawn Magnum Sniper Rifle", "PBSpawnMagnumSniperRifle", "OnOff"
 	Option "Spawn M41A Aliens Pulse Rifle", "PBSpawnM41A", "OnOff"
+	Option "Spawn OverWhelming from Russion Overkill", "PBSpawnPowerOverwhelming", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 5 weapons---------------", gold
