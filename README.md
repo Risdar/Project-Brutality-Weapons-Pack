@@ -33,11 +33,11 @@ Weapons are currently being made compatible with the latest Project Brutality St
 -----------------
 TEAM MEMBERS:
 
-RENEGADE ANDROiD
+- RENEGADE ANDROiD
 
-Risdar
+- Risdar
 
-Warcarlsson
+- Warcarlsson
 
 
 
