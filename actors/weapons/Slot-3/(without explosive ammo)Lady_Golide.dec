@@ -620,18 +620,23 @@ ACTOR HASG : PB_Weapon
 				A_FireCustomMissile("ShotCaseSpawnHASGDAN",5,0,8,-9);
 				return state("ContDrumFire"); }
 				
-			if (Countinv("HASG_Explosive") >= 1 ) {
-				A_PlaySound("CSSGEXPS",CHAN_Weapon,0.99,0,2);
+			if (Countinv("HASG_Danmaku") >= 1 ) {
+				A_PlaySound("CSSGDANS",CHAN_Weapon,0.99,0,2);
 			    A_PlaySound("SHOTGUN","Weapon",0.88,0,2);
-				PB_FireBullets("GolideExplosiveProjectile",3,frandom(5.85,6.65),0,0,frandom(5.32,6.75));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
+				A_FireCustomMissile("DarkDanmakuProjectile", Random(-5, 5), 0, -1, 0, Random(-5, 5), Random(-5, 5));
 				A_FireCustomMissile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
 			    A_FireCustomMissile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
 			    A_FireCustomMissile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
 			    A_FireCustomMissile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
 			    A_FireCustomMissile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
-				A_FireCustomMissile("ShotCaseSpawnHASGEXP",5,0,8,-9);
+				A_FireCustomMissile("ShotCaseSpawnHASGDAN",5,0,8,-9);
 				return state("ContDrumFire"); }
-
+			
 			if (Countinv("HASG_DRBT") >= 1 ) {
 				A_PlaySound("DRBTFIRE",CHAN_Weapon,0.99,0,2);
 			    A_PlaySound("SHOTGUN","Weapon",0.88,0,2);
@@ -893,7 +898,7 @@ WheelCancel:
 		TNT1 A 0 A_SetInventory("HASG_SelectSlug",0)
 		TNT1 A 0 A_SetInventory("HASG_SelectFlech",0)
 		TNT1 A 0 A_SetInventory("HASG_SelectDRBT",0)
-		TNT1 A 0 A_SetInventory("HASG_SelectExplosive",0)
+		TNT1 A 0 A_SetInventory("HASG_SelectDanmaku",0)
 		TNT1 A 0 A_SetInventory("HASG_SelectDanmaku",0)
 		TNT1 A 0 A_SetInventory("HASG_SelectWPhos",0)
 		Stop
@@ -1027,15 +1032,15 @@ ContChangeLoad:
 	
 	SwitchToExplosive:
 	TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
-	TNT1 A 0 A_JumpIfInventory("HASG_Explosive",1,"AlreadyLoaded")
+	TNT1 A 0 A_JumpIfInventory("HASG_Danmaku",1,"AlreadyLoaded")
 	TNT1 A 0 A_SetInventory("HASG_Buck",0)
 	TNT1 A 0 A_SetInventory("HASG_Slug",0)
 	TNT1 A 0 A_SetInventory("HASG_Flech",0)
 	TNT1 A 0 A_SetInventory("HASG_DRBT",0)
-	TNT1 A 0 A_SetInventory("HASG_Explosive",1)
-	TNT1 A 0 A_SetInventory("HASG_Danmaku",0)
+	TNT1 A 0 A_SetInventory("HASG_Explosive",0)
+	TNT1 A 0 A_SetInventory("HASG_Danmaku",1)
 	TNT1 A 0 A_SetInventory("HASG_WPhos",0)
-	TNT1 A 0 A_Print("Explosive Loaded")
+	TNT1 A 0 A_Print("Danmaku Loaded")
 	Goto LoadWithoutMag
 	
 	SwitchToDanmaku:
