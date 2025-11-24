@@ -55,7 +55,6 @@ TEAM MEMBERS:
 
 ---------------Slot 3 weapons---------------
 
-- Doom 2016 Shotgun
 - Cryo Shotgun
 - Commander SSG
 - Rotational SG
@@ -67,7 +66,6 @@ TEAM MEMBERS:
 ---------------Slot 4 weapons---------------
 
 - AK-47
-- Apocalypse Killer
 - Bolt-Action Sniper
 - Dark Fate
 - Heavy Sniper Rifle
