@@ -1,3 +1,88 @@
+//Razorjack - RO
+Razorjack/gun	RAZRGUN
+Razorjack/idle	RAZRIDLE
+Razorjack/iend	RAZRIEND
+
+Razorjack/up	RAZRUP
+Razorjack/loop	RAZRLOOP
+Razorjack/down	RAZRDOWN
+
+$random Razorjack/hit { Razorjack/hit1 Razorjack/hit2 Razorjack/hit3 Razorjack/hit4 }
+Razorjack/hit1	RAZRHIT1
+Razorjack/hit2	RAZRHIT2
+Razorjack/hit3	RAZRHIT3
+Razorjack/hit4	RAZRHIT4
+
+$random Razorjack/flesh { Razorjack/flesh0 Razorjack/flesh1 Razorjack/flesh2 Razorjack/flesh3 Razorjack/flesh4 Razorjack/flesh5 Razorjack/flesh6 Razorjack/flesh7 Razorjack/flesh8 Razorjack/flesh9 }
+Razorjack/flesh0	RAZRFLS0
+Razorjack/flesh1	RAZRFLS1
+Razorjack/flesh2	RAZRFLS2
+Razorjack/flesh3	RAZRFLS3
+Razorjack/flesh4	RAZRFLS4
+Razorjack/flesh5	RAZRFLS5
+Razorjack/flesh6	RAZRFLS6
+Razorjack/flesh7	RAZRFLS7
+Razorjack/flesh8	RAZRFLS8
+Razorjack/flesh9	RAZRFLS9
+
+$random Razorjack/fire { Razorjack/1 Razorjack/2 Razorjack/3 }
+Razorjack/1		RAZRFIR1
+Razorjack/2		RAZRFIR2
+Razorjack/3		RAZRFIR3
+
+Razorjack/BladeWall		RAZRWALL
+Razorjack/BladeBounce	RAZRBNC
+
+//Power Overwhelming - RO
+Overwhelming/Up		 POWOUP
+Overwhelming/Taunt	 POWOTAUN
+Overwhelming/Start	 POWOSTRT
+Overwhelming/Loop	 POWOLOOP
+Overwhelming/AddLoop POWODLOP
+Overwhelming/Stop	 POWOSTOP
+//
+Overwhelming/AltUp	 POWOAUP
+Overwhelming/AltLoop POWOALOP
+Overwhelming/AltStop POWOASTP
+Overwhelming/Mode	 OVERMODE
+$random Weapons/PushkaFire { Weapons/PushkaFire1 Weapons/PushkaFire2 Weapons/PushkaFire3 }
+Weapons/PushkaFire1	PUSHFIR1
+Weapons/PushkaFire2	PUSHFIR2
+Weapons/PushkaFire3	PUSHFIR3
+//Pushka		//5
+Weapons/PushkaUp		PUSHUP
+Weapons/PushkaReload	PUSHREL
+Weapons/PushkaLoop		PUSHLOOP
+
+$random Weapons/PushkaFire { Weapons/PushkaFire1 Weapons/PushkaFire2 Weapons/PushkaFire3 }
+Weapons/PushkaFire1	PUSHFIR1
+Weapons/PushkaFire2	PUSHFIR2
+Weapons/PushkaFire3	PUSHFIR3
+
+$random Weapons/PushkaFireAdd {
+	Weapons/PushkaFireAdd1
+	Weapons/PushkaFireAdd2
+	Weapons/PushkaFireAdd3
+}
+
+Weapons/PushkaFireAdd1	PUSHDFR1
+Weapons/PushkaFireAdd2	PUSHDFR2
+Weapons/PushkaFireAdd3	PUSHDFR3
+$limit Weapons/PushkaFireAdd 0
+Items/Throw				ITEMTHRW
+//Steamroller
+Steamroller/Up			STRLUP
+Steamroller/Fire		STRLFIRE
+Steamroller/Fly			STRLFLY
+Steamroller/Roll		STRLROLL
+
+Steamroller/AltFire		STRLALT
+$random Steamroller/Reload { Steamroller/Reload1 Steamroller/Reload2 Steamroller/Reload3 }
+Steamroller/Reload1		STRLREL1
+Steamroller/Reload2		STRLREL2
+Steamroller/Reload3		STRLREL3
+Steamroller/Trigger		STRLTRIG
+
 //Meathook for MarauderSSG
 hookshot/loop dspulchn
 hookshot/swish dsswish

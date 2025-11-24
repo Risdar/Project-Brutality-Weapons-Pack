@@ -150,12 +150,12 @@ Class HASGWheel : wheelinfocontainer
 		
 		if(requester.FindInventory("ASGDrum")) 
 		{
-//		PB_SpecialWheel_Mode HASG_EXP = new ("PB_SpecialWheel_Mode");
-//		HASG_EXP.img = "graphics/hasg/SG_Explosive.png";
-//		HASG_EXP.Alias = "Explosive";
-//		HASG_EXP.tokentogive = "HASG_SelectExplosive";
-//		HASG_EXP.scalex = 0.6;
-//		HASG_EXP.scaley = 0.6;
+		PB_SpecialWheel_Mode HASG_EXP = new ("PB_SpecialWheel_Mode");
+		HASG_EXP.img = "graphics/hasg/SG_Explosive.png";
+		HASG_EXP.Alias = "Explosive";
+		HASG_EXP.tokentogive = "HASG_SelectExplosive";
+		HASG_EXP.scalex = 0.6;
+		HASG_EXP.scaley = 0.6;
 		
 		PB_SpecialWheel_Mode HASG_DANM = new ("PB_SpecialWheel_Mode");
 		HASG_DANM.img = "graphics/hasg/SG_Danmaku.png";
@@ -171,7 +171,7 @@ Class HASGWheel : wheelinfocontainer
 		HASG_WP.scalex = 0.6;
 		HASG_WP.scaley = 0.6;
 		
-//		spw.push(HASG_EXP);
+		spw.push(HASG_EXP);
 		spw.push(HASG_DANM);
 		spw.push(HASG_WP);
 		}

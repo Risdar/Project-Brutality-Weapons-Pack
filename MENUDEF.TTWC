@@ -9,7 +9,7 @@ OptionMenu "ttwcoptions"
     StaticText ""
 	Option "Fatalities when clicking Fire Button", "ttwcfbex", "OnOff"
     StaticText ""
-	Submenu "Weapon Pack Spawn Settings", "WeaponCollectionSpawnSettings"
+	Submenu "Weapon Pack Spawn Settings", "WeaponPackSpawnSettings"
     StaticText ""
 	Submenu "Random Weapon Switcher", "SwitchItUpOptions"
     StaticText ""
@@ -19,14 +19,15 @@ OptionMenu "ttwcoptions"
 }
 
 
-OptionMenu "WeaponCollectionSpawnSettings"
+OptionMenu "WeaponPackSpawnSettings"
 {
-	Title "Weapon Collection Spawn Settings"
+	Title "Weapon Pack Spawn Settings"
     StaticText ""
 	StaticText "---------------Slot 1 weapons---------------", gold
 	StaticText ""
 	Option "Spawn Argent Sith", "PBSpawnArgentSith", "OnOff"
 	Option "Spawn BattleAxe and Shield from Schism", "PBSpawnBattleAxe", "OnOff"
+	Option "Spawn Razorjack from Russian Overkill", "PBSpawnRazorjack", "OnOff"
     StaticText ""
 	StaticText "---------------Slot 2 weapons---------------", gold
 	StaticText ""
@@ -56,6 +57,7 @@ OptionMenu "WeaponCollectionSpawnSettings"
 	Option "Spawn Heavy Sniper Rifle", "PBSpawnHeavySniperRifle", "OnOff"
 	Option "Spawn Magnum Sniper Rifle", "PBSpawnMagnumSniperRifle", "OnOff"
 	Option "Spawn M41A Aliens Pulse Rifle", "PBSpawnM41A", "OnOff"
+	Option "Spawn OverWhelming from Russion Overkill", "PBSpawnPowerOverwhelming", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 5 weapons---------------", gold
@@ -96,6 +98,7 @@ OptionMenu "WeaponCollectionSpawnSettings"
 	Option "Spawn Gauss Cannon", "PBSpawnPB_GaussCannon", "OnOff"
 	Option "Spawn Ion Rifle", "PBSpawnIon_Heavy", "OnOff"
 	Option "Spawn MANCUBUS FLAMECANNON", "PBSpawnPB_MancubusFlameCannon", "OnOff"
+	Option "Mancubus Flame Cannon Drop from Mancubus", "PBSpawnMancFlameCannonDrop", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 9 weapons---------------", gold

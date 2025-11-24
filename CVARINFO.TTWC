@@ -39,6 +39,7 @@ server	float	q_1airaccel				= 1.5;
 //Slot 1
 server int PBSpawnArgentSith = 1;
 server int PBSpawnBattleAxe = 1;
+server int PBSpawnRazorjack = 1;
 //Slot 2
 server int PBSpawnHellPistol = 1;
 server int PBSpawnHellPistoler = 1;
@@ -60,6 +61,7 @@ server int PBSpawnDark_Fate = 1;
 server int PBSpawnHeavySniperRifle = 1;
 server int PBSpawnMagnumSniperRifle = 1;
 server int PBSpawnM41A = 1;
+server int PBSpawnPowerOverwhelming = 1;
 //Slot 5
 server int PBSpawnFire_and_IceDragonSlayer = 1;
 server int PBSpawnINNailGun = 1;
@@ -88,6 +90,7 @@ server int PBSpawnCalamityBlade = 1;
 server int PBSpawnPB_GaussCannon = 1;
 server int PBSpawnIon_Heavy = 1;
 server int PBSpawnPB_MancubusFlameCannon = 1;
+server int PBSpawnMancFlameCannonDrop = 1;
 //Slot 9
 server int PBSpawnBioAcidLauncher = 1;
 server int PBSpawnBallistagun = 1;
