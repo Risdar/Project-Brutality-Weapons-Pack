@@ -73,7 +73,6 @@ server int PBSpawnSuperNailgun = 1;
 //Slot 6
 server int PBSpawnChthonicRifle = 1;
 server int PBSpawnCyberdemonsMissileLauncher = 1;
-server int PBSpawnCyberdemonRLDrop = 1;
 server int PBSpawnDevastator = 1;
 server int PBSpawnPB_Excavator = 1;
 server int PBSpawnMastermindChaingun = 1;
@@ -91,7 +90,6 @@ server int PBSpawnCalamityBlade = 1;
 server int PBSpawnPB_GaussCannon = 1;
 server int PBSpawnIon_Heavy = 1;
 server int PBSpawnPB_MancubusFlameCannon = 1;
-server int PBSpawnMancFlameCannonDrop = 1;
 //Slot 9
 server int PBSpawnBioAcidLauncher = 1;
 server int PBSpawnBallistagun = 1;
@@ -103,3 +101,11 @@ server int PBSpawnTechBlaster = 1;
 server int PBSpawnPB_DemonExt = 1;
 server int PBSpawnDemonTechMinigun = 1;
 server int PBSpawnPhaseEradicatorBFG = 1;
+
+//===============================================
+// Monster Drops
+server int PBSpawnALLDTechDrop = 1;
+server int PBSpawnMastermindCGDrop = 1;
+server int PBSpawnCyberdemonRLDrop = 1;
+server int PBSpawnPaingiverDrop = 1;
+server int PBSpawnMancFlameCannonDrop = 1;
