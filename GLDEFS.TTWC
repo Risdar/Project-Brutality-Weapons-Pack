@@ -453,11 +453,8 @@ hardwareshader sprite PGSSG6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite PGSSG7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite PGSSG8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
     //StoneGargoyle
-hardwareshader sprite PGSSG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite PGSSG8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite STRXH1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite STRXH2H8	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite STRXH3H7	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite STRXH4H6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite STRXH5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
