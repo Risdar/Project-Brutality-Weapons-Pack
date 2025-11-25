@@ -110,3 +110,6 @@ server int PBSpawnMastermindCGDrop = 1;
 server int PBSpawnCyberdemonRLDrop = 1;
 server int PBSpawnPaingiverDrop = 1;
 server int PBSpawnMancFlameCannonDrop = 1;
+
+//Equipments from Monsters
+server int EQSpawnShieldGR = 1;

@@ -1,35 +1,28 @@
 class BeefRiceWeaponDrop : EventHandler
 {
+    // Check if something is killed
 	override void WorldThingDied(WorldEvent e)
 	{
         let  actor = e.Thing;
         // CVARS
         CVAR demontechAll = CVar.GetCVAR('PBSpawnALLDTechDrop');
         CVAR MarauderMSSG = CVar.GetCVAR('PBSpawnMSSGDrop');
-        CVAR cyberdemonRL = CVar.GetCVAR('PBSpawnCyberdemonRLDrop');
         CVAR mastermindcg = CVar.GetCVAR('PBSpawnMastermindCGDrop');
         CVAR paingiver = CVar.GetCVAR('PBSpawnPaingiverDrop');
+
+        CVAR ShieldGR = CVar.GetCVAR('EQSpawnShieldGR');
 
         // Initialize
         int MSSGDrop = MarauderMSSG.GetInt();
         int DTechDrop = demontechAll.GetInt();
-        int CyberRLDrop = cyberdemonRL.GetInt();
         int MastermindCGDrop = mastermindcg.GetInt();
         int PaingiverDrop = paingiver.GetInt();
 
-        // Check and Spawn
+        int ShieldGRDrop = ShieldGR.GetInt();
+
+        // Check what monster was killed
         switch(actor.GetClassName())
         {
-            case 'PB_CyberdemonGK': case 'PB_AnnihilatorGK':
-                if(CyberRLDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                //console.printf("Cyberdemon Killed");
-                actor.Spawn("CyberdemonRLSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                }
-                break;
-
             case 'HellTrooperPaingiver':
                 if(PaingiverDrop == 1)
                 {
@@ -54,7 +47,17 @@ class BeefRiceWeaponDrop : EventHandler
                 {
                 vector3 monsPos = actor.pos;
                 double monsHeight = actor.height;
-                actor.Spawn("TechBlasterSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
+                actor.Spawn("DTechSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
+                }
+                break;
+
+            // Monster Pack Stuff
+            case 'CyberSatyr':
+                if(ShieldGRDrop == 1)
+                {
+                vector3 monsPos = actor.pos;
+                double monsHeight = actor.height;
+                actor.Spawn("ShieldGrenadeDrop", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
                 }
                 break;
 
@@ -71,48 +74,40 @@ class BeefRiceWeaponDrop : EventHandler
         }
 	}
     
-    //If something is spawned instead of killed
+    // Special casse if something is spawned instead of killed
     override void WorldThingSpawned (WorldEvent e)
     {
         let  actor = e.Thing;
         // CVARS
         CVAR MancFlameCN = CVAR.GetCVAR('PBSpawnMancFlameCannonDrop');
+        CVAR cyberdemonRL = CVar.GetCVAR('PBSpawnCyberdemonRLDrop');
 
         // Initialize
         int MancFLameCNDrop = MancFlameCN.GetInt();
+        int CyberRLDrop = cyberdemonRL.GetInt();
 
         // Check and Spawn
         switch(actor.GetClassName())
         {
+            case 'XDeathCyberdemonGun':
+                if(CyberRLDrop == 1)
+                {
+                vector3 monsPos = actor.pos;
+                double monsHeight = actor.height;
+                actor.Spawn("CyberdemonsMissileLauncher", (monsPos.x, monsPos.y, monsPos.z)); //Spawn the Weapon
+                actor.destroy(); //Destroy the original actor so there's no duplicates
+                }
+                break;
+
             case 'PB_FlamethrowerMancubusGas':
                 if(MancFLameCNDrop == 1)
                 {
                 vector3 monsPos = actor.pos;
                 double monsHeight = actor.height;
-                actor.Spawn("MancubusFlameCannon", (monsPos.x, monsPos.y, monsPos.z));
-                actor.destroy();
+                actor.Spawn("MancubusFlameCannon", (monsPos.x, monsPos.y, monsPos.z)); //Spawn the Weapon
+                actor.destroy(); //Destroy the original actor so there's no duplicates
                 }
                 break;
         }
     }
 }
-
-/// SPECIAL CASES
-/*class MancFlameCannonDrop : XDeathMancubusArm replaces XDeathMancubusArm
-{ 
-    States
-    {
-    Spawn:
-        TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-        MANA ABCDEFG 3;
-        Loop;
-    Death:
-        TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
-        TNT1 A 0 A_JumpIf(GetCVAR("PBSpawnMancFlameCannonDrop") == 0, "StandardDeath");
-        TNT1 A 0 A_SpawnItem("MancubusFlameCannon",0,0,0,1);
-    Stop;
-    StandardDeath:
-        TNT1 A 0 A_SpawnItem("PB_FlamethrowerMancubusGas",0,0,0,1);
-    Stop;
-    }
-} */
