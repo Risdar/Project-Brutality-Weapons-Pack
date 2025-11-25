@@ -63,6 +63,7 @@ TEAM MEMBERS:
 - Rotational SG
 - HASG aka Lady Golide
 - Demon-Tech Shotgun
+- Doom 2016 Shotgun
 - M1887 Winchester Lever-Action
 - Marauder SSG
 
@@ -107,7 +108,7 @@ TEAM MEMBERS:
 ---------------Slot 8 weapons---------------
 
 - Argent Fury
-- Calamity Blade
+- Calamity Blade from LoR
 - Gauss Cannon
 - Ion Rifle
 - MANCUBUS FLAMECANNON
