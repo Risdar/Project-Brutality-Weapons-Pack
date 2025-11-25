@@ -3,7 +3,6 @@ class BeefRiceWeaponDrop : EventHandler
 	override void WorldThingDied(WorldEvent e)
 	{
         let  actor = e.Thing;
-        // name name = actor.GetClassName();
         // CVARS
         CVAR demontechAll = CVar.GetCVAR('PBSpawnALLDTechDrop');
         CVAR cyberdemonRL = CVar.GetCVAR('PBSpawnCyberdemonRLDrop');
