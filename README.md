@@ -2,7 +2,7 @@ See PB Weapon Pack Options to configure:
 
 - New Toggle On/Off feature: Fatality when clicking Fire for addon weapons in the pack.
 
-- Choose which Weapons Spawn or not!
+- Choose which & how Weapons spawn (or not!)
 
 - Random Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
 
