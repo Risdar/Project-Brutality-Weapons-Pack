@@ -577,8 +577,9 @@ ACTOR PB_Autoshotgun  : PB_Weapon
 			AG65 E 1 BRIGHT
 			STOP
 		Readyzoom:
-		    IPNG A 1 A_Weaponready
-            TNT1 A 0 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
+		    //IPNG A 1 A_Weaponready
+			IPNG A 1 A_DoPBWeaponAction
+            //TNT1 A 0 A_DoPBWeaponAction(WRF_ALLOWRELOAD)
 			loop
 	Unzoom:
 		TNT1 A 0 {
@@ -588,6 +589,7 @@ ACTOR PB_Autoshotgun  : PB_Weapon
 		A_Overlay(5, "BeltUnzoomFlash");
 		A_ZoomFactor(1);
 		PB_HandleCrosshair(70);
+		A_SetInventory("CantWeaponSpecial",0);	
 		}
 		IPNG AGDEH 1
 		Goto Ready3
@@ -600,11 +602,12 @@ ACTOR PB_Autoshotgun  : PB_Weapon
 		A_Overlay(5, "BeltZoomFlash");
 		A_ZoomFactor(1.25);
 		A_SetCrosshair(5);
+		A_SetInventory("CantWeaponSpecial",1);	
 		}
 		IPNG HEDGA 1
 		Goto Readyzoom
 		Firezoom:
-		    tnt1 a 0 A_SetCrosshair(5)
+		    TNT1 A 0 A_SetCrosshair(5)
 			TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
 			TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
@@ -642,8 +645,10 @@ ACTOR PB_Autoshotgun  : PB_Weapon
 			IPNG D 1 {
 				PB_SpawnCasing("ShotgunCasing",25,3,27,0,3,3);
 			}
-			IPNG G 2 A_DoPBWeaponAction(WRF_ALLOWRELOAD, WRF_NOPRIMARY, WRF_NOSECONDARY, WRF_NOBOB)
-			IPNG A 2 
+			//IPNG G 2 A_DoPBWeaponAction(WRF_ALLOWRELOAD, WRF_NOBOB)
+			//IPNG A 2 A_DoPBWeaponAction(WRF_ALLOWRELOAD, WRF_NOBOB)
+			IPNG G 2 A_DoPBWeaponAction
+			IPNG A 2 A_DoPBWeaponAction
 			TNT1 A 0 A_Refire
 			Goto Readyzoom
 		WeaponSpecial:
