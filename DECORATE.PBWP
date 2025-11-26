@@ -112,7 +112,8 @@
 #include actors/Weapons/Slot-8/ThunderCrossbow.dec
 	//Slot-9
 #include actors/Weapons/Slot-9/Ballista.dec
-#include actors/Weapons/Slot-9/DTechMinigun.dec
+#include actors/Weapons/Slot-9/DTechMinigun.dec 
+#include actors/Weapons/Slot-9/LegacyUnmaker.dec 
 #include actors/Weapons/Slot-9/STRMC.dec
 #include actors/Weapons/Slot-9/PhaseEradicatorBFG.dec
 #include actors/Weapons/Slot-9/MancubusFlameCannon.dec

@@ -93,6 +93,7 @@ server int PBSpawnPB_MancubusFlameCannon = 1;
 //Slot 9
 server int PBSpawnBioAcidLauncher = 1;
 server int PBSpawnBallistagun = 1;
+server int PBSpawnLegacyUnmaker = 1;
 server int PBSpawnStormcast = 1;
 server int PBSpawnThunderCrossbow = 1;
 //Slot 0

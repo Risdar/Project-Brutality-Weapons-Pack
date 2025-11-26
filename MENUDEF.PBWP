@@ -132,6 +132,7 @@ OptionMenu "WeaponPackSpawnSettings"
 	StaticText ""
 	Option "Spawn Bio-Acid Launcher", "PBSpawnBioAcidLauncher", "OnOff"
 	Option "Spawn Ballista", "PBSpawnBallistagun", "OnOff"
+	Option "Spawn Legacy Unmaker", "PBSpawnLegacyUnmaker", "OnOff"
 	Option "Spawn Stormcast from Schism", "PBSpawnStormcast", "OnOff"
 	Option "Spawn Thunder Crossbow from Brutal Hexen", "PBSpawnThunderCrossbow", "OnOff"
 
