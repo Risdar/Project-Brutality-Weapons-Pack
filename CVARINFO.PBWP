@@ -57,7 +57,6 @@ server int PBSpawnMarauderSSG = 1;
 server int PBSpawnRotatingDoubleBarrel = 1;
 //Slot 4
 server int PBSpawnAK47 = 1;
-//server int PBSpawnApocalypseKiller = 1;	//UNFINISHED SNIPER
 server int PBSpawnPB_BoltRifle = 1;
 server int PBSpawnDark_Fate = 1;
 server int PBSpawnHeavySniperRifle = 1;

@@ -85,7 +85,6 @@ OptionMenu "WeaponPackSpawnSettings"
 	StaticText "---------------Slot 4 weapons---------------", gold
 	StaticText ""
 	Option "Spawn AK-47", "PBSpawnAK47", "OnOff"
-//	Option "Spawn Apocalypse Killer", "PBSpawnApocalypseKiller", "OnOff"
 	Option "Spawn Bolt-Action Sniper", "PBSpawnPB_BoltRifle", "OnOff"
 	Option "Spawn Dark Fate", "PBSpawnDark_Fate", "OnOff"
 	Option "Spawn Heavy Sniper Rifle", "PBSpawnHeavySniperRifle", "OnOff"

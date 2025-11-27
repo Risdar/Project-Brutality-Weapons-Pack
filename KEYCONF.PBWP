@@ -55,7 +55,7 @@ addslotdefault 3 HASG
 addslotdefault 3 SSG
 addslotdefault 3 RotationalSG
 addslotdefault 3 PB_CryoShotgun
-//addslotdefault 3 PB_Doom2016Shotgun
+addslotdefault 3 PB_Doom2016Shotgun
 addslotdefault 3 "Demon Tech Shotgun"
 addslotdefault 3 M1887
 addslotdefault 3 RotatingDoubleBarrel
