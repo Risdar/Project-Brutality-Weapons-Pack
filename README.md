@@ -55,6 +55,7 @@ TEAM MEMBERS:
 - Demon-Tech Pistol
 - Plasma Annihilator Pistol
 - Holy Bastard
+- Johnny Silverhands' Deagle
 
 ---------------Slot 3 weapons---------------
 
@@ -64,8 +65,10 @@ TEAM MEMBERS:
 - HASG aka Lady Golide
 - Demon-Tech Shotgun
 - Doom 2016 Shotgun
+- Hexa-Lion Shotgun
 - M1887 Winchester Lever-Action
 - Marauder SSG
+- Rotating Double Barrel
 
 ---------------Slot 4 weapons---------------
 
