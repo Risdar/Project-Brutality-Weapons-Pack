@@ -64,12 +64,6 @@ class BeefRiceWeaponDrop : EventHandler
                 {
                 vector3 monsPos = actor.pos;
                 double monsHeight = actor.height;
-
-                // Will always Spawn
-                //actor.Spawn("MarauderSSG", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                //actor.Spawn("HookSpawn", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-
-                // Spawn from a list
                 actor.Spawn("MarauderDropSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2)); //This 
                 }
                 break;

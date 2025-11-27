@@ -1,4 +1,6 @@
-// This dictates what exactly is dropped, can be a list or simply one weapon
+// This is SpawnerB, this is what SpawnerA spawns
+// This is the place if you want to add more tiers or more things to spawn
+
 // Marauder SSG
 class PB_MSSGSpawnerT1 : PB_WeaponSpawner 
 {
@@ -77,6 +79,7 @@ class PB_DTechAllGRSpawnerT1 : PB_WeaponSpawner
         Dropitem "PB_Demontech", 255, 2;
     }
 }
+
 class PB_DTechAllGRSpawnerT2 : PB_WeaponSpawner 
 {
     Default

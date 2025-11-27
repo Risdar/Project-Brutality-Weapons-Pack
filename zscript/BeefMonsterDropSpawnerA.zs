@@ -1,4 +1,7 @@
-// This is a proof of concept for now, but we can expand this so different tiers spawn different weapons and or lists
+// This is what the Mosnter Drops from the BeefHandler, called SpawnerA
+// Each SpawnerA has 4 tiers and can be customizable
+// Each tier will spawn SpawnerB, that is where the things are actually spawned
+
 // Marauder SSG
 Class MarauderDropSpawner : PB_SpawnerBase 
 {
@@ -14,6 +17,7 @@ Class MarauderDropSpawner : PB_SpawnerBase
 	{
 		Tier4:
 			TNT1 A 0;
+			// This makes it so MarauderSSG and HookGiver will always spawn 
             TNT1 A 0 A_SpawnItemEx("MarauderSSG",flags:SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_TRANSFERPOINTERS|288,tid:tid);
             TNT1 A 0 A_SpawnItemEx("HookGiver",flags:SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_TRANSFERPOINTERS|288,tid:tid);
 			TNT1 A 0 A_SpawnItemEx("PB_MSSGSpawnerT4",flags:SXF_TRANSFERSPECIAL|SXF_TRANSFERAMBUSHFLAG|SXF_TRANSFERPOINTERS|288,tid:tid);
