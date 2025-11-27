@@ -902,6 +902,20 @@ class BallistaInjector : PBInjector
 	}
 }
 
+class PB_LegacyUnmakerSpawnerInjector : PBInjector
+{
+	override void Init(PB_EventHandler handler)
+	{
+	if (PBSpawnLegacyUnmaker == 1)
+		{
+		//handler.InjectSpawn('PB_BFGSpawnerT1', 'PB_LegacyUnmaker', 255, 1);
+		handler.InjectSpawn('PB_BFGSpawnerT2', 'PB_LegacyUnmaker', 255, 1);
+		handler.InjectSpawn('PB_BFGSpawnerT3', 'PB_LegacyUnmaker', 255, 1);
+		handler.InjectSpawn('PB_BFGSpawnerT4', 'PB_LegacyUnmaker', 255, 1);
+		}
+	}
+}
+
 //Stormcast - F&I
 class StormcastSpawnerInjector : PBInjector
 {
@@ -958,7 +972,7 @@ class NewEQ_Injector : PBInjector
 
 //Misc
 // Do we even need this??? I just moved it from the zscript file
-// There's not a CVAR for it
+// There's not even a CVAR for it
 class PB_DemontechRifleSpawnerInjector : PBInjector
 {
 	override void Init(PB_EventHandler handler)
