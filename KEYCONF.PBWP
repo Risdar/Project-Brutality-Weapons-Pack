@@ -49,7 +49,7 @@ addslotdefault 2 W_SMG
 addslotdefault 2 P_SMG
 addslotdefault 2 HellPistoler
 addslotdefault 2 Magnum
-addslotdefault 2 B_Deagle
+addslotdefault 2 SilverhandsDeagle
 addslotdefault 3 BlackRemintong
 addslotdefault 3 HASG
 addslotdefault 3 SSG
@@ -58,6 +58,7 @@ addslotdefault 3 PB_CryoShotgun
 //addslotdefault 3 PB_Doom2016Shotgun
 addslotdefault 3 "Demon Tech Shotgun"
 addslotdefault 3 M1887
+addslotdefault 3 RotatingDoubleBarrel
 addslotdefault 4 AK-47
 addslotdefault 4 MaskMan_Rifle
 addslotdefault 4 AssaultR1

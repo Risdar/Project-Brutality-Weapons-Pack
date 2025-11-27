@@ -1,0 +1,6 @@
+PB_Rotating DoubleBarrel Mini-Shotgun
+--------------------------------------------
+Updated by 517qwerty for use with PB 0.2.0 build 
+--------------------------------------------
+Summon: Summon RotatingDoubleBarrel
+--------------------------------------------

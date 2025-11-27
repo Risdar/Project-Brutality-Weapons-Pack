@@ -41,6 +41,7 @@ server int PBSpawnArgentSith = 1;
 server int PBSpawnBattleAxe = 1;
 server int PBSpawnRazorjack = 1;
 //Slot 2
+server int PBSpawnSilverhandsDeagle = 1;
 server int PBSpawnHellPistol = 1;
 server int PBSpawnHellPistoler = 1;
 server int PBSpawnW_SMG = 1;
@@ -53,6 +54,7 @@ server int PBSpawnHASG = 1;
 server int PBSpawnDemonTechShotgun = 1;
 server int PBSpawnM1887 = 1;
 server int PBSpawnMarauderSSG = 1;
+server int PBSpawnRotatingDoubleBarrel = 1;
 //Slot 4
 server int PBSpawnAK47 = 1;
 //server int PBSpawnApocalypseKiller = 1;	//UNFINISHED SNIPER

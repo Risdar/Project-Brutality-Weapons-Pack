@@ -56,12 +56,17 @@ OptionMenu "WeaponPackSpawnSettings"
 	Option "Spawn Argent Sith", "PBSpawnArgentSith", "OnOff"
 	Option "Spawn BattleAxe and Shield from Schism", "PBSpawnBattleAxe", "OnOff"
 	Option "Spawn Razorjack from Russian Overkill", "PBSpawnRazorjack", "OnOff"
+
     StaticText ""
 	StaticText "---------------Slot 2 weapons---------------", gold
 	StaticText ""
 	Option "Spawn Demon-Tech Pistol", "PBSpawnHellPistol", "OnOff"
 	Option "Spawn Plasma Annihilator Pistol", "PBSpawnHellPistoler", "OnOff"
 	Option "Spawn Holy Bastard", "PBSpawnW_SMG", "OnOff"
+	Option "Spawn Johnny Silverhand's Deagle", "PBSpawnSilverhandsDeagle", "OnOff"
+	Option "Spawn DTECH - Demon-Tech Pistol", "PBSpawnHellPistol", "OnOff"
+	Option "Spawn IN - Plasma Annihilator Pistol", "PBSpawnHellPistoler", "OnOff"
+	Option "Spawn IN - Holy Bastard", "PBSpawnW_SMG", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 3 weapons---------------", gold
@@ -74,6 +79,7 @@ OptionMenu "WeaponPackSpawnSettings"
 	Option "Spawn Demon-Tech Shotgun", "PBSpawnDemonTechShotgun", "OnOff"
 	Option "Spawn M1887 Winchester Lever-Action", "PBSpawnM1887", "OnOff"
 	Option "Spawn Marauder SSG", "PBSpawnMarauderSSG", "OnOff"
+	Option "Spawn Rotating Double Barrel", "PBSpawnRotatingDoubleBarrel", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 4 weapons---------------", gold

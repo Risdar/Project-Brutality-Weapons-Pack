@@ -171,6 +171,21 @@ class HellPistolSpawnerInjector : PBInjector
 	}
 }
 
+//SilverhandsDeagle
+class SilverhandsDeagleSpawnerInjector : PBInjector
+{
+	override void Init(PB_EventHandler handler)
+	{
+	if (PBSpawnSilverhandsDeagle == 1)
+		{
+		handler.InjectSpawn('PB_PistolSpawnerT1', 'SilverhandsDeagle', 255, 1);
+		handler.InjectSpawn('PB_PistolSpawnerT2', 'SilverhandsDeagle', 255, 1);
+		handler.InjectSpawn('PB_PistolSpawnerT3', 'SilverhandsDeagle', 255, 1);
+		handler.InjectSpawn('PB_PistolSpawnerT4', 'SilverhandsDeagle', 255, 1);
+		}
+	}
+}
+
 //Plasma Annihilator - IN
 class HellPistolerSpawnerInjector : PBInjector
 {
@@ -340,6 +355,21 @@ class MarauderSSGSpawnerInjector : PBInjector
 		handler.InjectSpawn('PB_PackSpawnerT2', 'MSSGUpgrade', 255, 1);
 		handler.InjectSpawn('PB_PackSpawnerT3', 'MSSGUpgrade', 255, 1);
 		handler.InjectSpawn('PB_PackSpawnerT4', 'MSSGUpgrade', 255, 1);
+		}
+	}
+}
+
+//RotatingDoubleBarrel
+class RotatingDoubleBarrelSpawnerInjector : PBInjector
+{
+	override void Init(PB_EventHandler handler)
+	{
+	if (PBSpawnRotatingDoubleBarrel == 1)
+		{
+//		handler.InjectSpawn('PB_SSGSpawnerT1', 'RotatingDoubleBarrel', 255, 1);
+//		handler.InjectSpawn('PB_SSGSpawnerT2', 'RotatingDoubleBarrel', 255, 1);
+		handler.InjectSpawn('PB_SSGSpawnerT3', 'RotatingDoubleBarrel', 255, 1);
+		handler.InjectSpawn('PB_SSGSpawnerT4', 'RotatingDoubleBarrel', 255, 1);
 		}
 	}
 }
