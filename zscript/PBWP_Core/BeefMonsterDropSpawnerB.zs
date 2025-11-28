@@ -2,6 +2,21 @@
 // This is the place if you want to add more tiers or more things to spawn
 
 // Marauder SSG
+class HookGiverSpawner : PB_WeaponSpawner 
+{
+    Default
+    {
+        Dropitem "HookGiver", 255, 1;
+    }
+}
+class MarauderSSGSpawner : PB_WeaponSpawner 
+{
+    Default
+    {
+        Dropitem "MarauderSSG", 255, 1;
+    }
+}
+
 class PB_MSSGSpawnerT1 : PB_WeaponSpawner 
 {
     Default
