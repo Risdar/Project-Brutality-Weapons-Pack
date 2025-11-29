@@ -370,7 +370,7 @@ ACTOR TechBlasterBeam : FastProjectile //Failed to PB_Projectile
   Radius 0.5
   Height 0.5
   Alpha 0.2
-  Damage (Random (150, 200))
+  Damage (Random (25, 75))
   Renderstyle Add
   DamageType Saw
   +RIPPER
