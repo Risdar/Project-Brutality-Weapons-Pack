@@ -15,7 +15,7 @@ class PBWP_Spawner : PB_SpawnerBase
     }
 }
 
-// Thanks to Jaih1r0 again for this functions from the HeavySniper mod
+// Credits to Jaih1r0 again for this functions from the HeavySniper mod
 class PBWP_Weapon : PB_Weapon
 {
     //If ammo is less than min, go to state

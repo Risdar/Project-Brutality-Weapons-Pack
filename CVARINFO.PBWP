@@ -111,6 +111,7 @@ server bool PBSpawnPhaseEradicatorBFG = True;
 //===============================================
 // Monster Drops
 server bool FirstTimeLoadingPBWP = true;
+server bool IsUsingStormcastCV = false;
 
 server bool PBSpawnMSSGDrop = false;
 server bool PBSpawnALLDTechDrop = false;

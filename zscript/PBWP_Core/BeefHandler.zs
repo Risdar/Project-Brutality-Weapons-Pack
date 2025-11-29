@@ -29,12 +29,15 @@ class BeefRiceWeaponDrop : EventHandler
                 break;
 
             //case 'PB_JuggernautGK': //Should we make the Juggernaut Drop MastermindCG?
-            case 'PB_MastermindGK': case 'PB_DemolisherGK': 
-            case 'PB_Mastermind': case 'PB_Demolisher':
+            case 'PB_MastermindGK': 
+            case 'PB_DemolisherGK': 
+            case 'PB_Mastermind': 
+            case 'PB_Demolisher':
                 if(MastermindCGDrop == 1) { self.spawnThings("MastermindCGSpawner", monsPos); } 
                 break;
 
-            case 'PB_DemonTechZombieGK':  case 'PB_DemonTechZombie':
+            case 'PB_DemonTechZombieGK':  
+            case 'PB_DemonTechZombie':
                 if(DTechDrop == 1){ self.spawnThings("DTechSpawner", monsPos); } 
                 break;
 
@@ -61,7 +64,6 @@ class BeefRiceWeaponDrop : EventHandler
         vector3 monsPos = actor.pos;
         double monsHeight = actor.height;
         monsPos.z += monsHeight/2;
-
 
         // Get CVARs
         let MancFLameCNDrop = CVAR.GetCVAR('PBSpawnMancFlameCannonDrop').GetInt();
@@ -104,39 +106,84 @@ class BeefSetNoDropDefault : EventHandler
         {
             CVAR.FindCVar('PB_WeaponDrops').SetInt(0);
             CVAR.FindCVar('FirstTimeLoadingPBWP').SetBool(false);
+            destroy();
         }
     }
 }
 
+// Fix the ShieldSaw bug
+class ShieldSawFixAmmo : EventHandler
+{
+    Override void PlayerEntered(PlayerEvent e)
+    {
+        let pm = players[e.PlayerNumber].mo;
+		if(!pm)
+			return;
+        bool FindInvAlreadyThrow = pm.FindInventory("AlreadyThrownShieldSaw");
+        bool FindInvShieldAmmo = pm.FindInventory("ShieldSawAmmo");
+
+        if(FindInvAlreadyThrow && FindInvShieldAmmo)
+        {
+            pm.giveinventory("ShieldSawAmmo",1);
+        }
+        return;
+    }
+}
+
 // Spawn custom ammo from killed enemies
+// This works but is janky and maybe very expensive because it checks every worldtick
+// Will Disable for now until further testing
+/*
 class BeefCustomAmmoDrop : EventHandler
 {
     override void WorldThingDied(WorldEvent e)
 	{
         if (!e || !e.thing) return;
         if (!e.thing.bISMONSTER) return;
-        let  actor = e.Thing; 
+        let  actor = e.Thing;
         
         vector3 monsPos = actor.pos;
         double monsHeight = actor.height;
         monsPos.z += monsHeight/2;
 
-        int monsHealth = actor.getMaxHealth();
-        while (monsHealth >= 1000) {
-            monsHealth -= 100;
-            self.createStormCast(true, monsPos);
-        }
-        while (monsHealth >= 100){
-            monsHealth -= 10;
-            self.createStormCast(false, monsPos);
+        int monsHealth = actor.getMaxHealth();  
+        if(IsUsingStormcastCV){
+            while (monsHealth >= 1100) {
+                monsHealth -= 1100;
+                self.createStormCast(true, monsPos);
+            }
+            while (monsHealth >= 210){
+                monsHealth -= 210;
+                self.createStormCast(false, monsPos);
+            }
         }
     } 
+
     void createStormCast(bool bigver, vector3 monsPos){
-            String className = "StormCastAmmo";
+            String className = "StormCastAmmoSmall";
             if(bigver){ className = "StormCastAmmoBig"; }
             actor.spawn(className, monsPos);
         }
+
+    Override void WorldTick()
+    {
+        let pm = players[consoleplayer].mo;
+		if(!pm)
+			return;
+
+        bool IsUsingStormcast = pm.FindInventory("IsUsingStormcast");
+        if(IsUsingStormcast)
+        {
+            CVAR.FindCVar('IsUsingStormcastCV').SetBool(true);
+        }
+        else
+        {
+            CVAR.FindCVar('IsUsingStormcastCV').SetBool(false);
+        }
+        return;
+    }
 }
+*/
 
 // Spawn Presets
 // This is a pretty rough implementation and I can probaly use switch cases for this

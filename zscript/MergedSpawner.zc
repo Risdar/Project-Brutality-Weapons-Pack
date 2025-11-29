@@ -3,7 +3,7 @@ This file lists all spawn ZSCRIPT injectors for the weapons
 GLOSSARY:
 * IN = Insanity's Brutality
 * DTECH = Demon Tech Weapons Pack
-* F&I = Fire & Ice
+* SCHISM & F&I = Schism / Fire & Ice
 * D2016 = Doom 2016 Weapon's Pack
 =================================================*/
 
@@ -125,7 +125,7 @@ class PB_ArgentSithSpawnerInjector : PBInjector
 	}
 }
 
-//Battle Axe - F&I
+//Battle Axe - SCHISM & F&I
 class BattleAxeSpawnerInjector : PBInjector
 {
 	override void init(PB_EventHandler handler)
@@ -555,7 +555,7 @@ class AutoCannonSpawnerInjector : PBInjector
 	}
 }
 
-//Dragon Slayer - F&I
+//Dragon Slayer - SCHISM & F&I
 class Fire_and_IceDragonSlayerSpawnerInjector : PBInjector
 {
 	override void init(PB_EventHandler handler)
@@ -976,7 +976,7 @@ class PB_LegacyUnmakerSpawnerInjector : PBInjector
 	}
 }
 
-//Stormcast - F&I
+//Stormcast - SCHISM & F&I
 class StormcastSpawnerInjector : PBInjector
 {
 	override void Init(PB_EventHandler handler)
@@ -989,7 +989,7 @@ class StormcastSpawnerInjector : PBInjector
 	}
 }
 
-//ThunderCrossbow - F&I
+//ThunderCrossbow - SCHISM & F&I
 class ThunderCrossbowSpawnerInjector : PBInjector
 {
 	override void Init(PB_EventHandler handler)
