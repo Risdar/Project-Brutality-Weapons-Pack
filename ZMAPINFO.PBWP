@@ -4,6 +4,7 @@ Gameinfo
 	"CSSGEvent",
     "RandomWeaponSwitcher",
     "BeefRiceWeaponDrop",
+	"BeefCustomAmmoDrop",
 	"BeefSetNoDropDefault",
 	"BeefSpawnPresets",
 	"ExterminatorStuff",
