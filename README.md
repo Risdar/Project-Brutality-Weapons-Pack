@@ -48,10 +48,12 @@ TEAM MEMBERS:
 
 ---------------Slot 2 weapons---------------
 
+- 44 PDW
 - Demon-Tech Pistol
 - Holy Bastard
 - Johnny Silverhands' Deagle
 - Plasma Annihilator Pistol
+- UZI SMG
 
 ---------------Slot 3 weapons---------------
 
@@ -78,6 +80,7 @@ TEAM MEMBERS:
 
 ---------------Slot 5 weapons---------------
 
+- Auto Cannon
 - Fire and Ice DragonSlayer Sword
 - Gallary Nailgun
 - Old HMG
