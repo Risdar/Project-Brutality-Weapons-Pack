@@ -122,11 +122,11 @@ class BeefCustomAmmoDrop : EventHandler
         monsPos.z += monsHeight/2;
 
         int monsHealth = actor.getMaxHealth();
-        while (monsHealth >= 100) {
+        while (monsHealth >= 1000) {
             monsHealth -= 100;
             self.createStormCast(true, monsPos);
         }
-        while (monsHealth >= 10){
+        while (monsHealth >= 100){
             monsHealth -= 10;
             self.createStormCast(false, monsPos);
         }
