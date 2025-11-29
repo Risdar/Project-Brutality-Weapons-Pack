@@ -1,6 +1,5 @@
 Actor WW_HookSelected : inventory{}
 Actor HookSelected : inventory{}
-Actor AlreadyHaveMeatHook : inventory{Inventory.MaxAmount 1}
 
 Actor HookAmmo : ammo
 {

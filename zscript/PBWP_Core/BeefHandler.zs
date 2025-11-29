@@ -7,6 +7,10 @@ class BeefRiceWeaponDrop : EventHandler
         if (!e.thing.bISMONSTER) return;
         let  actor = e.Thing;
 
+        vector3 monsPos = actor.pos;
+        double monsHeight = actor.height;
+        monsPos.z += monsHeight/2;
+
         // Get CVARs
         let DTechDrop = CVar.GetCVAR('PBSpawnALLDTechDrop').GetInt();
         let MSSGDrop = CVar.GetCVAR('PBSpawnMSSGDrop').GetInt();
@@ -19,64 +23,46 @@ class BeefRiceWeaponDrop : EventHandler
         switch(actor.GetClassName())
         {
             // Different Monsters spawn Different Things
-
             // Custom Monsters
             case 'HellTrooperPaingiver':
-                if(PaingiverDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("PainGiverSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                }
+                if(PaingiverDrop == 1) { self.spawnThings("PainGiverSpawner", monsPos); } 
                 break;
 
             //case 'PB_JuggernautGK': //Should we make the Juggernaut Drop MastermindCG?
-            case 'PB_MastermindGK': case 'PB_DemolisherGK': case 'PB_Mastermind': case 'PB_Demolisher':
-                if(MastermindCGDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("MastermindCGSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                }
+            case 'PB_MastermindGK': case 'PB_DemolisherGK': 
+            case 'PB_Mastermind': case 'PB_Demolisher':
+                if(MastermindCGDrop == 1) { self.spawnThings("MastermindCGSpawner", monsPos); } 
                 break;
 
             case 'PB_DemonTechZombieGK':  case 'PB_DemonTechZombie':
-                if(DTechDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("DTechSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                }
+                if(DTechDrop == 1){ self.spawnThings("DTechSpawner", monsPos); } 
                 break;
 
             // Monster Pack Stuff
             case 'CyberSatyr':
-                if(ShieldGRDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("ShieldGrenadeDrop", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2));
-                }
+                if(ShieldGRDrop == 1){ self.spawnThings("ShieldGrenadeDrop", monsPos); } 
                 break;
 
             case 'PB_Marauder':
-                if(MSSGDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("MarauderDropSpawner", (monsPos.x, monsPos.y, monsPos.z + monsHeight/2)); //This 
-                }
+                if(MSSGDrop == 1){ self.spawnThings("MarauderDropSpawner", monsPos); } 
                 break;
 
             // PB Monsters 
             // Add more here 
         }
 	}
-    
+
     // Special cases where something is spawned instead of killed
     override void WorldThingSpawned (WorldEvent e)
     {
+        if (!e || !e.thing) return;
         let  actor = e.Thing;
+
+        vector3 monsPos = actor.pos;
+        double monsHeight = actor.height;
+        monsPos.z += monsHeight/2;
+
+
         // Get CVARs
         let MancFLameCNDrop = CVAR.GetCVAR('PBSpawnMancFlameCannonDrop').GetInt();
         let CyberRLDrop = CVar.GetCVAR('PBSpawnCyberdemonRLDrop').GetInt();
@@ -86,24 +72,26 @@ class BeefRiceWeaponDrop : EventHandler
         {
             case 'XDeathCyberdemonGun':
                 if(CyberRLDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("CyberdemonsMissileLauncher", (monsPos.x, monsPos.y, monsPos.z)); //Spawn the Weapon
-                actor.destroy(); //Destroy the original actor so there's no duplicates
-                }
+                { 
+                    self.spawnThings("CyberdemonsMissileLauncher", monsPos);
+                    self.destroy(); 
+                } 
                 break;
 
             case 'PB_FlamethrowerMancubusGas':
                 if(MancFLameCNDrop == 1)
-                {
-                vector3 monsPos = actor.pos;
-                double monsHeight = actor.height;
-                actor.Spawn("MancubusFlameCannon", (monsPos.x, monsPos.y, monsPos.z)); //Spawn the Weapon
-                actor.destroy();
-                }
+                { 
+                    self.spawnThings("MancubusFlameCannon", monsPos);
+                    self.destroy(); 
+                } 
                 break;
         }
+    }
+
+    // Spawn Function
+    void spawnThings(string className, vector3 monsPos)
+    {
+        actor.Spawn(className, monsPos);
     }
 }
 
@@ -118,6 +106,36 @@ class BeefSetNoDropDefault : EventHandler
             CVAR.FindCVar('FirstTimeLoadingPBWP').SetBool(false);
         }
     }
+}
+
+// Spawn custom ammo from killed enemies
+class BeefCustomAmmoDrop : EventHandler
+{
+    override void WorldThingDied(WorldEvent e)
+	{
+        if (!e || !e.thing) return;
+        if (!e.thing.bISMONSTER) return;
+        let  actor = e.Thing; 
+        
+        vector3 monsPos = actor.pos;
+        double monsHeight = actor.height;
+        monsPos.z += monsHeight/2;
+
+        int monsHealth = actor.getMaxHealth();
+        while (monsHealth >= 1000) {
+            monsHealth -= 100;
+            self.createStormCast(true, monsPos);
+        }
+        while (monsHealth >= 100){
+            monsHealth -= 10;
+            self.createStormCast(false, monsPos);
+        }
+    } 
+    void createStormCast(bool bigver, vector3 monsPos){
+            String className = "StormCastAmmo";
+            if(bigver){ className = "StormCastAmmoBig"; }
+            actor.spawn(className, monsPos);
+        }
 }
 
 // Spawn Presets

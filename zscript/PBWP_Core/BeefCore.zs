@@ -1,3 +1,7 @@
+// Inventory Tokens that the PlayerAlreadyHas will look for
+class AlreadyHaveMeatHook : inventory{default{inventory.maxamount 1;}}
+
+// Make all Spawners inherit this
 class PBWP_Spawner : PB_SpawnerBase
 {
     // This function is the checker for inventory tokens
