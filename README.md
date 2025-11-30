@@ -45,6 +45,7 @@ TEAM MEMBERS:
 - Argent Sith
 - BattleAxe and Shield from Schism
 - Razorjack from Russian Overkill
+- Sentinel Hammer
 
 ---------------Slot 2 weapons---------------
 
