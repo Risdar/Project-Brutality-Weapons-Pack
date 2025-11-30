@@ -4,8 +4,10 @@ Gameinfo
 	"CSSGEvent",
     "RandomWeaponSwitcher",
     "BeefRiceWeaponDrop",
+	//"BeefCustomAmmoDrop",
 	"BeefSetNoDropDefault",
 	"BeefSpawnPresets",
+	"ShieldSawFixAmmo",
 	"ExterminatorStuff",
 	"BusterHandler"
 	// Add More Handlers Here
