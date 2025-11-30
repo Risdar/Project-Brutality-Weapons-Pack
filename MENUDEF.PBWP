@@ -2,27 +2,95 @@ AddOptionMenu "OptionsMenu"
 {
     Submenu "Project Brutality Weapon Pack Settings", "ttwcoptions"
 }
+AddOptionMenu "OptionsMenuSimple"
+{
+	Submenu "Project Brutality Weapon Pack Settings", "ttwcoptions"
+}
+
+ListMenu "MainMenu"
+{
+	Font "PBBIG","red","white"
+	IfGame(Doom, Chex)
+	{
+		StaticPatch 80, -10, "M_DOOMPB"
+		Position 85, 66
+	}
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		Selector "M_SKULL1", -30, -8
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "PB Options", "p", "PBSettings"
+			TextItem "PBWP Options", "p", "ttwcoptions"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "Project Brutality", "p", "PBSettings"
+			TextItem "PB Weapons Pack", "p", "ttwcoptions"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "Project Brutality Settings", "p", "PBSettings"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+	Size Clean
+}
 
 OptionMenu "ttwcoptions"
 {
 	Title "-------PB Weapon Pack Settings-------"
     StaticText ""
-	Option "Fatalities can occur when clicking Fire Button", "ttwcfbex", "OnOff"
-    StaticText ""
-	SubMenu "Combat Points Weapons Shop", "AmmunitionShopSystem"
-    StaticText ""
-	Submenu "Weapon Pack Spawn Settings", "WeaponPackSpawnSettings"
-	Submenu "Monsters Drop Weapons Settings", "MonsterDropWeapSett"
-    StaticText "---------------EXTRAS---------------"
-	Submenu "Random Weapon Quick-Switcher", "SwitchItUpOptions"
-	Submenu "Summon Random Boss Enemies Anytime", "BeholdOptions"
-	submenu "DOORBUSTER","BusterMenu"
+	StaticText ""
+	Submenu "$PBWP_WeaponBehaviour_OPTIONS", "WeaponBehavioursSettings"
+	StaticText ""
+	Submenu "$PBWP_WeaponSpawns_OPTIONS", "WeaponPackSpawnSettings"
+	StaticText ""
+	Submenu "$PBWP_MonsterDrop_OPTIONS", "MonsterDropWeapSett"
+	StaticText ""
+    StaticText "-------Extras-------"
+	StaticText ""
+	StaticText ""
+	SubMenu "$PBWP_COMBAT_POINTS_SHOP", "AmmunitionShopSystem"
+	StaticText ""
+	Submenu "$PBWP_QUICKSWITCHER", "SwitchItUpOptions"
+	StaticText ""
+	Submenu "$PBWP_BEHOLD", "BeholdOptions"
+	StaticText ""
+	submenu "$PBWP_DOORBUSTER","BusterMenu"
+	StaticText ""
+	StaticText ""
+	StaticText "Project Brutality Weapons Pack Version: 1.5-Release"
+}
+
+OptionMenu "WeaponBehavioursSettings"
+{
+	Title "Weapon Behaviour Settings"
+	Option "Primary fire will trigger executions", "ttwcfbex", "OnOff"
 }
 
 OptionMenu "MonsterDropWeapSett"
 {
 	Title "Monster Drop Weapon Settings"
-	StaticText "By default they are all Off"
+	StaticText "Choose what things drop from killed enemies", white
+	StaticText "By default they are all Off", white
 	StaticText ""
 	StaticText "---------------Specials---------------", gold
 	StaticText ""
@@ -51,15 +119,13 @@ OptionMenu "MonsterDropWeapSett"
 OptionMenu "WeaponPackSpawnSettings"
 {
 	Title "Weapon Pack Spawn Settings"
-    StaticText ""
-	StaticText "---------------Instructions---------------", gold
-	StaticText "Below is the spawn options for all weapons"
-	StaticText "Some have prefix that indicates which weapon pack it came from"
-	StaticText "DTECH = Demon-Tech Weapons Pack"
-	StaticText "SCHISM = Schism / Fire & Ice"
-	StaticText "IN = Insanity's Nightmare"
-	StaticText "RO = Russian Overkill"
-	StaticText "D2016 = Doom 2016 Weapons Pack"
+	StaticText "Determine which weapon spawns naturally"
+	StaticText "Some have prefix that indicates which weapon pack it came from", white
+	StaticText "DTECH = Demon-Tech Weapons Pack", white
+	StaticText "SCHISM = Schism / Fire & Ice", white
+	StaticText "IN = Insanity's Nightmare", white
+	StaticText "RO = Russian Overkill", white
+	StaticText "D2016 = Doom 2016 Weapons Pack", white
 
 	StaticText ""
 	StaticText "---------------Specials---------------", gold
@@ -397,12 +463,12 @@ OptionMenu "BeholdOptions"
 
     StaticText ""
     StaticText "Welcome to Behold!"
-    StaticText "FIRE & ICE Edition"
-    StaticText "When triggered, Behold! will:"
-    StaticText "• Resurrect you if you died (works even if not dead!)"
-    StaticText "• Give you a Throwable Shieldsaw, Battle Axe, Holy Bastard, Marauder SSG, "
-    StaticText "• Magnum Sniper Rifle, Old HMG, Super Grenade Launcher, & Ballista"
-    StaticText "• Summon Boss enemies based on the selected mode"
+    StaticText "FIRE & ICE Edition", white
+    StaticText "When triggered, Behold! will:", white
+    StaticText "• Resurrect you if you died (works even if not dead!)", white
+    StaticText "• Give you a Throwable Shieldsaw, Battle Axe, Holy Bastard, Marauder SSG, ", white
+    StaticText "• Magnum Sniper Rifle, Old HMG, Super Grenade Launcher, & Ballista", white
+    StaticText "• Summon Boss enemies based on the selected mode", white
     StaticText ""
 
     StaticText "Bind: Behold! modes (each key = set + trigger)"
