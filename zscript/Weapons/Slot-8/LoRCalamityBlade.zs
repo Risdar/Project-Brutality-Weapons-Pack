@@ -277,7 +277,6 @@ class LoRCalamityBlade : PB_Weapon
 
 		WeaponSpecial:
 			TNT1 A 0 A_setinventory("GoWeaponSpecialAbility",0);
-			TNT1 A 0 PB_WeaponRecoil(-4,frandom(-1.5,1.5));
 			TNT1 A 0 {
 				A_SetInventory("GoWeaponSpecialAbility",0);
 				A_SetInventory("Zoomed",0);
