@@ -153,7 +153,7 @@ ACTOR BattleAxe : PB_Weapon
 			 PB_HandleCrosshair(90);
 			 A_TakeInventory("PB_LockScreenTilt",1);
 			 }
-	   	"####" "#" 1 {
+	   	"####" "#" 0 {
 			return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
 		    }
 	ReadyLoop:
