@@ -75,7 +75,7 @@ Actor RespectMarauderSSG : Inventory
    Inventory.MaxAmount 1
 }
 
-Actor MarauderSSG : PB_Weapon
+Actor MarauderSSG : PBWP_Weapon
 {
 	Game Doom
 	SpawnID 1677

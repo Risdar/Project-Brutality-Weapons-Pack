@@ -1,5 +1,5 @@
 //the main weapon, defined here before a thousand tokens
-Class PB_CSSG : PB_WeaponBase
+Class PB_CSSG : PBWP_Weapon
 {
 	default
 	{

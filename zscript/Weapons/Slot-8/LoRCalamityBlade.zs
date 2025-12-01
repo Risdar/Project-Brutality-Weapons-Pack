@@ -1,4 +1,4 @@
-class LoRCalamityBlade : PB_Weapon
+class LoRCalamityBlade : PBWP_Weapon
 {
     int ChargeLevel;
 	Default
@@ -46,7 +46,7 @@ class LoRCalamityBlade : PB_Weapon
 				}			
 			goto ready3;
 		Select:
-			TNT1 A 0 PB_WeaponRaise();
+			TNT1 A 0 A_Raise();
 			TNT1 A 0 {PB_HandleCrosshair(69);}
 			TNT1 A 0 A_SetInventory("RandomHeadExploder",1);
 			TNT1 A 0 PB_RespectIfNeeded();

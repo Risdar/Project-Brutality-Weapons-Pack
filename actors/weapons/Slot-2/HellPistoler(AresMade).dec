@@ -23,7 +23,7 @@ Scale 1.5
 Height 2.0
 }
 
-ACTOR HellPistoler : PB_Weapon
+ACTOR HellPistoler : PBWP_Weapon
 {
 	Weapon.SelectionOrder 2545
     Weapon.AmmoType1 "PB_Cell"
@@ -140,7 +140,7 @@ ACTOR HellPistoler : PB_Weapon
 		AMGF D 1 A_FireCustomMissile("HellPistolerFirerSingle")
 		AMGF E 1 A_TakeInventory("HellPistolerAmmo",1)
 		AMGF F 1
-		TNT1 A 0 A_Refire("Hold")
+		TNT1 A 0 PB_ReFire("Hold")
 		Goto ReadyLoop
 		
 	SemiFire:
@@ -191,7 +191,7 @@ ACTOR HellPistoler : PB_Weapon
 		AMGF E 1 A_TakeInventory("HellPistolerAmmo",1)
 		AMGF F 1
 		AMGL A 10
-		TNT1 A 0 A_Refire("Hold2")
+		TNT1 A 0 PB_ReFire("Hold2")
 		Goto ReadyLoop
 		
 	ChargeFire:
@@ -204,7 +204,7 @@ ACTOR HellPistoler : PB_Weapon
 		AMGF C 5
 		OkTillHold:
 		AMGF C 1 A_FireCustomMissile("RedFlareSpawn", 0, 0, 0, 0)
-		TNT1 A 0 A_Refire("OkTillHold")
+		TNT1 A 0 PB_ReFire("OkTillHold")
 		Ok:
 		AMGF D 0 A_PlaySound("HRFire")
 		AMGF D 1 A_FireCustomMissile("HellPistolerFirerCharge")
@@ -251,7 +251,7 @@ ACTOR HellPistoler : PB_Weapon
 		
 		EndReload:
 		TNT1 A 0 A_Takeinventory("Reloading",1)
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready
 		
 		InsertBullets2:

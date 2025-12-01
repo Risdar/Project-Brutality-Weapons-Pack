@@ -17,7 +17,7 @@ Actor OldHMGAmmo : Ammo
 
 Actor OLDHMGOverHeat: Inventory {Inventory.MaxAmount 200 }
 
-Actor OLDHMG : PB_Weapon
+Actor OLDHMG : PBWP_Weapon
 {
    Game Doom
    SpawnID 13328
@@ -42,7 +42,7 @@ Actor OLDHMG : PB_Weapon
    Scale 0.52
    Tag "UAC-320 Heavy Machine Gun"
    Inventory.AltHudIcon "HMGNA0"
-   PB_WeaponBase.respectItem "RespectOLDHMG"
+   PB_WeaponBase.RespectItem "RespectOLDHMG"
    FloatBobStrength 0.5
    States
    {
@@ -326,7 +326,7 @@ Actor OLDHMG : PB_Weapon
 		     }
 		HMAF C 1 
 		HMAF D 1
-		HMAF DD 1 A_Refire
+		HMAF DD 1 PB_ReFire
 		TNT1 A 0 A_PlaySound("DIBSTOP",3)
 		HMA4 D 1 A_ZoomFactor(0.96)
 		HMA4 C 1 A_ZoomFactor(0.97)
@@ -381,7 +381,7 @@ Actor OLDHMG : PB_Weapon
 		NLGF E 2 Bright
 		TNT1 A 0 A_ZoomFactor(0.945)
 		NLGF F 1
-		NLGF C 1 A_Refire("Hold2")
+		NLGF C 1 PB_ReFire("Hold2")
 		TNT1 A 0 A_PlaySound("NAILSTOP",3)
 		NLG4 D 1 A_ZoomFactor(0.96)
 		NLG4 C 1 A_ZoomFactor(0.97)

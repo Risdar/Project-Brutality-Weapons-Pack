@@ -16,7 +16,7 @@ Actor RipperChaingunFired4: Inventory {Inventory.MaxAmount 200}
 
 Actor RipperChaingunFired5: Inventory {Inventory.MaxAmount 200}
 
-Actor DukeNukemRipper : PB_Weapon
+Actor DukeNukemRipper : PBWP_Weapon
 {
 	Game Doom
 	SpawnID 3337
@@ -216,7 +216,7 @@ Actor DukeNukemRipper : PB_Weapon
 		RIPR W 1 BRIGHT A_SetPitch(Pitch+0.25)
 		RIPR H 1 A_SetPitch(Pitch+0.25)
 		TNT1 A 0 A_GiveInventory("DN3DSecondFire",1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		Goto RipperChaingunReadyToFire
 
 	Fire2:
@@ -241,7 +241,7 @@ Actor DukeNukemRipper : PB_Weapon
 		RIPR Y 1 BRIGHT A_SetPitch(Pitch+0.25)
 		RIPR H 1 A_SetPitch(Pitch+0.25)
 		TNT1 A 0 A_TakeInventory("DN3DSecondFire",1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		Goto RipperChaingunReadyToFire
 
 	FireDNF:
@@ -262,7 +262,7 @@ Actor DukeNukemRipper : PB_Weapon
 			 }
 		RIPR H 1 A_SetPitch(Pitch+0.25)
 		TNT1 A 0 A_GiveInventory("DNFFireSecond",1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		Goto RipperChaingunReadyToFire
 
 	Fire2DNF:
@@ -282,7 +282,7 @@ Actor DukeNukemRipper : PB_Weapon
 		RIPR H 1 A_SetPitch(Pitch+0.25)
 		TNT1 A 0 A_TakeInventory("DNFFireSecond",1)
 		TNT1 A 0 A_GiveInventory("DNFFireThird",1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		Goto RipperChaingunReadyToFire
 
 	Fire3DNF:
@@ -301,7 +301,7 @@ Actor DukeNukemRipper : PB_Weapon
 			 }
 		RIPR H 1 A_SetPitch(Pitch+0.25)
 		TNT1 A 0 A_TakeInventory("DNFFireThird",1)
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		Goto RipperChaingunReadyToFire
 
 	AltFire:

@@ -16,7 +16,7 @@ Actor RazorType : Inventory { Inventory.MaxAmount 1 }
 
 ACTOR BouncerBladesLoaded : Inventory { Inventory.MaxAmount 1 }
 
-ACTOR Razorjack : PB_Weapon
+ACTOR Razorjack : PBWP_Weapon
 { 
     	Game Doom
 	//$Category Weapons
@@ -203,7 +203,7 @@ ACTOR Razorjack : PB_Weapon
 			}
 			Return A_JumpIf(GetPlayerInput(INPUT_BUTTONS) & BT_ALTATTACK, "EmpowerAltFire");
 		}
-		RAZE A 0 A_ReFire("Holding")
+		RAZE A 0 PB_ReFire("Holding")
 		RAZG A 0 {
 			A_WeaponOffset(0,32,WOF_INTERPOLATE);
 			A_StopSound(5);
@@ -242,7 +242,7 @@ ACTOR Razorjack : PB_Weapon
 		RAZR B 1 A_WeaponOffset(0,32,WOF_INTERPOLATE)
 	   	TNT1 A 0 A_JumpIfInventory("BladeAmmo", 1, 1)
 	   	Goto NoAmmoReady
-		RAZG A 2 A_ReFire("AltHolder")
+		RAZG A 2 PB_ReFire("AltHolder")
 		Goto Ready
     EmpowerAltFire:
 	   	TNT1 A 0 A_JumpIfInventory("BladeAmmo", 1, 1)
@@ -267,7 +267,7 @@ ACTOR Razorjack : PB_Weapon
 		RAZR A 1 A_WeaponOffset(2,34,WOF_INTERPOLATE)
 		RAZR B 1 A_WeaponOffset(1,33,WOF_INTERPOLATE)
 		RAZR B 1 A_WeaponOffset(0,32,WOF_INTERPOLATE)
-		RAZG A 2 A_ReFire("AltHolder")
+		RAZG A 2 PB_ReFire("AltHolder")
 		Goto Ready
 	FlashKicking:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelPunching")

@@ -13,7 +13,7 @@ ACTOR SSGAmmo : Ammo
 // Super Shotgun
 //
 // --------------------------------------------------------------------------
-ACTOR SSG : PB_Weapon 20196
+ACTOR SSG : PBWP_Weapon 20196
 {
     Weapon.Kickback 50
 	Weapon.SelectionOrder 400
@@ -266,7 +266,7 @@ ACTOR SSG : PB_Weapon 20196
 		  TNT1 A 0 A_TakeInventory("SSGAlt",1)
 			SHO9 DE 1
 			SHO9 FG 1
-		  TNT1 A 0 A_ReFire
+		  TNT1 A 0 PB_ReFire
 		 SHT2 A 2
         Goto RealReady
 		
@@ -392,7 +392,7 @@ ACTOR SSG : PB_Weapon 20196
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
 		SHO9 DE 1
 		SHO9 FG 1
-		TNT1 A 0 A_ReFire
+		TNT1 A 0 PB_ReFire
 		SHT2 A 2
 		
 	  Goto RealReady

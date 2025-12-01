@@ -101,7 +101,7 @@ ACTOR M41AGrenade
 Actor M41ARespecter : Inventory { Inventory.MaxAmount 1 }
 Actor M41ChangeCart : Inventory { Inventory.MaxAmount 1 }
 
-Actor M41A : PB_Weapon
+Actor M41A : PBWP_Weapon
 {
 	Game Doom
     SpawnID 139
@@ -329,7 +329,7 @@ Actor M41A : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(1.0)
 		M41A E 0
 		M41A A 0 PB_WeaponRecoil(-0.10,-0.25)
-		M41A A 0 A_Refire
+		M41A A 0 PB_ReFire
 		Goto M41AAlienPulseRifleReadyToFire
 
 	AltFire:
@@ -455,7 +455,7 @@ Actor M41A : PB_Weapon
 		M41A A 1 Offset(9,40) //
 		M41A A 1 Offset(4,40) //
 		M41A A 1 Offset(0,32) //
-		M41A A 0 A_Refire
+		M41A A 0 PB_ReFire
 		Goto M41AAlienPulseRifleReadyToFire
 
 	Reload:
@@ -696,7 +696,7 @@ Actor M41A : PB_Weapon
 
 	FinishReloading:
 		RIFG A 0
-		RIFG A 0 A_Refire
+		RIFG A 0 PB_ReFire
 		Goto M41AAlienPulseRifleReadyToFire
 
 	Unload:

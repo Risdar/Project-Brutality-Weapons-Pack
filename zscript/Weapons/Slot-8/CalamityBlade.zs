@@ -1,4 +1,4 @@
-class PB_CalamityBlade : PB_Weapon
+class PB_CalamityBlade : PBWP_Weapon
 {
  Int ChargeLevel;
 	default
@@ -50,7 +50,7 @@ class PB_CalamityBlade : PB_Weapon
 			goto ready3;
 			
 		Select:
-			TNT1 A 0 PB_WeaponRaise();
+			TNT1 A 0 A_Raise();
 			TNT1 A 0 {PB_HandleCrosshair(69);}
 			TNT1 A 0 A_SetInventory("RandomHeadExploder",1);
 			TNT1 A 0 PB_RespectIfNeeded();

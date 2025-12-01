@@ -41,7 +41,7 @@ ACTOR BerettaTypSpawner : PB_UpgradeItem
 	}
 }
 
-Actor IN_Beretta : PB_Weapon
+Actor IN_Beretta : PBWP_Weapon
 {
 	Scale 0.8
 	Weapon.AmmoType1 "PB_LowCalMag"
@@ -464,11 +464,11 @@ Actor IN_Beretta : PB_Weapon
 			if (CountInv("Attached_Berreta") == 1 ) {
 			A_SetWeaponSprite("2ILE");
 			A_DoPBWeaponAction(WRF_ALLOWRELOAD);
-			A_Refire("BurstFire");
+			PB_ReFire("BurstFire");
 			}
 			else {
 			A_DoPBWeaponAction(WRF_ALLOWRELOAD);
-			A_Refire("BurstFire");
+			PB_ReFire("BurstFire");
 			}
 		}
 		Goto Ready3
@@ -518,7 +518,7 @@ Actor IN_Beretta : PB_Weapon
 			A_DoPBWeaponAction;
 			}
 		}
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready3
 		
 	DualFire:
@@ -568,7 +568,7 @@ Actor IN_Beretta : PB_Weapon
 			A_DoPBWeaponAction;
 			}
 		}
-		TNT1 A 0 A_Refire("LeftDualFire")
+		TNT1 A 0 PB_ReFire("LeftDualFire")
 		Goto Ready3
 		
 	LeftDualFire:
@@ -616,7 +616,7 @@ Actor IN_Beretta : PB_Weapon
 			A_DoPBWeaponAction;
 			}
 		}
-		TNT1 A 0 A_Refire("DualFire")
+		TNT1 A 0 PB_ReFire("DualFire")
 		Goto Ready3
 	
 	DualBurstFire: //This one is gonna hype this one before tho
@@ -714,7 +714,7 @@ Actor IN_Beretta : PB_Weapon
 		}
 		PI2F MNO 1 {if (CountInv("Attached_Berreta") == 1 ) {A_SetWeaponSprite("SI2F");}}
 		PI2F P 4 {if (CountInv("Attached_Berreta") == 1 ) {A_SetWeaponSprite("SI2F");}}
-		PI2F P 1 {if (CountInv("Attached_Berreta") == 1 ) {A_SetWeaponSprite("SI2F");} A_Refire("DualBurstFire");}
+		PI2F P 1 {if (CountInv("Attached_Berreta") == 1 ) {A_SetWeaponSprite("SI2F");} PB_ReFire("DualBurstFire");}
 		Goto Ready3
 		
     AltFire:
@@ -807,7 +807,7 @@ Actor IN_Beretta : PB_Weapon
 		BERZ D 1 A_WeaponReady(1)
 		BERZ D 1 {
 		A_DoPBWeaponAction(WRF_ALLOWRELOAD);
-		A_Refire;
+		PB_ReFire;
 		}
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
@@ -896,7 +896,7 @@ Actor IN_Beretta : PB_Weapon
 		BERZ D 1 A_WeaponReady(1)
 		BERZ D 1 {
 		A_DoPBWeaponAction(WRF_ALLOWRELOAD);
-		A_Refire;
+		PB_ReFire;
 		}
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
@@ -925,7 +925,7 @@ Actor IN_Beretta : PB_Weapon
 			}
 		BERZ N 1 Bright 
 		BERZ O 4 A_DoPBWeaponAction
-		BERZ O 1 A_Refire
+		BERZ O 1 PB_ReFire
 		Goto Ready2
 		
 	BurstSilenceZoomFire:
@@ -997,7 +997,7 @@ Actor IN_Beretta : PB_Weapon
 			}
 		BERZ N 1 Bright 
 		BERZ O 9 A_DoPBWeaponAction
-		BERZ O 1 A_Refire
+		BERZ O 1 PB_ReFire
 		Goto Ready2
 	
 	WeaponSpecial:

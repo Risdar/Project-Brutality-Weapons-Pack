@@ -1,6 +1,6 @@
 
 
-Class HeavySniperRifle : PB_WeaponBase
+Class HeavySniperRifle : PBWP_Weapon
 {
 	default
 	{

@@ -4,7 +4,7 @@
 //
 // --------------------------------------------------------------------------
 
-ACTOR SuperGrenadeLauncher : PB_Weapon
+ACTOR SuperGrenadeLauncher : PBWP_Weapon
 {
 	Weapon.AmmoUse1 0
 	Weapon.AmmoGive1 6

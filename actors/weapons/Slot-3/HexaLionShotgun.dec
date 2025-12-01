@@ -4,7 +4,7 @@ Actor HexaLionBoyBarrelHeat: Inventory {Inventory.MaxAmount 200}
 
 Actor RespectHexaLionShotgun : Inventory {Inventory.MaxAmount 1}
 
-Actor HexaLionShotgun : PB_Weapon
+Actor HexaLionShotgun : PBWP_Weapon
 {
 	Game Doom
     SpawnID 3044
@@ -32,7 +32,7 @@ Actor HexaLionShotgun : PB_Weapon
 	Scale 0.55
 	Tag "Hexa Lion-Boy Shotgun"
 	Inventory.AltHudIcon "XSGPA0"
-	PB_WeaponBase.respectItem "RespectHexaLionShotgun"
+	PB_WeaponBase.RespectItem "RespectHexaLionShotgun"
     FloatBobStrength 0.5
 	States
 	{

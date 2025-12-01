@@ -73,7 +73,7 @@ Actor QuickLightningSpellSelected: Inventory
 Inventory.Maxamount 1
 }
 
-ACTOR Stormcast : PB_Weapon
+ACTOR Stormcast : PBWP_Weapon
 {
   Game Doom
 	scale 0.5

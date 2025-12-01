@@ -122,7 +122,7 @@ Actor DoomerGaussSiegeShot : DoomerGaussShot {
    }
 }
 
-Actor PB_GaussCannon : PB_Weapon
+Actor PB_GaussCannon : PBWP_Weapon
 {
        Game Doom
 	   Weapon.BobRangeX 0.3
@@ -307,7 +307,7 @@ Actor PB_GaussCannon : PB_Weapon
 		   "####" DEFGHHHHHHHHHH 1
 		   "####" GFEDIJKL 2
 		   "####" A 7
-		   "####" A 0 A_Refire
+		   "####" A 0 PB_ReFire
 			Goto Ready3
         
 		Fire2:
@@ -392,7 +392,7 @@ Actor PB_GaussCannon : PB_Weapon
 		   "####" HHHHHHHHHHHHHHH 1
 		   "####" GFEDIJKL 2
 		   "####" A 7
-		   "####" A 0 A_Refire
+		   "####" A 0 PB_ReFire
 			Goto Ready3
 		FireLaser:
 			TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)
@@ -529,7 +529,7 @@ Actor PB_GaussCannon : PB_Weapon
 				 A_StartSound("weapons/railgun/laser_big", 5, CHANF_OVERLAP);
 				 A_RailAttack(9*(5*CountInv("RailgunLaserCharge")), 0, 0, "Orange","Red", RGF_SILENT, 0, "MicrowavePuff",0,0,0,0,5,1.0,"MicrowaveTrail", 0, 0, 0);
 				 }
-				 if (pb_weapon_recoil_extra_weapons) //only add recoil in the "extra" weapons case
+				 if (PB_Weapon_recoil_extra_weapons) //only add recoil in the "extra" weapons case
 				 {
                      PB_WeaponRecoil(-0.25 * CountInv("RailgunLaserCharge"),-0.2 * CountInv("RailgunLaserCharge")); //do recoil based on how charged our weapon was
                  }
@@ -545,7 +545,7 @@ Actor PB_GaussCannon : PB_Weapon
 			GLQF ED 1
 			GCSF IJK 2
 			GLQF A 7
-			"####" A 0 A_Refire
+			"####" A 0 PB_ReFire
 			Goto Ready3
 		Fire2Laser:
 			TNT1 A 0 A_JumpIfInventory("PB_Cell",1,1)
@@ -682,7 +682,7 @@ Actor PB_GaussCannon : PB_Weapon
 				 A_StartSound("weapons/railgun/laser_big", 5, CHANF_OVERLAP);
 				 A_RailAttack(9*(5*CountInv("RailgunLaserCharge")), 0, 0, "Orange","Red", RGF_SILENT, 0, "MicrowavePuff",0,0,0,0,5,1.0,"MicrowaveTrail", 0, 0, 0);
 				 }
-				 if (pb_weapon_recoil_extra_weapons) //only add recoil in the "extra" weapons case
+				 if (PB_Weapon_recoil_extra_weapons) //only add recoil in the "extra" weapons case
 				 {
                      PB_WeaponRecoil(-0.25 * CountInv("RailgunLaserCharge"),-0.2 * CountInv("RailgunLaserCharge")); //do recoil based on how charged our weapon was
                  }
@@ -698,7 +698,7 @@ Actor PB_GaussCannon : PB_Weapon
 			GLAF VV 1 Bright
 			GLAF VVV 2 Bright
 			GLAF V 7 Bright
-			"####" A 0 A_Refire
+			"####" A 0 PB_ReFire
 			Goto ReadyToFire2Full
 
 		ReadyToFire2Full:

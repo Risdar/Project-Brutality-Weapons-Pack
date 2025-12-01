@@ -10,7 +10,8 @@ Class ExcavatorRounds : Ammo{
 	}
 }
 //5DKFE0.png
-Class PB_Excavator : PB_WeaponBase{
+Class PB_Excavator : PBWP_Weapon
+{
 	//$Title Excavator
 	//$Category Weapons
 	//$Sprite 5DUNA0

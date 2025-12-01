@@ -2,7 +2,7 @@ Actor LegacyUnmakerSelected : Inventory {Inventory.MaxAmount 1}
 
 Actor LegacyUnmakerFireSelected: Inventory {Inventory.MaxAmount 1}
 
-Actor PB_LegacyUnmaker : PB_Weapon
+Actor PB_LegacyUnmaker : PBWP_Weapon
 {
   //$Title Legacy Unmaker
   //$Category Weapons
@@ -199,7 +199,7 @@ Actor PB_LegacyUnmaker : PB_Weapon
 		     A_AlertMonsters;
 			 PB_WeaponRecoil(-0.7,random(1, -1));
 		     A_TakeInventory("PB_DTech", 1);
-			 A_Refire("UnmakerBeam");
+			 PB_ReFire("UnmakerBeam");
 			 }
 		TNT1 A 0
 	StopPrimary:
@@ -238,7 +238,7 @@ Actor PB_LegacyUnmaker : PB_Weapon
 			 }
 		UZTF EBCB 1
 		UZTF A 0 {
-		     A_Refire("FireFlameBall");
+		     PB_ReFire("FireFlameBall");
 			 }
 		TNT1 A 0
 		Goto Ready3
@@ -294,7 +294,7 @@ Actor PB_LegacyUnmaker : PB_Weapon
 			 }
 		UZTF Y 1 Bright
 		TNT1 A 0 {
-		     A_Refire("FlamethrowerHold");
+		     PB_ReFire("FlamethrowerHold");
 			 }
 		TNT1 A 0
 	StopFlamer:
@@ -351,7 +351,7 @@ Actor PB_LegacyUnmaker : PB_Weapon
 		TNT1 A 0
 		UZTF JIHGF 1 Bright
 		TNT1 A 0 {
-		     A_Refire("AltHold");
+		     PB_ReFire("AltHold");
 			 }
 		TNT1 A 0
 	StopDoomSeeker:

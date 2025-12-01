@@ -1,4 +1,4 @@
-Actor RotatingDoubleBarrel : PB_Weapon
+Actor RotatingDoubleBarrel : PBWP_Weapon
 {
 	Game Doom
 	SpawnID 28
@@ -190,7 +190,7 @@ Actor RotatingDoubleBarrel : PB_Weapon
 		MSGF B 1 A_ZoomFactor(0.98)
 		MSGF C 1 A_ZoomFactor(1)
 		MSGF D 1
-		MNGG B 0 A_ReFire
+		MNGG B 0 PB_ReFire
 		MSGI A 0 A_PlaySound("MINIGEN", 5)
 		MSGI A 0 A_JumpIfInventory("Spin",1,"Ready2")
 		MSGI A 0
@@ -200,7 +200,7 @@ Actor RotatingDoubleBarrel : PB_Weapon
 		MSGI A 1 A_WeaponReady
 		MSGI B 1 A_WeaponReady
 		MSGI A 0
-		MSGI A 0 A_Refire
+		MSGI A 0 PB_ReFire
 		MSGI C 1 A_WeaponReady
 		MSGI D 1 A_WeaponReady
 		MSGI A 0

@@ -1,4 +1,4 @@
-ACTOR Black_DMR-RKX : PB_Weapon
+ACTOR Black_DMR-RKX : PBWP_Weapon
 {
 	Inventory.PickupSound "J2RCOCK"
 	Weapon.AmmoGive1 10
@@ -208,7 +208,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		
 		TNT1 A 0 A_CheckReload
 		TNT1 A 0 A_JumpIfInventory("SemiSong",1,"Ready3") // Thinking already has been...
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready3
 		
 	NoAmmoOnRight:
@@ -234,7 +234,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(0.97)
 		J2D1 A 1
 		TNT1 A 0 A_ZoomFactor(0.98)
-		J2DG A 0 A_Refire
+		J2DG A 0 PB_ReFire
 		Goto Ready3
 	
 	NoAmmoOnLeft:
@@ -260,7 +260,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(0.97)
 		J2D2 A 1
 		TNT1 A 0 A_ZoomFactor(0.98)
-		J2DG A 0 A_Refire
+		J2DG A 0 PB_ReFire
 		Goto Ready3
 	
 	DualFire:
@@ -286,7 +286,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		J2D2 A 1
 		TNT1 A 0 A_ZoomFactor(0.97)
 		TNT1 A 0 A_ZoomFactor(0.98)
-		J2DG A 0 A_Refire
+		J2DG A 0 PB_ReFire
 		Goto Ready3
 		
 	LeftDualFire:
@@ -311,7 +311,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		J2D1 A 1
 		TNT1 A 0 A_ZoomFactor(0.97)
 		TNT1 A 0 A_ZoomFactor(0.98)
-		J2DG A 0 A_Refire
+		J2DG A 0 PB_ReFire
 		Goto Ready3
 		
 	//GunFlashInitiate
@@ -430,7 +430,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(1.0)
 		
 		TNT1 A 0 A_CheckReload
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready3
 
     AltFire:
@@ -541,7 +541,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		TNT1 A 0 A_ZoomFactor(2.0)
 		TNT1 A 0 A_CheckReload
 		TNT1 A 0 A_JumpIfInventory("SemiSong",1,"Ready2")
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready2
 		
 	BurstFire2:
@@ -638,7 +638,7 @@ ACTOR Black_DMR-RKX : PB_Weapon
 		J22F E 10
 		TNT1 A 0 A_ZoomFactor(2.0)
 		TNT1 A 0 A_CheckReload
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
 		Goto Ready2
 	
 	NoAmmo:
