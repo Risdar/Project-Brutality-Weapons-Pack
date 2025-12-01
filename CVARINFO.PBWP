@@ -12,6 +12,8 @@ server bool nologs = false;
 server bool infinitecharges = false;
 server int busterAmmoChance = 1;
 
+server int bossbarpos = 1;
+
 server int ttwcfbex = 25;
 
 User Noarchive Int d16_crosshair = 0;

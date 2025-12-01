@@ -86,8 +86,8 @@ Actor MarauderSSG : PB_Weapon
     Weapon.Kickback 100
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
-	Weapon.AmmoGive1 2
-	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 20
+	Weapon.AmmoGive2 20
 	Weapon.AmmoType "PB_Shell"
 	Weapon.AmmoType2 "MaraudSSGAmmo"
     +WEAPON.NOAUTOAIM

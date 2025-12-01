@@ -24,9 +24,10 @@
 #include actors/Monsters/DEEPONE.dec
 #include actors/Monsters/E1BOSS.dec
 #include actors/Monsters/E1BOSS2.dec
-#include actors/Monsters/GOREN.dec
+#include actors/Monsters/BeholdRandomItems.dec
 #include actors/Monsters/PaingiverHelltrooper.dec
 #include actors/Monsters/STONEGAR.dec
+#include actors/Monsters/SpecialDoom1Bosses.dec
 
 // Spawners
 //#include actors/Spawners/WeaponSpawners/Weapons_Spawner.dec // I dont think we need this since there's already the injectors

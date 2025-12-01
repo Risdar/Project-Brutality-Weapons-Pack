@@ -1,3 +1,8 @@
+//CyberdemonBoss//
+cyber/charge	cybchg
+cyber/melee	cybswg
+cyber/impact	cybimp
+
 //EMG Doomblaster//
 $random D2016Blaster/Fire {PLMF1 PLMF1 PLMF1}
 PLMF1 PLMF1
