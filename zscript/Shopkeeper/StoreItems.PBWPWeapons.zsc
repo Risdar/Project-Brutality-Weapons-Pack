@@ -51,7 +51,7 @@ class PBSentinelHammerStore : StoreItem
 	override int GetType() { return SType_Weapon; }
 	override string GetCategory() { return "Project Brutality Melee"; }
 	override Name GetItem() { return 'SentinelHammer'; }
-	override string GetIcon() { return ""; }
+	override string GetIcon() { return "senthm"; }
 	override string GetDisplayName() { return "Sentinel Hammer"; }
 	override int GetBasePrice() { return 480; }
 	override string GetFlavorText() { return ""; }
@@ -142,11 +142,11 @@ class PBUZISMGStore : StoreItem
 // SHOTGUNS
 // ==============================
 
-class PBSSGStore : StoreItem
+class PBPB_CSSGStore : StoreItem
 {
 	override int GetType() { return SType_Weapon; }
 	override string GetCategory() { return "Project Brutality Shotguns"; }
-	override Name GetItem() { return 'SSG'; }
+	override Name GetItem() { return 'PB_CSSG'; }
 	override string GetIcon() { return ""; }
 	override string GetDisplayName() { return "Commander SSG"; }
 	override int GetBasePrice() { return 390; }
@@ -249,6 +249,17 @@ class PBRotatingDoubleBarrelStore : StoreItem
 	override string GetIcon() { return "MTGSE0"; }
 	override string GetDisplayName() { return "Rotating Double Barrel"; }
 	override int GetBasePrice() { return 435; }
+	override string GetFlavorText() { return ""; }
+}
+
+class PBSSGStore : StoreItem
+{
+	override int GetType() { return SType_Weapon; }
+	override string GetCategory() { return "Project Brutality Shotguns"; }
+	override Name GetItem() { return 'SSG'; }
+	override string GetIcon() { return ""; }
+	override string GetDisplayName() { return "SSG"; }
+	override int GetBasePrice() { return 390; }
 	override string GetFlavorText() { return ""; }
 }
 
@@ -387,7 +398,7 @@ class PBExcavatorStore : StoreItem
 	override int GetType() { return SType_Weapon; }
 	override string GetCategory() { return "Project Brutality Heavy Weapons"; }
 	override Name GetItem() { return 'PB_Excavator'; }
-	override string GetIcon() { return ""; }
+	override string GetIcon() { return "5DUNA0"; }
 	override string GetDisplayName() { return "Excavator"; }
 	override int GetBasePrice() { return 435; }
 	override string GetFlavorText() { return ""; }
@@ -646,7 +657,7 @@ class PBAncientCrossbowStore : StoreItem
 class PBBioAcidLauncherStore : StoreItem
 {
 	override int GetType() { return SType_Weapon; }
-	override string GetCategory() { return "Project Brutality Energy Weapons"; }
+	override string GetCategory() { return "Project Brutality Special Weapons"; }
 	override Name GetItem() { return 'BioAcidLauncher'; }
 	override string GetIcon() { return ""; }
 	override string GetDisplayName() { return "Bio Acid Launcher"; }
@@ -654,12 +665,23 @@ class PBBioAcidLauncherStore : StoreItem
 	override string GetFlavorText() { return ""; }
 }
 
+class PBPB_DemonExtStore : StoreItem
+{
+	override int GetType() { return SType_Weapon; }
+	override string GetCategory() { return "Project Brutality Special Weapons"; }
+	override Name GetItem() { return 'PB_DemonExt'; }
+	override string GetIcon() { return "UNMXA0"; }
+	override string GetDisplayName() { return "Demonic Exterminator"; }
+	override int GetBasePrice() { return 465; }
+	override string GetFlavorText() { return ""; }
+}
+
 class PBLoRCalamityBladeStore : StoreItem
 {
 	override int GetType() { return SType_Weapon; }
-	override string GetCategory() { return "Project Brutality Melee"; }
+	override string GetCategory() { return "Project Brutality Special Weapons"; }
 	override Name GetItem() { return 'LoRCalamityBlade'; }
-	override string GetIcon() { return ""; }
+	override string GetIcon() { return "BFUGB0"; }
 	override string GetDisplayName() { return "LoR Calamity Blade"; }
 	override int GetBasePrice() { return 600; }
 	override string GetFlavorText() { return ""; }
@@ -668,7 +690,7 @@ class PBLoRCalamityBladeStore : StoreItem
 class PBMancubusFlameCannonStore : StoreItem
 {
 	override int GetType() { return SType_Weapon; }
-	override string GetCategory() { return "Project Brutality Energy Weapons"; }
+	override string GetCategory() { return "Project Brutality Special Weapons"; }
 	override Name GetItem() { return 'MancubusFlameCannon'; }
 	override string GetIcon() { return "MANAH0"; }
 	override string GetDisplayName() { return "Mancubus Flame Cannon"; }
@@ -679,7 +701,7 @@ class PBMancubusFlameCannonStore : StoreItem
 class PBStormcastStore : StoreItem
 {
 	override int GetType() { return SType_Weapon; }
-	override string GetCategory() { return "Project Brutality Energy Weapons"; }
+	override string GetCategory() { return "Project Brutality Special Weapons"; }
 	override Name GetItem() { return 'Stormcast'; }
 	override string GetIcon() { return "STRMA0"; }
 	override string GetDisplayName() { return "Stormcast"; }
