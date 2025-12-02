@@ -1,37 +1,106 @@
 AddOptionMenu "OptionsMenu"
 {
-    Submenu "PB Weapon Collection Settings", "ttwcoptions"
+    Submenu "Project Brutality Weapon Pack Settings", "ttwcoptions"
+}
+AddOptionMenu "OptionsMenuSimple"
+{
+	Submenu "Project Brutality Weapon Pack Settings", "ttwcoptions"
+}
+
+ListMenu "MainMenu"
+{
+	Font "PBBIG","red","white"
+	IfGame(Doom, Chex)
+	{
+		StaticPatch 80, -10, "M_DOOMPB"
+		Position 85, 66
+	}
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		Selector "M_SKULL1", -30, -8
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "PB Options", "p", "PBSettings"
+			TextItem "PBWP Options", "p", "ttwcoptions"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "Project Brutality", "p", "PBSettings"
+			TextItem "PB Weapons Pack", "p", "ttwcoptions"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "Project Brutality Settings", "p", "PBSettings"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+	Size Clean
 }
 
 OptionMenu "ttwcoptions"
 {
-	Title "PB Weapon Pack Settings"
+	Title "-------PB Weapon Pack Settings-------"
     StaticText ""
-	Option "Fatalities when clicking Fire Button", "ttwcfbex", "OnOff"
-    StaticText ""
-	Submenu "Weapon Pack Spawn Settings", "WeaponPackSpawnSettings"
 	StaticText ""
-	Submenu "Monster Drop Weapon Settings", "MonsterDropWeapSett"
-    StaticText ""
-	Submenu "Random Weapon Switcher", "SwitchItUpOptions"
-    StaticText ""
-	Submenu "Behold! Summon Enemies and Bosses", "BeholdOptions"
-    StaticText ""
-	submenu "DOORBUSTER","BusterMenu"
+	Submenu "$PBWP_WeaponBehaviour_OPTIONS", "WeaponBehavioursSettings"
+	StaticText ""
+	Submenu "$PBWP_WeaponSpawns_OPTIONS", "WeaponPackSpawnSettings"
+	StaticText ""
+	Submenu "$PBWP_MonsterDrop_OPTIONS", "MonsterDropWeapSett"
+	StaticText ""
+    StaticText "-------Extras-------"
+	StaticText ""
+	StaticText ""
+	SubMenu "$PBWP_COMBAT_RATING_SHOP", "AmmunitionShopSystem"
+	StaticText ""
+	Submenu "$PBWP_QUICKSWITCHER", "SwitchItUpOptions"
+	StaticText ""
+	Submenu "$PBWP_BEHOLD", "BeholdOptions"
+	StaticText ""
+	submenu "$PBWP_DOORBUSTER","BusterMenu"
+	StaticText ""
+	StaticText ""
+	StaticText "Project Brutality Weapons Pack Version: 1.5-Release"
+}
+
+OptionMenu "WeaponBehavioursSettings"
+{
+	Title "Weapon Behaviour Settings"
+	Option "Primary fire will trigger executions", "ttwcfbex", "OnOff"
 }
 
 OptionMenu "MonsterDropWeapSett"
 {
 	Title "Monster Drop Weapon Settings"
+	StaticText "Choose what things drop from killed enemies", white
+	StaticText "By default they are all Off", white
 	StaticText ""
 	StaticText "---------------Specials---------------", gold
 	StaticText ""
 	Option "D-Tech Trooper Spawn All D-Tech Weapons", "PBSpawnALLDTechDrop", "OnOff"
+	Option  "PB Monster weapon drops (Default is Just Ammo)","PB_WeaponDrops","MonsterDrops"
 	
 	StaticText ""
 	StaticText "---------------Monster Pack---------------", gold
 	StaticText ""
-	Option "Marauder drop MSSG and its Upgrade", "PBSpawnMSSGDrop", "OnOff"
+	Option "Marauder drop MSSG, Meat Hook, and MSSG Upgrade", "PBSpawnMSSGDrop", "OnOff"
 	Option "Cyber Satyr drop Shield Grenades", "EQSpawnShieldGR", "OnOff"
 	
 	StaticText ""
@@ -50,18 +119,39 @@ OptionMenu "MonsterDropWeapSett"
 OptionMenu "WeaponPackSpawnSettings"
 {
 	Title "Weapon Pack Spawn Settings"
-    StaticText ""
+	StaticText "Determine which weapon spawns naturally"
+	StaticText "Some have prefix that indicates which weapon pack it came from", white
+	StaticText "DTECH = Demon-Tech Weapons Pack", white
+	StaticText "SCHISM = Schism / Fire & Ice", white
+	StaticText "IN = Insanity's Nightmare", white
+	StaticText "RO = Russian Overkill", white
+	StaticText "D2016 = Doom 2016 Weapons Pack", white
+
+	StaticText ""
+	StaticText "---------------Specials---------------", gold
+	StaticText ""
+	Command "Enable All", "netevent PBWP_EnableAll"
+	Command "Disable All", "netevent PBWP_DisableAll"
+
+
+	StaticText ""
 	StaticText "---------------Slot 1 weapons---------------", gold
 	StaticText ""
 	Option "Spawn Argent Sith", "PBSpawnArgentSith", "OnOff"
-	Option "Spawn BattleAxe and Shield from Schism", "PBSpawnBattleAxe", "OnOff"
-	Option "Spawn Razorjack from Russian Overkill", "PBSpawnRazorjack", "OnOff"
+	Option "Spawn SCHISM - BattleAxe and Shield", "PBSpawnBattleAxe", "OnOff"
+	Option "Spawn RO - Razorjack", "PBSpawnRazorjack", "OnOff"
+	Option "Spawn Sentinel Hammer", "PBSpawnSentinelHammer", "OnOff"
+
     StaticText ""
 	StaticText "---------------Slot 2 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Demon-Tech Pistol", "PBSpawnHellPistol", "OnOff"
-	Option "Spawn Plasma Annihilator Pistol", "PBSpawnHellPistoler", "OnOff"
-	Option "Spawn Holy Bastard", "PBSpawnW_SMG", "OnOff"
+	Option "Spawn 44 PDW", "PBSpawn44PDW", "OnOff"
+	Option "Spawn Doom Blaster", "PBSpawnDoomBlaster", "OnOff"
+//	Option "Spawn Johnny Silverhand's Deagle", "PBSpawnSilverhandsDeagle", "OnOff"
+	Option "Spawn UZI SMG", "PBSpawnUZISMG", "OnOff"
+	Option "Spawn DTECH - Demon-Tech Pistol", "PBSpawnHellPistol", "OnOff"
+	Option "Spawn IN - Plasma Annihilator Pistol", "PBSpawnHellPistoler", "OnOff"
+	Option "Spawn IN - Holy Bastard", "PBSpawnW_SMG", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 3 weapons---------------", gold
@@ -69,85 +159,289 @@ OptionMenu "WeaponPackSpawnSettings"
 	Option "Spawn Doom 2016 Shotgun", "PBSpawnPB_Doom2016Shotgun", "OnOff"
 	Option "Spawn Cryo Shotgun", "PBSpawnPB_CryoShotgun", "OnOff"
 	Option "Spawn Commander SSG", "PBSpawnPB_CSSG", "OnOff"
-	Option "Spawn Rotational SG", "PBSpawnRotationalSG", "OnOff"
-	Option "Spawn HASG aka Lady Golide", "PBSpawnHASG", "OnOff"
-	Option "Spawn Demon-Tech Shotgun", "PBSpawnDemonTechShotgun", "OnOff"
+	Option "Spawn IN - Rotational SG", "PBSpawnRotationalSG", "OnOff"
+	Option "Spawn IN - HASG aka Lady Golide", "PBSpawnHASG", "OnOff"
+	Option "Spawn Hexa-Lion Shotgun", "PBSpawnHexaLionShotgun", "OnOff"
+	Option "Spawn DTECH - Demon-Tech Shotgun", "PBSpawnDemonTechShotgun", "OnOff"
 	Option "Spawn M1887 Winchester Lever-Action", "PBSpawnM1887", "OnOff"
 	Option "Spawn Marauder SSG", "PBSpawnMarauderSSG", "OnOff"
+	Option "Spawn Rotating Double Barrel", "PBSpawnRotatingDoubleBarrel", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 4 weapons---------------", gold
 	StaticText ""
-	Option "Spawn AK-47", "PBSpawnAK47", "OnOff"
-//	Option "Spawn Apocalypse Killer", "PBSpawnApocalypseKiller", "OnOff"
+	Option "Spawn IN - AK-47", "PBSpawnAK47", "OnOff"
 	Option "Spawn Bolt-Action Sniper", "PBSpawnPB_BoltRifle", "OnOff"
-	Option "Spawn Dark Fate", "PBSpawnDark_Fate", "OnOff"
+	Option "Spawn IN - Dark Fate", "PBSpawnDark_Fate", "OnOff"
 	Option "Spawn Heavy Sniper Rifle", "PBSpawnHeavySniperRifle", "OnOff"
-	Option "Spawn Magnum Sniper Rifle", "PBSpawnMagnumSniperRifle", "OnOff"
+	Option "Spawn IN - Magnum Sniper Rifle", "PBSpawnMagnumSniperRifle", "OnOff"
 	Option "Spawn M41A Aliens Pulse Rifle", "PBSpawnM41A", "OnOff"
-	Option "Spawn OverWhelming from Russion Overkill", "PBSpawnPowerOverwhelming", "OnOff"
+	Option "Spawn RO - OverWhelming", "PBSpawnPowerOverwhelming", "OnOff"
 
     StaticText ""
 	StaticText "---------------Slot 5 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Fire and Ice DragonSlayer Sword", "PBSpawnFire_and_IceDragonSlayer", "OnOff"
-	Option "Spawn Gallary Nailgun", "PBSpawnINNailGun", "OnOff"
+	Option "Spawn Auto Cannon", "PBSpawnAutoCannon", "OnOff"
+	Option "Spawn SCHISM - Dragon Slayer Sword", "PBSpawnFire_and_IceDragonSlayer", "OnOff"
+	Option "Spawn IN - Gallary Nailgun", "PBSpawnINNailGun", "OnOff"
 	Option "Spawn Old HMG", "PBSpawnOldHMG", "OnOff"
-	Option "Spawn Doom 2016 Machinegun", "PBSpawnD4Machinegun", "OnOff"
-	Option "Spawn Insanity's Nightmare Minigun", "PBSpawnINMiniGun", "OnOff"
-	Option "Spawn Ripper Chaingun", "PBSpawnDukeNukemRipper", "OnOff"
+	Option "Spawn D2016 - Machinegun", "PBSpawnD4Machinegun", "OnOff"
+	Option "Spawn IN - Minigun", "PBSpawnINMiniGun", "OnOff"
+	Option "Spawn DUKE - Ripper Chaingun", "PBSpawnDukeNukemRipper", "OnOff"
 	Option "Spawn UAC Super Nailgun", "PBSpawnSuperNailgun", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 6 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Chthonic Rifle", "PBSpawnChthonicRifle", "OnOff"
+	Option "Spawn IN - Chthonic Rifle", "PBSpawnChthonicRifle", "OnOff"
 	Option "Spawn Cyberdemons Rocket Launcher", "PBSpawnCyberdemonsMissileLauncher", "OnOff"
-	Option "Spawn Devastator", "PBSpawnDevastator", "OnOff"
+	Option "Spawn DUKE - Devastator", "PBSpawnDevastator", "OnOff"
 	Option "Spawn Excavator", "PBSpawnPB_Excavator", "OnOff"
 	Option "Spawn Mastermind Chaingun", "PBSpawnMastermindChaingun", "OnOff"
 	Option "Spawn Paingiver", "PBSpawnPaingiver", "OnOff"
-	Option "Spawn Doom 2016 Rocket Launcher", "PBSpawnD4RocketLauncher", "OnOff"
-	Option "Spawn SuperGrenadeLauncher", "PBSpawnSuperGrenadeLauncher", "OnOff"
+	Option "Spawn D2016 - Rocket Launcher", "PBSpawnD4RocketLauncher", "OnOff"
+	Option "Spawn IN - SuperGrenadeLauncher", "PBSpawnSuperGrenadeLauncher", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 7 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Plasma Assault Rifle", "PBSpawnPlasmaRifleAssault", "OnOff"
-	Option "Spawn Doom 2016 Plasma Gun", "PBSpawnD4PlasmaGun", "OnOff"
-	Option "Spawn Thunder Carrier - Heavy Lust", "PBSpawnThunderCarrierTI", "OnOff"
-	Option "Spawn Doom 2016 Vortex Rifle", "PBSpawnD4VortexRifle", "OnOff"
+	Option "Spawn IN - Plasma Assault Rifle", "PBSpawnPlasmaRifleAssault", "OnOff"
+	Option "Spawn D2016 - Plasma Gun", "PBSpawnD4PlasmaGun", "OnOff"
+	Option "Spawn IN - Thunder Carrier - Heavy Lust", "PBSpawnThunderCarrierTI", "OnOff"
+	Option "Spawn D2016 - Vortex Rifle", "PBSpawnD4VortexRifle", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 8 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Argent Fury", "PBSpawnExtinction_Ray", "OnOff"
+	Option "Spawn IN - Argent Fury", "PBSpawnExtinction_Ray", "OnOff"
 	Option "Spawn Calamity Blade - LoR", "PBSpawnCalamityBlade", "OnOff"
-	Option "Spawn Gauss Cannon", "PBSpawnGaussCannon", "OnOff"
-	Option "Spawn Ion Rifle", "PBSpawnIon_Heavy", "OnOff"
+	Option "Spawn Gauss Cannon", "PBSpawnPB_GaussCannon", "OnOff"
+	Option "Spawn IN - Ion Rifle", "PBSpawnIon_Heavy", "OnOff"
 	Option "Spawn MANCUBUS FLAMECANNON", "PBSpawnPB_MancubusFlameCannon", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 9 weapons---------------", gold
 	StaticText ""
-	Option "Spawn Bio-Acid Launcher", "PBSpawnBioAcidLauncher", "OnOff"
+	Option "Spawn IN - Bio-Acid Launcher", "PBSpawnBioAcidLauncher", "OnOff"
 	Option "Spawn Ballista", "PBSpawnBallistagun", "OnOff"
-	Option "Spawn Stormcast from Schism", "PBSpawnStormcast", "OnOff"
-	Option "Spawn Thunder Crossbow from Brutal Hexen", "PBSpawnThunderCrossbow", "OnOff"
+	Option "Spawn Legacy Unmaker", "PBSpawnLegacyUnmaker", "OnOff"
+	Option "Spawn SCHISM - Stormcast", "PBSpawnStormcast", "OnOff"
+	//Option "Spawn SCHISM - Thunder Crossbow", "PBSpawnThunderCrossbow", "OnOff"
 
      StaticText ""
 	StaticText "---------------Slot 0 weapons---------------", gold
 	StaticText ""
 	Option "Spawn Ancient Crossbow", "PBSpawnAncientCrossbow", "OnOff"
-	Option "Spawn Demon Atomizer", "PBSpawnTechBlaster", "OnOff"
+	Option "Spawn DTECH - Demon Atomizer", "PBSpawnTechBlaster", "OnOff"
 	Option "Spawn Demon Exterminator", "PBSpawnPB_DemonExt", "OnOff"
-	Option "Spawn Demon-Tech Minigun", "PBSpawnDemonTechMinigun", "OnOff"
+	Option "Spawn DTECH - Demon-Tech Minigun", "PBSpawnDemonTechMinigun", "OnOff"
 	Option "Spawn Phase Eradicator", "PBSpawnPhaseEradicatorBFG", "OnOff"
 }
 
-
-
-
+////////
+OptionMenu "AmmunitionShopSystem"
+{
+	Title "Project Brutality Combat Rating Menu"
+	StaticText "------------ Shop For Buying Ammunition ------------", 1
+	//Here's the menu. If you press one of these "Buy" buttons, ACS script named BuyShells/ByRFLClip and etc. will play
+	StaticText " "
+	Command "Buy 20 Shells (100 Points)",		"PukeName BuyShells"
+	StaticText " "
+	Command "Buy 100 Rifle Ammo (100 Points)",		"PukeName BuyRFLClip"
+	StaticText " "
+	Command "Buy 100 Plasma Ammo (100 Points)",		"PukeName BuyCell"
+	StaticText " "
+	Command "Buy 12 Rockets (100 Points)",		"PukeName BuyRocket"
+	StaticText " "
+	Command "Buy 100 Pistol Bullets (100 Points)",		"PukeName BuyPistolClip"
+	StaticText " "
+	Command "Buy SoulSphere (1000 Points)",		"PukeName BuySoulSphere"
+	StaticText " "
+	Command "Buy Heavy Armor (1000 Points)",		"PukeName BuyBlueArmor"
+	StaticText " "
+	Command "Buy MegaSphere (1000 Points)",		"PukeName BuySoulArmor"
+	StaticText " "
+	Command "Buy Berserker (1000 Points)",		"PukeName BuyBerserk"
+	StaticText " "
+	Command "Buy Random Weapon Upgrade (1500 Points)",		"PukeName BuyRanUpgrade"
+	StaticText " "
+	Command "Buy Speed Powerup (1000 Points)",		"PukeName BuySpeedPower"
+	StaticText " "
+	Command "Buy Quad-Damage (1000 Points)",		"PukeName BuyQuad"
+	StaticText " "
+	
+	// New Weapon Categories
+	StaticText "------------ MELEE WEAPONS ------------", 1
+	StaticText " "
+	Command "Buy Beam Katana (500 Points)",		"PukeName BuyBeamKatana"
+	StaticText " "
+	Command "Buy Battle Axe (400 Points)",		"PukeName BuyBattleAxe"
+	StaticText " "
+	Command "Buy Sentinel Hammer (600 Points)",		"PukeName BuySentinelHammer"
+	StaticText " "
+	
+	StaticText "------------ PISTOLS & SMGs ------------", 1
+	StaticText " "
+	Command "Buy 44PDW (300 Points)",		"PukeName Buy44PDW"
+	StaticText " "
+	Command "Buy Hell Pistoler (350 Points)",		"PukeName BuyHellPistoler"
+	StaticText " "
+	Command "Buy Doom Blaster (500 Points)",		"PukeName BuyDoomBlaster"
+//	StaticText " "
+//	Command "Buy Silverhands Deagle (400 Points)",		"PukeName BuySilverhandsDeagle"
+	StaticText " "
+	Command "Buy W_SMG (300 Points)",		"PukeName BuyW_SMG"
+	StaticText " "
+	Command "Buy P_SMG (300 Points)",		"PukeName BuyP_SMG"
+	StaticText " "
+	Command "Buy UZI SMG (350 Points)",		"PukeName BuyUZISMG"
+	StaticText " "
+	
+	StaticText "------------ SHOTGUNS ------------", 1
+	StaticText " "
+	Command "Buy HASG (350 Points)",		"PukeName BuyHASG"
+	StaticText " "
+	Command "Buy HexaLion Shotgun (450 Points)",		"PukeName BuyHexaLionShotgun"
+	StaticText " "
+	Command "Buy SSG (500 Points)",		"PukeName BuySSG"
+	StaticText " "
+	Command "Buy Rotational SG (550 Points)",		"PukeName BuyRotationalSG"
+	StaticText " "
+	Command "Buy Cryo Shotgun (500 Points)",		"PukeName BuyCryoShotgun"
+	StaticText " "
+	Command "Buy Doom 2016 Shotgun (450 Points)",		"PukeName BuyDoom2016Shotgun"
+	StaticText " "
+	Command "Buy Demon Tech Shotgun (600 Points)",		"PukeName BuyDemonTechShotgun"
+	StaticText " "
+	Command "Buy M1887 (400 Points)",		"PukeName BuyM1887"
+	StaticText " "
+	Command "Buy Rotating Double Barrel (550 Points)",		"PukeName BuyRotatingDoubleBarrel"
+	StaticText " "
+	
+	StaticText "------------ RIFLES ------------", 1
+	StaticText " "
+	Command "Buy AK-47 (400 Points)",		"PukeName BuyAK47"
+	StaticText " "
+	Command "Buy Heavy Sniper Rifle (700 Points)",		"PukeName BuyHeavySniperRifle"
+	StaticText " "
+	Command "Buy Magnum Sniper Rifle (650 Points)",		"PukeName BuyMagnumSniperRifle"
+	StaticText " "
+	Command "Buy Bolt Rifle (450 Points)",		"PukeName BuyBoltRifle"
+	StaticText " "
+	Command "Buy M41A (500 Points)",		"PukeName BuyM41A"
+	StaticText " "
+	Command "Buy Heavy Assault Rifle (450 Points)",		"PukeName BuyHeavyAssaultRifle"
+	StaticText " "
+	Command "Buy D4 Machinegun (500 Points)",		"PukeName BuyD4Machinegun"
+	StaticText " "
+	Command "Buy Dark Fate (500 Points)",		"PukeName BuyDarkFate"
+	StaticText " "
+	
+	StaticText "------------ HEAVY WEAPONS ------------", 1
+	StaticText " "
+	Command "Buy IN MiniGun (800 Points)",		"PukeName BuyINMiniGun"
+	StaticText " "
+	Command "Buy IN NailGun (400 Points)",		"PukeName BuyINNailGun"
+	StaticText " "
+	Command "Buy OLD HMG (500 Points)",		"PukeName BuyOLDHMG"
+	StaticText " "
+	Command "Buy Super Nailgun (500 Points)",		"PukeName BuySuperNailgun"
+	StaticText " "
+	Command "Buy Auto Cannon (700 Points)",		"PukeName BuyAutoCannon"
+	StaticText " "
+	Command "Buy Super Grenade Launcher (650 Points)",		"PukeName BuySuperGrenadeLauncher"
+	StaticText " "
+	Command "Buy Excavator (550 Points)",		"PukeName BuyExcavator"
+	StaticText " "
+	Command "Buy Cyberdemons Missile Launcher (900 Points)",		"PukeName BuyCyberdemonsMissileLauncher"
+	StaticText " "
+	Command "Buy Mastermind Chaingun (850 Points)",		"PukeName BuyMastermindChaingun"
+	StaticText " "
+	Command "Buy Paingiver (600 Points)",		"PukeName BuyPaingiver"
+	StaticText " "
+	Command "Buy D4 Rocket Launcher (750 Points)",		"PukeName BuyD4RocketLauncher"
+	StaticText " "
+	
+	StaticText "------------ ENERGY WEAPONS ------------", 1
+	StaticText " "
+	Command "Buy Power Overwhelming (1000 Points)",		"PukeName BuyPowerOverwhelming"
+	StaticText " "
+	Command "Buy Phase Eradicator BFG (1000 Points)",		"PukeName BuyPhaseEradicatorBFG"
+	StaticText " "
+	Command "Buy Plasma Rifle Assault (500 Points)",		"PukeName BuyPlasmaRifleAssault"
+	StaticText " "
+	Command "Buy Ion Heavy (700 Points)",		"PukeName BuyIonHeavy"
+	StaticText " "
+	Command "Buy Extinction Ray (950 Points)",		"PukeName BuyExtinctionRay"
+	StaticText " "
+	Command "Buy Thunder Carrier TI (800 Points)",		"PukeName BuyThunderCarrierTI"
+	StaticText " "
+	Command "Buy Lightning Gun (550 Points)",		"PukeName BuyLightningGun"
+	StaticText " "
+	Command "Buy Gauss Cannon (750 Points)",		"PukeName BuyGaussCannon"
+	StaticText " "
+	Command "Buy D4 Plasma Gun (500 Points)",		"PukeName BuyD4PlasmaGun"
+	StaticText " "
+	Command "Buy D4 Vortex Rifle (750 Points)",		"PukeName BuyD4VortexRifle"
+	StaticText " "
+	Command "Buy Tech Blaster (600 Points)",		"PukeName BuyTechBlaster"
+	//StaticText " "
+	//Command "Buy Thunder Crossbow (650 Points)",		"PukeName BuyThunderCrossbow"
+	StaticText " "
+	Command "Buy Ballistagun (700 Points)",		"PukeName BuyBallistagun"
+	StaticText " "
+	Command "Buy LoR Calamity Blade (1000 Points)",		"PukeName BuyLoRCalamityBlade"
+	StaticText " "
+	Command "Buy Demon Tech Minigun (850 Points)",		"PukeName BuyDemonTechMinigun"
+	StaticText " "
+	Command "Buy Legacy Unmaker (900 Points)",		"PukeName BuyLegacyUnmaker"
+	StaticText " "
+	Command "Buy Unmaker64 (900 Points)",		"PukeName BuyUnmaker64"
+	StaticText " "
+	
+	StaticText "------------ SPECIAL WEAPONS ------------", 1
+	StaticText " "
+	Command "Buy Ancient Crossbow (500 Points)",		"PukeName BuyAncientCrossbow"
+	StaticText " "
+	Command "Buy Bio Acid Launcher (650 Points)",		"PukeName BuyBioAcidLauncher"
+	StaticText " "
+	Command "Buy Dragon Slayer (750 Points)",		"PukeName BuyDragonSlayer"
+	StaticText " "
+	Command "Buy Duke Nukem Ripper (450 Points)",		"PukeName BuyDukeNukemRipper"
+	StaticText " "
+	Command "Buy Mancubus Flame Cannon (800 Points)",		"PukeName BuyMancubusFlameCannon"
+	StaticText " "
+	Command "Buy Razorjack (500 Points)",		"PukeName BuyRazorjack"
+	StaticText " "
+	Command "Buy Stormcast (750 Points)",		"PukeName BuyStormcast"
+	StaticText " "
+		
+// 	Submenu "====HOW TO EARN COMBAT POINTS====",			"PB_Instruct"
+	StaticText "", 1
+	StaticText "- Weapon Combos: Switch Weapons Fast And Kill Demons, You Will Get Health/Armor", 1
+	StaticText "- Everytime You Finish The Level, You Receive 75 Combat Points", 1
+	StaticText "------ Here's List Of All ''Challenges'' ------", 1
+	StaticText " "
+	StaticText "- Ultimate Slimming - Kill Mancubus With Flamethrower/Unmaker/Demon Tech Rifle", 1
+	StaticText " "
+	StaticText "- Tomatoes! - Kill Cacodemon By Axe/Chainsaw", 1
+	StaticText " "
+	StaticText "- HUGE GUTS! - Kill Cyberdemon With Your Hands", 1
+	StaticText " "
+	StaticText "- I Don't Need That You Have! - Kill Axe Guy Or Chainsaw Guy With Your Hands", 1
+	StaticText " "
+	StaticText "- You Can't Hide From Me - Kill Archvile Or Hellion Using Railgun 500 Map Units Away", 1
+	StaticText " "
+	StaticText "- BLOODBATH - Kill More Than 3 Enemies At Once", 1
+	StaticText " "
+	StaticText "- DEATH INCARNATE - Kill More Than 6 Enemies At Once", 1
+	StaticText " "
+	StaticText "- Now We Cooking With Gas! - Kill Cyber-Baron Using Flamethrower", 1
+	StaticText " "
+	StaticText "- Deadeye - Kill Any Demon Using Rocket-Launcher 750 Units Away", 1
+	StaticText " "
+}
+////////
 OptionMenu "SwitchItUpOptions" 
 {
 	Title "$RW_TITLE"
@@ -170,92 +464,24 @@ OptionMenu "BeholdOptions"
     Title "Behold! Fire & Ice Options"
 
     StaticText ""
-    StaticText "Welcome to Behold!"
-    StaticText "FIRE & ICE Edition"
-    StaticText "When triggered, Behold! will:"
-    StaticText "• Resurrect you if you died (works even if not dead!)"
-    StaticText "• Give you a Throwable Shieldsaw, Battle Axe, Holy Bastard, Marauder SSG, "
-    StaticText "• Magnum Sniper Rifle, Old HMG, Super Grenade Launcher, & Ballista"
-    StaticText "• Summon Boss enemies based on the selected mode"
+    StaticText "Behold! Random Boss Battle Summoner", white
+    StaticText "", white
+    StaticText "BIND A KEY TO ACTIVATE THE FOLLOWING:", white
+    StaticText "", white
+    StaticText "• Resurrect you if you died (works even if not dead)", white
+    StaticText "• Give you handy Equipment Items, Marauder SSG & Ammo ", white
+    StaticText "ALSO:", white
+    StaticText "• Summon Boss enemies based on the selected mode", white
     StaticText ""
 
-    StaticText "Bind: Behold! modes (each key = set + trigger)"
-    Control "Random Mayhem — 3–5 foes — Trigger",        "+dp_random_key"
-    Control "The Quadrant — up to 4 foes — Trigger",      "+dp_quad_key"
-    Control "More Trouble — up to 6 foes — Trigger",      "+dp_more_key"
-    Control "Hell's Fury — up to 10 foes — Trigger",      "+dp_fury_key"
-    Control "Total Apocalypse — up to 12 foes — Trigger", "+dp_apoc_key"
+    StaticText "Bind modes:"
+    Control "Random Mayhem — 3–5 foes",        "+dp_random_key"
+    Control "The Quadrant — up to 4 foes",      "+dp_quad_key"
+    Control "More Trouble — up to 6 foes",      "+dp_more_key"
+    Control "Hell's Fury — up to 10 foes",      "+dp_fury_key"
+    Control "Total Apocalypse — up to 12 foes", "+dp_apoc_key"
     StaticText ""
     Command "Show current mode (prints on screen)", "dp_show_mode"
-}
-
-//ZMOVEMENT
-OptionMenu "WeaponVisuals"
-{
-	Class "ZMoveMenu"
-	Title "Weapon Visual Options"
-	Position -32
-	
-	StaticText	"Bobbing", 0
-	ZMoveSlider	"Walk/Run View Bobbing",				"Adjust view bobbing's intensity when moving",											"movebob",					0.5,	1.0,	0.1
-	ZMoveSlider	"Still View Bobbing",					"Adjust view bobbing's intensity when not moving",										"stillbob",					0.1,	1.0,	0.1
-	ZMoveSlider	"Walk/Run Weapon Bobbing",				"Adjust weapon bobbing's intensity when moving",										"wbobspeed",				1.0,	2.0,	0.1
-	ZMoveOption	"Still Weapon Bobbing",					"Turn on/off the weapon bobbing when standing still",									"zm_stillbob",				"OnOff"
-	ZMoveSlider	"Sprite speed to full bob",				"How fast weapon sprites transition to their maximum bobbing range",					"zm_fullbobspeed",			1,		15,		1,		0
-	StaticText 	""
-	StaticText	"Weapon Sway", Orange
-	ZMoveOption "Yaw Weapon Sway", 						"Allow weapons to sway according to your mouse yaw",									"zm_yawsway",				"OnOff"
-	ZMoveSlider "Yaw Sway Speed", 						"How fast weapons sway",																"zm_yawswayspeed",			0,		4,		0.5
-	ZMoveSlider "Yaw Sway Range", 						"Maximum Distance weapons can sway",													"zm_yawswayrange",			0,		8,		0.1
-	ZMoveSlider "Yaw Sway Friction", 					"How fast sprites will tend to realign to the center",									"zm_yawswayfriction",		5,		14,		0.5
-	ZMoveOption "Yaw Sway Direction", 					"Set wherever weapons sway in the direction you turn or the opposite",					"zm_yawswaydirection",		"SwayDirection"
-	ZMoveOption "Vertical Sway Type",					"How should vertical sway look",														"zm_pitchswaytype",			"VSwayType"
-	StaticText 	""
-	StaticText	"Vertical Offset", Orange
-	ZMoveSlider "Offset Speed", 						"How fast weapons raise and fall depending on your vertical velocity",					"zm_offsetspeed",			50,		100,	1,		0
-	ZMoveSlider "Offset Range", 						"Maximum Height weapons can fall",														"zm_offsetmaxrange",		10,		50,		1,		0
-	ZMoveOption "Offset Direction", 					"Set Wherever the sprites are offset according to your vertical direction",				"zm_offsetdirection",		"OffsetDirection"
-	StaticText 	""
-	
-	StaticText	"Others", 1
-	ZMoveOption "Speedometer", 							"Enable SpeedOMeter",																	"zm_speedometer",			"Speedometer"
-	ZMoveOption "Horizontal Weapon Stretch","Turn on/off the 20% horizontal weapon stretch","pb_scalexweapons","OnOff"
-	Control		"Reset to default values",				"zmove_reset"
-}
-
-
-OptionValue "BobType"
-{
-	0, "Doom"
-	1, "Build Engine"
-	2, "Dusk"
-	3, "Painkiller"
-	4, "Unreal Tournament"
-}
-
-OptionValue "SwayDirection"
-{
-	0, "Opposite Direction"
-	1, "Same Direction"
-}
-
-OptionValue "VSwayType"
-{
-	0, "Both Ways"
-	1, "One Way"
-}
-
-OptionValue "OffsetDirection"
-{
-	0, "Opposite Direction"
-	1, "Same Direction"
-}
-
-OptionValue "Speedometer"
-{
-	0, "Off"
-	1, "Doom Units"
-	2, "Quake Units"
 }
 
 optionmenu "BusterMenu"

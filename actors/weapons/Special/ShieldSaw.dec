@@ -1,7 +1,6 @@
-ACTOR ShieldSawSelected : Inventory
-{
-Inventory.MaxAmount 1
-}
+// Equipment Tokens
+Actor WW_ShieldSawSelected : inventory{}
+Actor ShieldSawSelected : inventory{}
 
 ACTOR SlayerEmpower : Inventory
 {
@@ -13,16 +12,10 @@ ACTOR ShieldIsBack : Inventory
 Inventory.MaxAmount 40
 }
 
-
-
 Actor RespectShieldSaw: Inventory
 {
 Inventory.MaxAmount 1
 }
-
-
-
-
 
 Actor ShieldSawProjectile
 {
@@ -91,7 +84,10 @@ Actor ShieldSawProjectile
 		SHDP B 0 A_Playsound("ShieldSawBack",5,1.0,false,1.5)
 		SHDP B 0 A_StopSound(6)
 		TNT1 A 0 A_PrintBold("Slayer's Shield is back!",0.2)
-		SHDP A 1 A_GiveToTarget("ShieldsawAmmo",1)
+		SHDP A 1 {
+			A_GiveToTarget("ShieldsawAmmo",1);
+			A_TakeFromTarget("AlreadyThrownShieldSaw",1);
+		}
 		TNT1 A 0 A_ChangeFlag("NOINTERACTION",1)
 		Stop
 
@@ -243,9 +239,6 @@ Actor ShieldSawTrailC : ShieldSawTrail
 		Wait
 	}
 }
-
-
-
 
 Actor ShieldsawAmmo : Ammo
 {

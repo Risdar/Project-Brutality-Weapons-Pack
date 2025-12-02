@@ -1,4 +1,4 @@
-ACTOR BioAcidLauncher : PB_Weapon //Caustic Ammo Used!
+ACTOR BioAcidLauncher : PBWP_Weapon //Caustic Ammo Used!
 {
 	Weapon.SelectionOrder 7385
     Weapon.AmmoType1 "PB_DTech"
@@ -126,7 +126,7 @@ ACTOR BioAcidLauncher : PB_Weapon //Caustic Ammo Used!
 			}
 			BAWF C 1 A_ZoomFactor(1.0)
 			BAWF D 1 
-			BAWF A 0 A_ReFire
+			BAWF A 0 PB_ReFire
 			TNT1 A 0 A_PlaySoundEx("HRSteam", "Auto")
 			Goto ReadyLoop
 		
@@ -168,7 +168,7 @@ ACTOR BioAcidLauncher : PB_Weapon //Caustic Ammo Used!
 			BAXF C 1 A_ZoomFactor(0.98)
 			BAXF D 1 A_ZoomFactor(1.0)
 			BAWL A 10
-			BAXF A 0 A_Refire("Release")
+			BAXF A 0 PB_ReFire("Release")
 			TNT1 A 0 A_PlaySoundEx("HRSteam", "Auto")
 			Goto ReadyLoop
 	

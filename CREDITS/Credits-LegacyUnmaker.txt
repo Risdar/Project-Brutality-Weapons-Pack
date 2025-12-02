@@ -1,0 +1,52 @@
+//CREDITS//
+----------------------------------------
+PB3.0_UAC Legacy Unmaker Final Edition Updated 17-08-2023
+----------------------------------------
+Updated By Miss Jeniffer Cor5/Jenny For New PB3.0 Build Update
+----------------------------------------
+Update ChangeLog: 17-08-2023 (Fixes)
+----------------------------------------
+Unmaker Code OverHauled
+----------------------------------------
+Ammo Type (Fixed)
+----------------------------------------
+All Bad Actors (Fixed)
+----------------------------------------
+All Unwanted Code Removed
+----------------------------------------
+Fire-Ball Projectile Code (Fixed)
+----------------------------------------
+Smoke Effect On Fire-Ball Projectile Added
+----------------------------------------
+Smoke Effect On Alt-Fire Seeker Projectile Added
+----------------------------------------
+Alert-Monsters On All Fire Modes (Fixed)
+----------------------------------------
+All Start-Up Errors (Fixed)
+----------------------------------------
+Previous (Fixes)
+----------------------------------------
+Missing ClearOverlays Code Added 04-03-2023
+----------------------------------------
+Select-Animation ZScripting Updated 04-03-2023
+----------------------------------------
+New ZScripting For Idle Sprites Updated 04-03-2023
+----------------------------------------
+All The Ummaker Sound Code Is Changed And Updated So As To Not Conflict With The New PB Unmaker
+----------------------------------------
+All Sound Code Within The Code Updated 04-03-2023
+----------------------------------------
+Barrels: GrabbedBarrels Are Now (Fixed) 04-03-2023
+----------------------------------------
+Kicking Enemies Code Re-Done With New Sprite Code 
+----------------------------------------
+SlideKicking Enemies Code Re-Done With New Sprite Code
+----------------------------------------
+Punching Enemies Code Re-Done With New Sprite Code
+----------------------------------------
+GloryKill While Using: (Yes)
+----------------------------------------
+Weapon Select-Animation Code and Pick-Up Sound Reorganized and (Fixed)
+----------------------------------------
+Weapon-Up Animation and Sound After Using Explosives: Cannons: GloryKill: and Crucible Blade (Fixed)
+----------------------------------------

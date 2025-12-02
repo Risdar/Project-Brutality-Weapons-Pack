@@ -1,39 +1,3 @@
-ACTOR ExecuteStompWall : Inventory
-{
-Inventory.MaxAmount 1
-}
-
-ACTOR ExecuteBashWall : Inventory
-{
-Inventory.MaxAmount 1
-}
-
-Actor Berserker : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor NoFatality : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor GoFatality : Inventory
-{
-inventory.maxamount 1
-}
-
-ACTOR PhantasmFatality : Inventory
-{
-Inventory.MaxAmount 1
-}
-
-Actor ShotgunguyHead: Inventory
-{
-inventory.maxamount 1
-}
-
-////////
 Actor SwordSequence2 : Inventory {Inventory.MaxAmount 1}
 
 Actor SwordSequence3 : Inventory {Inventory.MaxAmount 1}
@@ -64,7 +28,7 @@ Actor DragonSlayerEnergy : Ammo
     +INVENTORY.IGNORESKILL
     Inventory.Icon "CELLA0" 
 }
-ACTOR Fire_and_Ice-DragonSlayer : PB_Weapon
+ACTOR Fire_and_Ice-DragonSlayer : PBWP_Weapon
 {
   Game Doom
   Weapon.Kickback 800
@@ -101,9 +65,6 @@ ACTOR Fire_and_Ice-DragonSlayer : PB_Weapon
 	SLAR A 1 
 	SLAR A -1 
 	SLAR A 1
-	ForceBobbing:
-		TNT1 A 10 A_WeaponReady(WRF_NOFIRE)
-		loop
 	Steady:
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 1 {
@@ -118,15 +79,12 @@ ACTOR Fire_and_Ice-DragonSlayer : PB_Weapon
 			}
 	    Goto Ready
 
-	Reload:
 	WeaponSpecial:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 		TNT1 A 0 A_TakeInventory("Punching", 1)
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"KillLS")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,"SelectFatalityModes")
 		PUNS E 2
 		PUNS F 2 A_PlaySoundEx("KNUCKLED", "Auto")
 		PUNS GFEK 2
@@ -135,88 +93,15 @@ ACTOR Fire_and_Ice-DragonSlayer : PB_Weapon
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		Goto Ready
 
-	SelectFatalityModes:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "FatalityOn")
-		Goto FatalityOff
-		
-	FatalityOn:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_Print("Auto Execute: On")
-		PUNS E 2
-		TNT1 A 0 A_PlaySoundEx("KNUCKLED", "Auto")
-		PUNS FGF 2 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0) 
-		PUNS EK 2
-		TNT1 A 0 A_PlaySoundEx("KNUCKLED", "Auto")
-		PUNS LML 2 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0) 
-		PUNS K 2
-		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 0 A_TakeInventory("NoFatality", 1)
-		Goto Ready
-		
-	FatalityOff:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_Print("Auto Execute: Off")
-		
-		P1NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		P2NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		P3NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		
-		P9NS ABCDEFF 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 {
-			A_PlaySoundEx("weapons/fists_smash", "Auto");
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			}
-		P9NS GGHIJKKLMM 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 {
-			A_PlaySoundEx("weapons/fists_smash", "Auto");
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			}
-		P9NS NOPQRSTUVWX 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 0 A_GiveInventory("NoFatality", 1)
-		Goto Ready
-
 	Ready:
-		////////////////// Check if player is performing a fatality
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 PB_RespectIfNeeded
- 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ReadyShotgunguyHead")
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
-		TNT1 A 0 A_JumpIfInventory("PhantasmFatality",1, "ReadyPhantasm")
-		TNT1 A 0
+		TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
 	SelectAnimation:
-		TNT1 A 0 {
-			if(CountInv("GoFatality") >= 1) {
-				SetPlayerProperty(0,1,0);
-			}	
-			else {
-				SetPlayerProperty(0,0,0);
-			}
-		}
-		TNT1 A 0 {
-		     A_WeaponOffset(0,32);
-			 A_SetRoll(0);
-			 PB_HandleCrosshair(90);
-			 A_TakeInventory("PB_LockScreenTilt",1);
-		     }
 		TNT1 A 0 A_PlaySound("AXEDRAW", 6)
 		TNT1 A 0 {
 		     return A_DoPBWeaponAction(WRF_NOFIRE);
 			 }
-		TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		SLAY A 1 A_WeaponReady
 Ready3:
     TNT1 A 0 {
@@ -227,60 +112,12 @@ Ready3:
          }
     TNT1 A 0
     SLAY A 1 {
-         if(CountInv("Energy") < 100) {
-             A_GiveInventory("Energy", 1);
-         }
-         return A_DoPBWeaponAction;
-         }
+			return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
+		    }
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ReadyShotgunguyHead")
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
-		TNT1 A 0 A_JumpIfInventory("PhantasmFatality",1, "ReadyPhantasm")
-		SLAY A 1 {
-		if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NG"); }
-		if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NG");}
-		if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NG");}
-		return A_DoPBWeaponAction;
-		}
+		SLAY A 0 A_WeaponReady
+		SLAY A 1 A_DoPBWeaponAction
 		Loop
-
-	ReadyShotgunguyHEad:
-		PTG1 B 1 A_DoPBWeaponAction
-		loop
-	
-	LostSoulHandFireOverlay:
-			TNT1 A 5 {
-				A_FireCustomMissile("LostSoulOnHandFireSpawner",40,0,0,5);
-				if (CountInv("LostSoulFatality") < 1) { return state("LostSoulHandFireOverlayEnd"); }
-				return state("");
-			}
-			Loop
-			
-	LostSoulHandFireOverlayEnd:
-			TNT1 A 0
-			Stop
-			
-	ReadySoul:
-		TNT1 A 0 A_Overlay(-3, "LostSoulHandFireOverlay")
-		THEA AAAABBBBAAAABBBBCCCCDDDDCCCCDDDD 1 BRIGHT A_DoPBWeaponAction
-		loop
-	
-	PhantasmHandFireOverlay:
-			TNT1 A 5 {
-				A_FireCustomMissile("PhantasmOnHandFireSpawner",40,0,0,5);
-				if (CountInv("PhantasmFatality") < 1) { return state("PhantasmHandFireOverlayEnd"); }
-				return state("");
-			}
-			loop
-			
-	PhantasmHandFireOverlayEnd:
-			TNT1 A 0
-			Stop
-			
-	ReadyPhantasm:
-		TNT1 A 0 A_Overlay(-3, "PhantasmHandFireOverlay")
-		TH3A AAAABBBBAAAABBBBCCCCDDDDCCCCDDDD 1 BRIGHT A_DoPBWeaponAction
-		loop
 
 	Deselect:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
@@ -292,29 +129,8 @@ Ready3:
 			 PB_HandleCrosshair(90);
 			 A_TakeInventory("PB_LockScreenTilt",1);
 		     }
-		TNT1 A 0 A_ZoomFactor(1)
-		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor",1)
-		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor",1)
-		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor",1)
+		TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
 		SLAY A 1 A_Lower
-		Wait
-	GrabObject:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("weapons/fistwhoosh2")
-		PKUP ABCDEF 1
-		Goto Ready		
-	KillLS:
-		THEA E 1 A_PlaySound("gore/headshot")
-		THEA E 3 
-		THEA F 4 
-		{
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			A_FireCustomMissile("LSOHK",40,0,0,5);
-			A_SetInventory("LostSoulFatality",0);
-			A_SetInventory("PhantasmFatality",0);
-			A_SetInventory("GoWeaponSpecialAbility",0);
-		} 
 		Wait
 
   Select:
@@ -325,18 +141,7 @@ Ready3:
 		  A_TakeInventory("PB_LockScreenTilt",1);
 		  }
 		Goto SelectFirstPersonLegs
-		SelectContinue:
-		
-		//Load bloody fist frames into memory
-		TNT1 A 0 PB_ResetVisorBloodTokens
-		TNT1 A 0 PB_ResetBarrelTokens
-		
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_SetInventory("Reloading", 0) //Prevent accidentally switching to smash/fatality mode
-		TNT1 A 0 PB_WeapTokenSwitch("Fire_and_Ice-DragonSlayer")
-		////////////////// Check if player is performing a fatality\\\\
-		TNT1 A 0
-		////////////////////
+	SelectContinue:
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
 		TNT1 AAAAAAAA 1 A_Raise
 		Wait
@@ -353,18 +158,6 @@ Fire:
         }
         return state("");
     }
-		//Determine berserk strike or not
-		TNT1 A 0 {
-			if (CountInv("PB_PowerStrength") >= 1 ) 
-			{ 
-				A_FireCustomMissile("MeleeStrikeSuperHook", 0, 0, 0, 5);
-			}
-			else {
-				A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 5);
-				A_FireCustomMissile("MeleeStrike1", 0, 0, -25, 5);
-				A_FireCustomMissile("MeleeStrike1", 0, 0, 25, 5);
-			}
-		} 
     		"####" A 0 A_JumpIfInventory("DragonSlayerEnergy", 5, "HasEnergyForEnhancedFire")
 
 	HasEnergyForEnhancedFire:
@@ -395,34 +188,9 @@ Fire:
 		SLAY L 1 A_RailAttack(50, 2, 0, none, none, RGF_SILENT, 0, "SlayerPuff2",0,0,256)
 		TNT1 A 3 
 		SLAY MN 2 
-		SLAY A 1 A_refire("Fire2")
+		SLAY A 1 PB_ReFire("Fire2")
 		Goto Ready
   	Fire2:
-	 	TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
-	 	TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
-	 	TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
-	 	TNT1 A 0 {
-// 			A_GiveInventory("PB_LockScreenTilt",1);
-			A_WeaponOffset(0,32);
-			A_SetRoll(0);
-			A_SetCrosshair(90);
-			if(CountInv("NoFatality") == 0 && GetCVAR ("ttwcfbex") == 1) {
-				return PB_Execute();
-			}
-			return state("");
-		}
-		//Determine berserk strike or not
-		TNT1 A 0 {
-			if (CountInv("PB_PowerStrength") >= 1 ) 
-			{ 
-				A_FireCustomMissile("MeleeStrikeSuperHook", 0, 0, 0, 5);
-			}
-			else {
-				A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 5);
-				A_FireCustomMissile("MeleeStrike1", 0, 0, -25, 5);
-				A_FireCustomMissile("MeleeStrike1", 0, 0, 25, 5);
-			}
-		}
 		TNT1 A 0 A_GiveInventory("DragonSlayerEnergy", 3)
 		SLAY D 1 A_JumpIfTargetInLOS("HasTarget", 30.0, JLOSF_NOAUTOAIM | JLOSF_DEADNOJUMP, 100.0)  
 
@@ -450,7 +218,7 @@ Fire:
 	SLBY L 1 A_RailAttack(50, -64, 0, none, none, RGF_SILENT, 0, "SlayerPuff2",0,0,256)
 	TNT1 A 3 
 	SLBY MN 2
-	SLBY A 1 A_refire
+	SLBY A 1 PB_ReFire
 	Goto Ready
 
 AltFire:
@@ -460,29 +228,6 @@ AltFire:
     Goto Ready
     
 HasNailgunAmmo:
-    TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-    TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-    TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
-    TNT1 A 0 {
-        A_WeaponOffset(0,32);
-        A_SetRoll(0);
-        PB_HandleCrosshair(76);
-        A_TakeInventory("PB_LockScreenTilt",1);
-        }
-    //Determine berserk strike or not
-    TNT1 A 0 {
-        if (CountInv("PB_PowerStrength") >= 1 ) 
-        { 
-            A_FireCustomMissile("MeleeStrikeSuperHook", 0, 0, 0, 0);
-            A_FireCustomMissile("MeleeStrikeSuperHook", 0, 0, 0, 5);
-        }
-        else {
-            A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 0);
-            A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 5);
-            A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 10);
-            A_FireCustomMissile("MeleeStrike1", 0, 0, 0, 15);
-        }
-    }
     TNT1 A 0
     SLY3 ABCD 2
     SLY2 A 2
@@ -492,7 +237,7 @@ HasNailgunAmmo:
     SLY2 C 2 A_FireCustomMissile("Sparks",random(-4,4),0,0,random(0,-1))
     SLY2 B 2 A_PlaySound("Weapons/NailFlight")
     SLY2 DA 3 
-    SLY2 A 3 A_refire("AltRefire")
+    SLY2 A 3 PB_ReFire("AltRefire")
     SLY3 DCBA 1 
     Goto Ready
 
@@ -503,15 +248,6 @@ AltRefire:
     Goto Ready
     
 HasNailgunAmmoRefire:
-    TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
-    TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
-    TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
-    TNT1 A 0 {
-        A_WeaponOffset(0,32);
-        A_SetRoll(0);
-        PB_HandleCrosshair(76);
-        A_TakeInventory("PB_LockScreenTilt",1);
-        }
     TNT1 A 0
     SLY2 A 2
     TNT1 A 0 
@@ -523,14 +259,14 @@ HasNailgunAmmoRefire:
         A_FireCustomMissile("GunFireSmoke", 0, 0, 0, -3, 0, 0);
         A_FireCustomMissile("GunFireSmoke", 0, 0, 0, -3, 0, 0);
     }
-    SLY2 A 2 A_refire("AltRefire")
+    SLY2 A 2 PB_ReFire("AltRefire")
     SLY3 DCBA 1 
     Goto Ready
 	
 	  Hold:
 		SLAY B 1 offset(-33, 33) 
 		SLAY B 1 offset(-32, 32)
-		TNT1 A 0 A_Refire
+		TNT1 A 0 PB_ReFire
     		"####" A 0 A_JumpIfInventory("DragonSlayerEnergy", 3, "HasEnergyForHold")
 		SLAY D 1 A_JumpIfTargetInLOS("HasEnergyForHold", 30.0, JLOSF_NOAUTOAIM | JLOSF_DEADNOJUMP, 100.0)  
     		"####" A 0 A_Recoil(-18)
@@ -605,7 +341,7 @@ HasNailgunAmmoRefire:
 	SLAY L 1 A_RailAttack(50, 2, 0, none, none, RGF_SILENT, 0, "SlayerPuff2",0,0,256)
 	TNT1 A 3 
 	SLAY MN 2 
-	SLAY A 1 A_refire("Fire2")
+	SLAY A 1 PB_ReFire("Fire2")
 	Goto Ready
 
 	SwordSequence3:
@@ -626,7 +362,7 @@ HasNailgunAmmoRefire:
 	SLBY L 1 A_RailAttack(50, -64, 0, none, none, RGF_SILENT, 0, "SlayerPuff2",0,0,256)
 	TNT1 A 3 
 	SLBY MN 2
-	SLBY A 1 A_refire
+	SLBY A 1 PB_ReFire
 	Goto Ready
 	
 FlashKicking:
@@ -1022,118 +758,6 @@ Actor DSAttack4: DSAttack3
  Decal "SawDecalNew1"
 }
 
-
-
-// Taken from Schism Stormcast actors
-Actor PlasmaFlare : Flare_General
-{
-alpha 0.4
-scale 0.15
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NB A 1 bright
-		stop
-		TNT1 A 0
-		L2NB B 1 bright
-		stop
-	}
-}
-
-Actor LightningFlare : Flare_General
-{
-alpha 0.4
-XScale 0.25
-YScale 0.17
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NB A 1 bright
-		stop
-		TNT1 A 0
-		L2NB B 1 bright
-		stop
-	}
-}
-
-Actor StormFlare : Flare_General
-{
-alpha 0.4
-XScale 0.4
-YScale 0.25
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NB A 1 bright
-		stop
-		TNT1 A 0
-		L2NB B 1 bright
-		stop
-	}
-}
-
-ACTOR LightningFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+NOCLIP
-	States
-	{
-	Spawn:
-	    TNT1 A 0
-		TNT1 A 1 A_CustomMissile("LightningFlare",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-ACTOR StormFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+NOCLIP
-	States
-	{
-	Spawn:
-	    TNT1 A 0
-		TNT1 A 1 A_CustomMissile("StormFlare",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-ACTOR BlueFlareSpawn
-{
-	Speed 20
-	PROJECTILE
-	+NOCLIP
-	States
-	{
-	Spawn:
-		TNT1 AA 1 A_CustomMissile("BlueFlareSmall",-5,0,-85,0,random(-10,10))
-		Stop
-	}
-}
-
-Actor BlueFlare22 : Flare_General
-{
-states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,2)
-		L2NB A 2 bright
-		stop
-		TNT1 A 0
-		L2NB B 2 bright
-		stop
-	}
-}
-
 // Borrowed from Diamond Dragon
 ACTOR GodMode : InvulnerabilitySphere
 {
@@ -1371,265 +995,6 @@ actor MancFireSpawner : MyFireSpawner
 	}
 }
 
-// PB Fatality Actors
-ACTOR PoorLostSoul
-{
-	Radius 6
-	Height 8
-	Speed 22
-	Fastspeed 26
-	Damage 15
-	Projectile 
-	Scale 1.0
-	+FORCEXYBILLBOARD
-	DamageType Fire
-ExplosionRadius 70
-ExplosionDamage 50
-	Alpha 1
-	SeeSound "skull/melee"
-	DeathSound "fatso/shotx"
-	States
-	{
-	Spawn:
-		TNT1 A 0 A_CustomMissile ("FlameTrails", 24, 0, 0, 0, 0)
-		LSOL B 2 BRIGHT A_SpawnItem("RedFlare",0,0)
-		Loop
-	Death:
-	
-		LSOL F 2 BRIGHT
-		LSOL G 2 BRIGHT
-		TNT1 A 0 A_Explode
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-	TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-		LSOL HI 6
-		Stop
-		Stop
-	}
-}
-
-ACTOR PoorPhantasm
-{
-	Radius 6
-	Height 8
-	Speed 28
-	Fastspeed 32
-	Damage 20
-	Projectile 
-	Scale 1.0
-	+FORCEXYBILLBOARD
-	DamageType GreenFire
-ExplosionRadius 80
-ExplosionDamage 60
-	Alpha 1
-	SeeSound "skull/melee"
-	DeathSound "LSOD"
-	States
-	{
-	Spawn:
-		TNT1 A 0 A_CustomMissile ("GreenFlameTrails", 24, 0, 0, 0, 0)
-		STLK B 1 BRIGHT A_SpawnItem("GreenFlare",0,0)
-		Loop
-	Death:
-
-		STLK F 2 BRIGHT
-		STLK G 2 BRIGHT
-		TNT1 AAA 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 A 0 A_SpawnItemEx ("BFGAltExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0)
-		TNT1 A 0 A_Explode
-		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-		TNT1 AAA 0 A_CustomMissile ("Phantasmpart1", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Phantasmpart3", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("Phantasmpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-		LSOL HI 6
-		Stop
-	}
-}
-
-ACTOR ExecutionAttackKick: KickAttack
-{
-	Damage 22
-	speed 100
-	DamageType Kick
-	Radius 2
-	Height 2
-	-ACTIVATEIMPACT
-	-ACTIVATEPCROSS
-	-ACTIVATEMCROSS
-	-CANUSEWALLS
-	States
-	{
-	Death:
-			PUFF A 0 A_PlaySound("player/cyborg/fist")
-			TNT1 A 0 A_Explode(10, 10, 0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 10
-			Stop
-		}
-}
-
-ACTOR ExecutionAttackMelee: ExecutionAttackKick
-{
-	DamageType Melee
-}
-
-ACTOR ExecutionAttackFatality: ExecutionAttackKick
-{
-	DamageType Fatality
-}
-
-ACTOR MeleeStrike1: KickAttack
-{
-DamageType Melee
-Damage (random(13,18))
-Speed 22
-States
-{
-	Spawn:
-		TNT1 A 1 BRIGHT
-		TNT1 A 1 BRIGHT
-		Stop
-	Death:
-		TNT1 A 0
-		PUFF A 0 A_PlaySound("player/cyborg/fist")
-		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 10
-		Stop
-}
-}
-
-ACTOR MeleeStrikeSuperHook: MeleeStrike1
-{
-Damage 80
-DamageType ExtremePunches
-+FORCEPAIN
-}
-
-actor PLOFT
-{
-	+NOTARGET
-Radius 10
-Height 10
-DamageType MonsterKnocked
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-	+DEHEXPLOSION
-	+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(25,150, 0)
-Stop
- }
-}
-
-actor PLOFT2
-{
-	+NOTARGET
-Radius 10
-Height 10
-DamageType Kick
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		// TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT3
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT4
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-DamageType Kick
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT5
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-DamageType Kick
-States
-{
-Spawn:
-TNT1 A 2
-		TNT1 A 0 A_Explode(10,30, 0)
-Stop
- }
-}
-
 // Code borrowed from Freezerbot
 ACTOR FreezerBall : FastProjectile
 {
@@ -1712,143 +1077,6 @@ ACTOR SmallFreezerBall : FreezerBall
 		BXPL IJKLLM 1 Bright A_FadeOut(0.1)
 	Stop
 	
-	}
-}
-
-ACTOR CryoTrail
-{
-	+NOINTERACTION
-	+SEEKERMISSILE
-	Radius 4
-	Height 8
-	Renderstyle Add
-	StencilColor "A0 FF FF"
-	Alpha 0.5
-	States
-	{
-	Spawn:
-		BSHT AABBCDEFG 1 Bright
-		Stop
-	}
-}
-
-Actor IceTracer
-{
-  Height 0
-  Radius 0
-  Mass 0
-  +Missile
-  +NoBlockMap
- // -NoGravity
-  +SEEKERMISSILE
-  +LowGravity
-  +DontSplash
-  +DoomBounce
-  +FORCEXYBILLBOARD
-  BounceFactor 0.2
-  Gravity 0.1
-  RenderStyle Add
-  StencilColor "A0 FF FF"
-  Scale 1
-  //Speed 2
-  Speed 0
-  -DOOMBOUNCE
-  RenderStyle Add
-  Alpha 1
-  States
-  {
-  Spawn:
-  Death:
-    SHEX AABBCCDDEE 1 Bright A_FadeOut(0.04)
-    Stop
-  }
-}
-
-ACTOR FreezerTrailSparksSmall
-{ 
-    RenderStyle Add
-    Scale 0.008
-    Alpha 0.95
-    +NOINTERACTION
-    +NOGRAVITY
-	+SEEKERMISSILE
-    +CLIENTSIDEONLY
-    States
-    {
-    Spawn:
-	YA36 B 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
-	YA36 B 0 A_SetScale(ScaleX-0.00075)
-    YA36 B 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
-    YA36 B 1 bright A_FadeOut(0.05)
-    Loop
-    }
-}
-
-ACTOR CryoSmoke
-{
-    Radius 2
-    Height 2
-    +NOINTERACTION
-    +FORCEXYBILLBOARD
-    RenderStyle Shaded
-    StencilColor "A0 FF FF"
-    Alpha 0.8
-    Scale 0.85
-    States
-    {
-    Spawn:
-		SMKO A 0
-        SMK2 A 2 A_FadeOut (0.05)
-        Wait
-    }
-}
-
-Actor CryoSmoke2 : CryoSmoke { StencilColor "DD DD DD" Scale 0.7 Alpha 0.5 VSpeed 2.5
-	States {
-	Spawn:
-		TNT1 A 0
-		SMK2 A 6 A_FadeOut(0.04)
-		Wait
-	}
-}
-
-Actor CryoSmoke3 : CryoSmoke { StencilColor "AA FF FF" Scale 0.7 Alpha 0.4 VSpeed 2.25
-	States {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("Weapons/FreezerRecharge")
-		SMK2 A 6 A_FadeOut(0.04)
-		Wait
-	}
-}
-
-Actor MiniCryoSmoke1 : CryoSmoke { StencilColor "AA FF FF" Scale 0.7 Alpha 0.4 VSpeed 2.25
-	Scale 0.25
-	States {
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("Weapons/FreezerRecharge")
-		SMK2 A 6 A_FadeOut(0.04)
-		Wait
-	}
-}
-
-// Borrowed from Diamond Dragon
-ACTOR GodMode : InvulnerabilitySphere
-{
-	Inventory.MaxAmount 0
-	powerup.duration -1
-	Powerup.Type "Invulnerable"
-	Powerup.Mode "Reflective"
-	RenderStyle None
-	+REFLECTIVE
-	+SHIELDREFLECT
-	+INVENTORY.AUTOACTIVATE
-	States
-	{
-	Spawn:
-		TNT1 A 1
-		Loop
 	}
 }
 

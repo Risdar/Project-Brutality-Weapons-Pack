@@ -136,7 +136,7 @@ ACTOR ObeliskTrailSpark
 
 
 
-Actor Ballistagun: PB_Weapon
+Actor Ballistagun: PBWP_Weapon
 {
 Game Doom
 Weapon.AmmoUse1 0

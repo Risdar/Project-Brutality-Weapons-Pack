@@ -4,8 +4,8 @@
 #include actors/Equipments/ElecPod2.dec
 #include actors/Equipments/Axe.dec
 #include actors/Equipments/hook.dec
-#include actors/Weapons/Doom4WeaponPack/ItemsUpgrades.dec
-#include actors/Weapons/Doom4WeaponPack/UpgradeStation.dec
+#include actors/Weapons/Doom4WeaponPack/ItemsUpgrades.dec // What even is this?
+#include actors/Weapons/Doom4WeaponPack/UpgradeStation.dec // This doesn't even work
 // RemoteGrenades
 #include actors/Equipments/RemoteGrenades/Prosurv_Swarm.dec
 #include actors/Equipments/RemoteGrenades/AcidCharge.dec
@@ -24,13 +24,13 @@
 #include actors/Monsters/DEEPONE.dec
 #include actors/Monsters/E1BOSS.dec
 #include actors/Monsters/E1BOSS2.dec
-#include actors/Monsters/GOREN.dec
+#include actors/Monsters/BeholdRandomItems.dec
 #include actors/Monsters/PaingiverHelltrooper.dec
 #include actors/Monsters/STONEGAR.dec
+#include actors/Monsters/SpecialDoom1Bosses.dec
 
 // Spawners
-#include actors/Spawners/WeaponSpawners/Weapons_Spawner.dec
-#include actors/Spawners/WeaponSpawners/BeefMonsterDropChances.dec
+//#include actors/Spawners/WeaponSpawners/Weapons_Spawner.dec // I dont think we need this since there's already the injectors
 #include actors/Spawners/BEHOLD.dec
 
 // Special
@@ -48,25 +48,31 @@
 #include actors/Weapons/Slot-1/ArgentSith.dec
 #include actors/Weapons/Slot-1/BattleAxeAndShield.dec
 #include actors/Weapons/Slot-1/Razorjack.dec
+#include actors/Weapons/Slot-1/SentinelHammer.dec
 	//Slot-2
+#include actors/Weapons/Slot-2/44PDW.dec
 //#include actors/Weapons/Slot-2/Berreta.dec 
 //#include actors/Weapons/Slot-2/Berreta92.dec 
 #include actors/Weapons/Slot-2/W_SMG.dec
 #include actors/Weapons/Slot-2/Blood_Stains.dec
 //#include actors/Weapons/Slot-2/Magnum.dec
-//#include actors/Weapons/Slot-2/D3_Deagle.dec
+//#include actors/Weapons/Slot-2/Deagle.dec
 //#include actors/Weapons/Slot-2/Luger.dec 
+#include actors/Weapons/Slot-2/Blaster_Pistol.dec
 #include actors/Weapons/Slot-2/HellPistoler(AresMade).dec 
 #include actors/Weapons/Slot-2/DTPISTOL.dec
+#include actors/Weapons/Slot-2/UZISMG.dec
 	//Slot-3
 //#include actors/Weapons/Slot-3/PumpShotgun.dec
 #include actors/Weapons/Slot-3/Lady_Golide.dec
 #include actors/Weapons/Slot-3/RotationalSG(AresMade).dec 
-#INCLUDE actors/Weapons/Slot-3/D2016SHOTGUN.dec	//BORING GUN
+#INCLUDE actors/Weapons/Slot-3/D2016SHOTGUN.dec	//BORING GUN // Skill Issue :cacotroll:
 #include actors/Weapons/Slot-3/DTShotgun.dec
 #include actors/Weapons/Slot-3/CryoShotgun.dec
+#include actors/Weapons/Slot-3/HexaLionShotgun.dec
 #include actors/Weapons/Slot-3/MarauderSSG.dec
 #include actors/Weapons/Slot-3/M1887.dec
+#include actors/Weapons/Slot-3/RotatingDoubleBarrel.dec
 	//Slot-4
 //#include actors/Weapons/Slot-4/BlackDMR.dec 
 //#include actors/Weapons/Slot-4/Adv_Mask_Man_Rifle.dec 
@@ -88,6 +94,7 @@
 #INCLUDE actors/Weapons/Slot-5/SuperNailgun.dec
 #include actors/Weapons/Slot-5/DukeNukemRipper.dec
 #include actors/Weapons/Slot-5/OLD-HMG.dec
+#include actors/Weapons/Slot-5/AutoCannon.dec
 	//Slot-6
 //#include actors/Weapons/Slot-6/Fallen_Hawk.dec
 #include actors/Weapons/Slot-6/ChthonicRifle.dec
@@ -109,10 +116,11 @@
 #include actors/Weapons/Slot-8/BioAcidLauncher(AresMade).dec
 #include actors/Weapons/Slot-8/TypeAThunderCarrier(AresMade).dec
 #include actors/Weapons/Slot-8/TechBlaster.dec
-#include actors/Weapons/Slot-8/ThunderCrossbow.dec
+//#include actors/Weapons/Slot-8/ThunderCrossbow.dec
 	//Slot-9
 #include actors/Weapons/Slot-9/Ballista.dec
-#include actors/Weapons/Slot-9/DTechMinigun.dec
+#include actors/Weapons/Slot-9/DTechMinigun.dec 
+#include actors/Weapons/Slot-9/LegacyUnmaker.dec 
 #include actors/Weapons/Slot-9/STRMC.dec
 #include actors/Weapons/Slot-9/PhaseEradicatorBFG.dec
 #include actors/Weapons/Slot-9/MancubusFlameCannon.dec
@@ -140,6 +148,12 @@ Actor BDWeaponACtion : bd_Token {}
 Actor InAction : bd_Token {}
 	// IN thingy
 Actor IsUsingAddictivePackTypeIN : Inventory { Inventory.MaxAmount 1 }
+
+//CombatRatingShop
+ACTOR MonsterKilled : Inventory {
+Inventory.MaxAmount 10 }
+ACTOR PB_Score : Inventory {
+Inventory.MaxAmount 10000 }
 
 // By Warcarlsson
 #include Actors/Weapons/DROPABLES.dec

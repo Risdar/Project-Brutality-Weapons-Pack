@@ -1,5 +1,5 @@
 //the main weapon, defined here before a thousand tokens
-Class PB_CSSG : PB_WeaponBase
+Class PB_CSSG : PBWP_Weapon
 {
 	default
 	{
@@ -65,7 +65,7 @@ Class PB_CSSG : PB_WeaponBase
 			TNT1 A 0 PB_CheckBarrelPlace1();
 			TNT1 A 0 A_startsound("weapons/changing",60);
 			C0SU DCBA 1;
-			TNT1 A 0 A_Lower(120);
+			TNT1 A 0 A_Lower;
 			wait;
 			
 		WeaponRespect:

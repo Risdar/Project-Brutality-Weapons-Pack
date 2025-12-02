@@ -1,0 +1,25 @@
+Changelog:
+Original Addon By ikdfa, Updated By 517qwerty
+---------------------------------------------------
+- Credits to CyperPunk2077 and PB team.
+- Ravik adding Johnny Silverhands pistol sounds from CyberPunk2077
+12-23-24:
+- Updated to work with PB 0.2.0
+2-26-21:
+- Update recoil to be based on the new PB_WeaponRecoil
+- Fixed hilarious 4 hand bug when you use quick flame attack (I'm so sorry...)
+- Updated ADS sprites to match with the current sprites
+- Single dual fire should work properly now.
+- Ledge grabbing animation should also play properly now.
+
+2-27-21:
+- Changed some sounds for the Weapon Respect animation. The select sound now occurs when the Deagle is pulled up after
+the pill swallowing animation, and the basic iron sights sound is used at the beginning of the weapon respect animation.
+
+5-20-21:
+- Updated actor name to support recent actor rename.
+
+11-4-21:
+- Updated to have the new animations for the firing.
+- Fixed unknown actor script warnings.
+----------------------------------------------------

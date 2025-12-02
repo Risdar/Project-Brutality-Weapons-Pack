@@ -1,7 +1,10 @@
 version "4.11.3"
 
 // Monster Drop Handler
-#include "zscript/beefhandler.zs"
+#include "zscript/PBWP_Core/BeefHandler.zs"
+#include "zscript/PBWP_Core/BeefCore.zs"
+#include "zscript/PBWP_Core/BeefMonsterDropSpawnerA.zs"
+#include "zscript/PBWP_Core/BeefMonsterDropSpawnerB.zs"
 
 // Random Weapon Switch
 #include "zscript/Random Weapon Switcher/ZRWSwitchMenu.zc"
@@ -11,7 +14,7 @@ version "4.11.3"
 #include "zscript/MergedSpawner.zc"
 #include "zscript/Insanity's Nightmare/ChainsawSpawn.zc"
 #include "zscript/Weapons/Slot-3/CSSG/CSSGEvent.zs"
-#include "zscript/NewMonsterSpawner.zs"
+//#include "zscript/NoDropMonsterSpawner.zs" // We Don't Need This Anymore
 #include "zscript/GORENEST.zs"
 
 // Player Pawn Insanity Beef: Will this be added later?
@@ -55,3 +58,24 @@ version "4.11.3"
 #include "zscript/Doorbuster/doorbuster.zs"
 #include "zscript/Doorbuster/doorbuster_handler.zs"
 
+//MonsterStuff//
+//ElementalismBoss
+#include "zscript/BEHOLD_BOSSES/E1_Export_1.zs"
+class E1Boss : Actor
+{
+	Default {
+		Radius 8;
+		Height 16;
+		RenderRadius 128;
+		+SOLID;
+		-SHOOTABLE;
+		+NODAMAGE;
+		+NOGRAVITY;
+	}
+	
+		States {
+		Spawn:
+			NO3D A 35;
+			Loop;
+	}
+}

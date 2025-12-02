@@ -90,7 +90,7 @@ ACTOR HMGExplosiveProjectile : FastProjectile
 	}
 }
 
-ACTOR HeavySniperRifle : PB_Weapon
+ACTOR HeavySniperRifle : PBWP_Weapon
 {
 	Inventory.PickupSound "Phalanx/PickUp"
 	Weapon.AmmoType2 "HAR_DM"
@@ -204,7 +204,6 @@ ACTOR HeavySniperRifle : PB_Weapon
 	TNT1 A 0 A_Takeinventory("Zoomed",1)
 	TNT1 A 0 A_ZoomFactor(1.0)
     Null AAAAAAAAAAAAAAAAA 0 A_Lower
-	TNT1 A 1
     Wait
 
 
@@ -628,12 +627,12 @@ ACTOR HeavySniperRifle : PB_Weapon
 		TNT1 AAAAAAAAAA 0
 		PIST F 0 A_Takeinventory("Reloading",1)
 		
-		PIST F 0 A_Refire
+		PIST F 0 PB_ReFire
         Goto Ready3
 		TNT1 AAAA 0
 		PIST F 0 A_Takeinventory("Reloading",1)
 		
-		PIST F 0 A_Refire
+		PIST F 0 PB_ReFire
         Goto Ready3
 	
     ReloadUnzoom:

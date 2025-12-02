@@ -4,7 +4,7 @@ Inventory.maxamount 1
 }
 
 
-Actor PhaseEradicatorBFG : PB_Weapon
+Actor PhaseEradicatorBFG : PBWP_Weapon
 {
 game doom
 Tag "Phase Eradicator BFG"
@@ -134,7 +134,7 @@ PRDC L 2
 PRDC M 2
 PRDC N 2
 PRDC O 5
-PRDC O 10 A_Refire
+PRDC O 10 PB_ReFire
 Goto Ready3
 
 
@@ -170,7 +170,7 @@ PRDC L 2
 PRDC M 2
 PRDC N 2
 PRDC O 25
-PRDC O 10 A_Refire
+PRDC O 10 PB_ReFire
 Goto Ready3
 
 
@@ -203,7 +203,7 @@ PRDC L 2
 PRDC M 2
 PRDC N 2
 PRDC O 25
-PRDC O 10 A_Refire
+PRDC O 10 PB_ReFire
 Goto Ready3
 
 Reload:

@@ -1,4 +1,4 @@
-Actor TechBlaster : PB_Weapon
+Actor TechBlaster : PBWP_Weapon
 {
    Height 12
    Weapon.SelectionOrder 7980
@@ -130,7 +130,7 @@ Deselecting:
 	 TNT1 A 0 A_TakeInventory("TechBlasterMagazine",3)
      DTGA C 1 Bright
 	 DTGB N 1 Bright
-     TNT1 A 0 A_ReFire
+     TNT1 A 0 PB_ReFire
      Goto JustFired
      
    FastFire:
@@ -145,7 +145,7 @@ Deselecting:
 	 TNT1 A 0 A_TakeInventory("TechBlasterMagazine",3)
      DTGA C 1 Bright
 	 DTGB N 1 Bright
-     TNT1 A 0 A_ReFire
+     TNT1 A 0 PB_ReFire
      Goto JustFired
    AltFire:
    TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
@@ -175,7 +175,7 @@ Deselecting:
 		A_TakeInventory("TechBlasterMagazine",1);}
      DTGA C 1 Bright
 	 DTGB N 1 Bright
-     TNT1 A 0 A_ReFire
+     TNT1 A 0 PB_ReFire
      Goto JustFired
      
   FastAltFire:
@@ -195,7 +195,7 @@ Deselecting:
 		A_TakeInventory("TechBlasterMagazine",2);}
      DTGA C 1 Bright
 	 DTGB N 1 Bright
-     TNT1 A 0 A_ReFire
+     TNT1 A 0 PB_ReFire
      Goto JustFired
      
    Empty:
@@ -370,7 +370,7 @@ ACTOR TechBlasterBeam : FastProjectile //Failed to PB_Projectile
   Radius 0.5
   Height 0.5
   Alpha 0.2
-  Damage (Random (150, 200))
+  Damage (Random (25, 75))
   Renderstyle Add
   DamageType Saw
   +RIPPER

@@ -1,4 +1,4 @@
-class LoRCalamityBlade : PB_Weapon
+class LoRCalamityBlade : PBWP_Weapon
 {
     int ChargeLevel;
 	Default
@@ -12,7 +12,8 @@ class LoRCalamityBlade : PB_Weapon
 		Weapon.AmmoGive 120;
 		Weapon.AmmoGive2 120;
 		Weapon.AmmoType "PB_Fuel";
-		Weapon.AmmoType2 "PB_Cell";
+		Weapon.AmmoType2 "PB_DTECH";
+		scale 0.85;
 		+WEAPON.NOAUTOFIRE
 		+WEAPON.NOALERT
 		+DONTGIB
@@ -46,7 +47,7 @@ class LoRCalamityBlade : PB_Weapon
 				}			
 			goto ready3;
 		Select:
-			TNT1 A 0 PB_WeaponRaise();
+			TNT1 A 0 A_Raise();
 			TNT1 A 0 {PB_HandleCrosshair(69);}
 			TNT1 A 0 A_SetInventory("RandomHeadExploder",1);
 			TNT1 A 0 PB_RespectIfNeeded();
@@ -277,7 +278,6 @@ class LoRCalamityBlade : PB_Weapon
 
 		WeaponSpecial:
 			TNT1 A 0 A_setinventory("GoWeaponSpecialAbility",0);
-			TNT1 A 0 PB_WeaponRecoil(-4,frandom(-1.5,1.5));
 			TNT1 A 0 {
 				A_SetInventory("GoWeaponSpecialAbility",0);
 				A_SetInventory("Zoomed",0);

@@ -1,6 +1,14 @@
-AddKeySection "Meat Hook Options" Extra_ZDoom_controls
-AddMenuKey "Use Meat Hook" meathook
-alias meathook "puke 6005"
+//AddKeySection "Meat Hook Options" Extra_ZDoom_controls
+//AddMenuKey "Use Meat Hook" meathook
+//alias meathook "puke 6005"
+
+//addkeysection "Universal Sentinel Hammer" SHKeys
+//addmenukey "Select Sentinel Hammer" SHSelect
+//alias SHSelect "pukename SelectHammer"
+
+addkeysection "Combat Rating Points" PB_CRSys
+addmenukey "Show combat points" PB_CRSHW
+   alias PB_CRSHW "pukename ShowPoints"
 
 alias SwitchItUp "NetEvent SwitchItUp"
 alias BackItUp "NetEvent SwitchBack"
@@ -42,22 +50,98 @@ alias -dp_random_key  ""
 
 alias dp_show_mode "give DP_ModeReporter; use DP_ModeReporter"
 
+/*
+alias PBWP_EnableAll "
+           set PBSpawnArgentSith true;
+           set PBSpawnBattleAxe true;
+           set PBSpawnRazorjack true;
+            //Slot 2
+           set PBSpawnSilverhandsDeagle true;
+           set PBSpawnHellPistol true;
+           set PBSpawnHellPistoler true;
+           set PBSpawnW_SMG true;
+            //Slot 3
+           set PBSpawnPB_Doom2016Shotgun true;
+           set PBSpawnPB_CryoShotgun true;
+           set PBSpawnPB_CSSG true;
+           set PBSpawnRotationalSG true;
+           set PBSpawnHASG true;
+           set PBSpawnHexaLionShotgun true;
+           set PBSpawnDemonTechShotgun true;
+           set PBSpawnM1887 true;
+           set PBSpawnMarauderSSG true;
+           set PBSpawnRotatingDoubleBarrel true;
+            //Slot 4
+           set PBSpawnAK47 true;
+           set PBSpawnPB_BoltRifle true;
+           set PBSpawnDark_Fate true;
+           set PBSpawnHeavySniperRifle true;
+           set PBSpawnMagnumSniperRifle true;
+           set PBSpawnM41A true;
+           set PBSpawnPowerOverwhelming true;
+            //Slot 5
+           set PBSpawnFire_and_IceDragonSlayer true;
+           set PBSpawnINNailGun true;
+           set PBSpawnOldHMG true;
+           set PBSpawnD4Machinegun true;
+           set PBSpawnINMiniGun true;
+           set PBSpawnDukeNukemRipper true;
+           set PBSpawnSuperNailgun true;
+            //Slot 6
+           set PBSpawnChthonicRifle true;
+           set PBSpawnCyberdemonsMissileLauncher true;
+           set PBSpawnDevastator true;
+           set PBSpawnPB_Excavator true;
+           set PBSpawnMastermindChaingun true;
+           set PBSpawnPaingiver true;
+           set PBSpawnD4RocketLauncher true;
+           set PBSpawnSuperGrenadeLauncher true;
+            //Slot 7
+           set PBSpawnPlasmaRifleAssault true;
+           set PBSpawnD4PlasmaGun true;
+           set PBSpawnThunderCarrierTI true;
+           set PBSpawnD4VortexRifle true;
+            //Slot 8
+           set PBSpawnExtinction_Ray true;
+           set PBSpawnCalamityBlade true;
+           set PBSpawnPB_GaussCannon true;
+           set PBSpawnIon_Heavy true;
+           set PBSpawnPB_MancubusFlameCannon true;
+            //Slot 9
+           set PBSpawnBioAcidLauncher true;
+           set PBSpawnBallistagun true;
+           set PBSpawnLegacyUnmaker true;
+           set PBSpawnStormcast true;
+           set PBSpawnThunderCrossbow true;
+            //Slot 0
+           set PBSpawnAncientCrossbow true;
+           set PBSpawnTechBlaster true;
+           set PBSpawnPB_DemonExt true;
+           set PBSpawnDemonTechMinigun true;
+           set PBSpawnPhaseEradicatorBFG true;"*/
+
 Addslotdefault 1 PB_BeamKatana
 addslotdefault 1 BattleAxe
 addslotdefault 1 Razorjack
+addslotdefault 1 SentinelHammer
+addslotdefault 2 44PDW
+addslotdefault 2 DoomBlaster
 addslotdefault 2 W_SMG
 addslotdefault 2 P_SMG
 addslotdefault 2 HellPistoler
 addslotdefault 2 Magnum
-addslotdefault 2 B_Deagle
+addslotdefault 2 SilverhandsDeagle
+addslotdefault 2 UZISMG
 addslotdefault 3 BlackRemintong
 addslotdefault 3 HASG
+addslotdefault 3 HexaLionShotgun
 addslotdefault 3 SSG
 addslotdefault 3 RotationalSG
 addslotdefault 3 PB_CryoShotgun
-//addslotdefault 3 PB_Doom2016Shotgun
+addslotdefault 3 PB_Doom2016Shotgun
 addslotdefault 3 "Demon Tech Shotgun"
 addslotdefault 3 M1887
+addslotdefault 3 RotatingDoubleBarrel
 addslotdefault 4 AK-47
 addslotdefault 4 MaskMan_Rifle
 addslotdefault 4 AssaultR1
@@ -77,6 +161,7 @@ addslotdefault 5 Fire_and_Ice-DragonSlayer
 addslotdefault 5 DukeNukemRipper
 addslotdefault 5 OLDHMG
 addslotdefault 5 SuperNailgun
+addslotdefault 5 AutoCannon
 addslotdefault 6 SuperGrenadeLauncher
 addslotdefault 6 PB_Excavator
 addslotdefault 6 CyberdemonsMissileLauncher
@@ -87,8 +172,7 @@ addslotdefault 7 PhaseEradicatorBFG
 addslotdefault 7 PlasmaRifleAssault
 addslotdefault 7 Ion_Heavy
 addslotdefault 7 Extinction_Ray
-addslotdefault 7 BioAcidLauncher
-addslotdefault 7 ThunderCarrierTI //New
+addslotdefault 7 ThunderCarrierTI
 addslotdefault 7 LightningGun
 addslotdefault 7 AncientCrossbow
 addslotdefault 7 SuperGrenadeLauncher
@@ -105,6 +189,7 @@ addslotdefault 9 Unmaker64
 addslotdefault 9 Ballistagun
 addslotdefault 9 LoRCalamityBlade
 addslotdefault 9 DemonTechMinigun
+addslotdefault 9 PB_LegacyUnmaker
 addslotdefault 9 PhaseEradicatorBFG
 addslotdefault 9 Stormcast
 addslotdefault 9 MancubusFlameCannon

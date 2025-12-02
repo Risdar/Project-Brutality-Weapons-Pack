@@ -1,39 +1,42 @@
 //For add-on weapons
 Actor AddonSelected: PB_WeaponSelected{}
 
-ACTOR ExecuteStompWall : Inventory
+// Ammmo Test
+actor IsUsingStormcast : Inventory{Inventory.maxamount 1}
+actor StormCastAmmoSmall : CustomInventory
 {
-Inventory.MaxAmount 1
+	Game Doom
+	Scale 0.45
+	+DONTGIB
+	+FLOORCLIP
+	Inventory.PickupMessage "StormCast Ammo"
+	Inventory.PickupSound "Ammocase/Open"
+	States {
+		Spawn:
+			MSCR AABBCCBB 2 BRIGHT A_SpawnItem("PlasmaFlareSpawn",0,20)
+			MSCR A 1 bright A_SpawnItem("ElectroBlastTrail",0,30)
+			Loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("PowerChargeStorm",10) 
+			TNT1 A 20
+			Stop	
+		}
 }
 
-ACTOR ExecuteBashWall : Inventory
+actor StormCastAmmoBig : StormCastAmmoSmall
 {
-Inventory.MaxAmount 1
-}
-
-Actor Berserker : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor NoFatality : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor GoFatality : Inventory
-{
-inventory.maxamount 1
-}
-
-ACTOR PhantasmFatality : Inventory
-{
-Inventory.MaxAmount 1
-}
-
-Actor ShotgunguyHead: Inventory
-{
-inventory.maxamount 1
+	Game Doom
+	Scale 2
+	+DONTGIB
+	+FLOORCLIP
+	Inventory.PickupMessage "StormCast Ammo"
+	Inventory.PickupSound "Ammocase/Open"
+	States {
+		Pickup:
+			TNT1 A 0 A_GiveInventory("PowerChargeStorm",50) 
+			TNT1 A 20
+			Stop
+		}
 }
 
 //Schism stuff
@@ -48,8 +51,6 @@ Actor Dissapate : Inventory {Inventory.MaxAmount 1}
 Actor NoShoot : Inventory {Inventory.MaxAmount 1}
 
 Actor TossGrenade : Inventory {Inventory.MaxAmount 1}
-
-Actor StartDualWield : Inventory {Inventory.MaxAmount 1}
 
 actor WarpTimer : Inventory
 {
@@ -72,13 +73,16 @@ Actor QuickLightningSpellSelected: Inventory
 Inventory.Maxamount 1
 }
 
-ACTOR Stormcast : PB_Weapon
+ACTOR Stormcast : PBWP_Weapon
 {
   Game Doom
 	scale 0.5
 	Height 20
 	Weapon.AmmoUse2 0
-	Weapon.AmmoGive2 200
+	Weapon.AmmoGive2 300
+	Weapon.AmmoUse 0
+	Weapon.AmmoGive 300
+	Weapon.AmmoType1 ""
 	Weapon.AmmoType2 "PowerChargeStorm"
     Inventory.PickupSound "PZAPCHR2"
 	Inventory.AltHudIcon "STRMA0"
@@ -92,62 +96,6 @@ ACTOR Stormcast : PB_Weapon
   Weapon.SelectionOrder 2800
   States
   {
-/////////
-////////	
-	FlashKicking:
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
-	   TNT1 A 0 A_ClearOverlays(10,11)
-	   MEQI A 1 A_DoPBWeaponAction
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1 
-	   MEQI A 7
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1
-	   Goto Ready
-
-	FlashAirKicking:
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
-	   TNT1 A 0 A_ClearOverlays(10,11)
-	   MEQI A 1 A_DoPBWeaponAction
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1 
-	   MEQI A 7
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1
-	   MEQI A 1
-	   Goto Ready
-
-	FlashSlideKicking:
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
-	   TNT1 A 0 A_ClearOverlays(10,11)
-	   CONE A 1 A_DoPBWeaponAction
-	   CONE AB 1
-	   CONE B 35
-	   Goto Ready
-
-	FlashSlideKickingStop:
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
-	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
-	   TNT1 A 0 A_ClearOverlays(10,11)
-	   CONE A 1 A_DoPBWeaponAction
-	   CONE B 5
-	   CONE A 1
-	   Goto Ready
-	ForceBobbing:
-		TNT1 A 10 A_WeaponReady(WRF_NOFIRE)
-		loop
 	Steady:
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 1 {
@@ -160,206 +108,77 @@ ACTOR Stormcast : PB_Weapon
 				A_TakeInventory("Salute2", 1);
 				A_TakeInventory("Kicking", 1);
 			}
-	    Goto Ready+2
+	    	Goto Ready
 
-	Reload:
 	WeaponSpecial:
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "IdleBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "IdleFlameBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "IdleIceBarrel")
 		TNT1 A 0 A_TakeInventory("Punching", 1)
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"KillLS")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,"SelectFatalityModes")
 		PUNS E 2
 		PUNS F 2 A_PlaySoundEx("KNUCKLED", "Auto")
 		PUNS GFEK 2
 		PUNS L 2 A_PlaySoundEx("KNUCKLED", "Auto")
 		PUNS MLK 2 
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		Goto Ready+2
-
-	SelectFatalityModes:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("NoFatality", 1, "FatalityOn")
-		Goto FatalityOff
-		
-	FatalityOn:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_Print("Auto Execute: On")
-		PUNS E 2
-		TNT1 A 0 A_PlaySoundEx("KNUCKLED", "Auto")
-		PUNS FGF 2 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0) 
-		PUNS EK 2
-		TNT1 A 0 A_PlaySoundEx("KNUCKLED", "Auto")
-		PUNS LML 2 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0) 
-		PUNS K 2
-		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 0 A_TakeInventory("NoFatality", 1)
-		Goto Ready+2
-		
-	FatalityOff:
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_Print("Auto Execute: Off")
-		
-		P1NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		P2NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		P3NR ABCDEFFGGHIJKKLMMNOPQRSTUVWX 0
-		
-		P9NS ABCDEFF 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 {
-			A_PlaySoundEx("weapons/fists_smash", "Auto");
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			}
-		P9NS GGHIJKKLMM 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 {
-			A_PlaySoundEx("weapons/fists_smash", "Auto");
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			}
-		P9NS NOPQRSTUVWX 1 {
-			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NR"); }
-			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NR");}
-			if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NR");}
-			}
-		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 0 A_GiveInventory("NoFatality", 1)
-		Goto Ready+2
-////////
-	ReadyLoop:
+		Goto Ready
 	Ready:
-		////////////////// Check if player is performing a fatality
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 PB_RespectIfNeeded
- 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ReadyShotgunguyHead")
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
-		TNT1 A 0 A_JumpIfInventory("PhantasmFatality",1, "ReadyPhantasm")
-		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("IsUsingStormcast") // Token for testing
+		TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
 	SelectAnimation:
-		TNT1 A 0 {
-			if(CountInv("GoFatality") >= 1) {
-				SetPlayerProperty(0,1,0);
-			}	
-			else {
-				SetPlayerProperty(0,0,0);
-			}
-		}
-		TNT1 A 0 {
-		     A_WeaponOffset(0,32);
-			 A_SetRoll(0);
-			 PB_HandleCrosshair(90);
-			 A_TakeInventory("PB_LockScreenTilt",1);
-		     }
 		TNT1 A 0 A_PlaySound("DRAW", 1)
 		TNT1 A 0 {
 		     return A_DoPBWeaponAction(WRF_NOFIRE);
 			 }
+		"####" A 0 A_JumpIfInventory("Quickspell",1,"Quickspell")
+		CONE A 1 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 1)
+		CONE A 1 A_WeaponReady
+		TNT1 A 0 A_GiveInventory("PowerChargeStorm", 2)
+		CONE A 1 A_WeaponReady
+		TNT1 A 0 A_GiveInventory("PowerChargeStorm", 1)
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
+		TNT1 A 0 A_JumpIfInventory("KraterOfMight",1,1)
 		TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")		
 		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		CONE A 1 A_WeaponReady
-////////
-        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
-		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload") 
-		"####" A 0 A_JumpIfInventory("Quickspell",1,"Quickspell")
-		CONE A 1 A_JumpIfInventory("dualwieldToken", 1, "InitializeThunderstorm")
-		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 1)
-		CONE A 1 A_WeaponReady
-		CONE A 1 A_WeaponReady
-		TNT1 A 0 A_StopSound(CHAN_WEAPON)
-		Goto Ready+2
-		TNT1 A 0 A_GiveInventory("PrimaryPistolAmmo", 1) //instant recovery with chalice of mana!
-		CONE C 1 {
-		     return A_DoPBWeaponAction(WRF_NOFIRE);
-			 }
-		TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")
-		CONE C 1 {
-		if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NG"); }
-		if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NG");}
-		if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NG");}
-		return A_DoPBWeaponAction;
-		}
 		Goto Ready3
 	Ready3:
-	    TNT1 A 0 {
-			 A_WeaponOffset(0,32);
-			 A_SetRoll(0);
-			 PB_HandleCrosshair(90);
-			 A_TakeInventory("PB_LockScreenTilt",1);
-			 }
-	    TNT1 A 0
-		LGQS E 1 {
-			 return A_DoPBWeaponAction;
-		     }
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ReadyShotgunguyHead")
-		TNT1 A 0 A_JumpIfInventory("LostSoulFatality",1,"ReadySoul")
-		TNT1 A 0 A_JumpIfInventory("PhantasmFatality",1, "ReadyPhantasm")
-		LGQS E 1 {
-		if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P1NG"); }
-		if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NG");}
-		if (CountInv("PowerGreenBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NG");}
-		return A_DoPBWeaponAction;
-		}
-		Goto Ready
-////////
-	ReadyShotgunguyHEad:
-		PTG1 B 1 A_DoPBWeaponAction
-		loop	
-	LostSoulHandFireOverlay:
-			TNT1 A 5 {
-				A_FireCustomMissile("LostSoulOnHandFireSpawner",40,0,0,5);
-				if (CountInv("LostSoulFatality") < 1) { return state("LostSoulHandFireOverlayEnd"); }
-				return state("");
+		LGQS E 0 {
+			A_WeaponOffset(0,32);
+			A_SetRoll(0);
+			PB_HandleCrosshair(90);
+			A_TakeInventory("PB_LockScreenTilt",1);
+			A_GiveInventory("IsUsingStormcast",1);
 			}
-			Loop		
-	LostSoulHandFireOverlayEnd:
-			TNT1 A 0
-			Stop			
-	ReadySoul:
-		TNT1 A 0 A_Overlay(-3, "LostSoulHandFireOverlay")
-		THEA AAAABBBBAAAABBBBCCCCDDDDCCCCDDDD 1 BRIGHT A_DoPBWeaponAction
-		loop	
-	PhantasmHandFireOverlay:
-			TNT1 A 5 {
-				A_FireCustomMissile("PhantasmOnHandFireSpawner",40,0,0,5);
-				if (CountInv("PhantasmFatality") < 1) { return state("PhantasmHandFireOverlayEnd"); }
-				return state("");
-			}
-			loop			
-	PhantasmHandFireOverlayEnd:
-			TNT1 A 0
-			Stop			
-	ReadyPhantasm:
-		TNT1 A 0 A_Overlay(-3, "PhantasmHandFireOverlay")
-		TH3A AAAABBBBAAAABBBBCCCCDDDDCCCCDDDD 1 BRIGHT A_DoPBWeaponAction
-		loop
-////////
+		LGQS E 0 
+	   	"####" "#" 1 {
+			return A_DoPBWeaponAction(WRF_ALLOWRELOAD);
+		    }
+		TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
+		LGQS E 0 A_WeaponReady
+		LGQS E 1 A_DoPBWeaponAction
+		Loop
 	Deselect:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-	    TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-	    TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
-	    TNT1 A 0 {
-			 A_WeaponOffset(0,32);
-			 A_SetRoll(0);
-			 PB_HandleCrosshair(-1);
-			 A_TakeInventory("PB_LockScreenTilt",1);
-		     }
-		TNT1 A 0 A_ZoomFactor(1)
-		TNT1 A 0 A_TakeInventory("PowerBloodOnVisor",1)
-		TNT1 A 0 A_TakeInventory("PowerBlueBloodOnVisor",1)
-		TNT1 A 0 A_TakeInventory("PowerGreenBloodOnVisor",1)
+       		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
+	   	TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
+	   	TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
+	   	TNT1 A 0 {
+			A_WeaponOffset(0,32);
+			A_SetRoll(0);
+			PB_HandleCrosshair(90);
+			A_StopSound(5);
+			A_StopSound(6);
+			A_ZoomFactor(1.0);
+			A_TakeInventory("PB_LockScreenTilt",1);
+			A_TakeInventory("IsUsingStormcast",1); // Token for the handler
+		    }
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
-		CONE C 1 A_Lower
+		CONE A 1 A_Lower
 		Loop
 	Unload: 
 		TNT1 A 0 
@@ -379,24 +198,14 @@ ACTOR Stormcast : PB_Weapon
 		stop
   Select:
 		TNT1 A 0 {
-		  A_WeaponOffset(0,32);
-		  A_SetRoll(0);
-		  PB_HandleCrosshair(90);
-		  A_TakeInventory("PB_LockScreenTilt",1);
-		  }
+			A_WeaponOffset(0,32);
+			A_SetRoll(0);
+			PB_HandleCrosshair(90);
+			A_SetInventory("PB_LockScreenTilt",0);
+			A_ClearOverlays(10,11);
+		}
 		Goto SelectFirstPersonLegs
 	SelectContinue:
-		
-		//Load bloody fist frames into memory
-		TNT1 A 0 PB_ResetVisorBloodTokens
-		TNT1 A 0 PB_ResetBarrelTokens
-		
-		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0 A_SetInventory("Reloading", 0) //Prevent accidentally switching to smash/fatality mode
-		TNT1 A 0 PB_WeapTokenSwitch("Stormcast")
-		////////////////// Check if player is performing a fatality\\\\
-		TNT1 A 0
-////////////////////
 		CONE A 0 A_GiveInventory ("PowerChargeStorm", 200)
 		TNT1 A 0 A_TakeInventory("CastingArcOfDeath",1)
 		TNT1 A 0 A_GiveInventory("ArcOfDeath_Fake", 1)
@@ -404,37 +213,25 @@ ACTOR Stormcast : PB_Weapon
 		CONE AAAAAAAA 1 A_Raise
 		Wait
 	Spawn:
-      	MSCR AABBCCBB 2 BRIGHT A_SpawnItem("PlasmaFlareSpawn",0,20)
+      		MSCR AABBCCBB 2 BRIGHT A_SpawnItem("PlasmaFlareSpawn",0,20)
 		MSCR A 1 bright A_SpawnItem("ElectroBlastTrail",0,30)
 		Loop
-////////
-	GrabObject:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("weapons/fistwhoosh2")
-		PKUP ABCDEF 1
-		Goto Ready		
-	KillLS:
-		THEA E 1 A_PlaySound("gore/headshot")
-		THEA E 3 
-		THEA F 4 
-		{
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0);
-			A_FireCustomMissile("LSOHK",40,0,0,5);
-			A_SetInventory("LostSoulFatality",0);
-			A_SetInventory("PhantasmFatality",0);
-			A_SetInventory("GoWeaponSpecialAbility",0);
-		} 
-		Wait
-////////
+
+	  Depletion:
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",200)
+		DISF ABCDEE 2 
+		TNT1 A 0 A_GiveInventory("PowerChargeStorm",1) //to absolutelly prevent fucking autoswitch weapon with no ammo...!
+		goto Ready  
+
   Fire:
 		NULL A 0 A_JumpIf (momZ > 0, "Fly")
 		NULL A 0 A_JumpIf (momZ < 0, "Fly")
+		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 15, 2)
+		Goto Ready
 		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "ThrowBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "ThrowFlameBarrel")
 		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "ThrowIceBarrel")
 		TNT1 A 0 {
-			//A_GiveInventory("PB_LockScreenTilt",1);
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
 			A_SetCrosshair(90);
@@ -457,7 +254,8 @@ ACTOR Stormcast : PB_Weapon
 		}
 		LGQS ABCDE 1
 	HoldLightning:
-		TNT1 A 0 A_GiveInventory ("PowerChargeStorm", 200)
+		//TNT1 A 0 A_GiveInventory ("PowerChargeStorm", 200) // Why does this give ammo???? // Disabled for testing purposes
+		TNT1 A 0 A_TakeInventory ("PowerChargeStorm", 200) // Delete this later
 		LGQS F 1 BRIGHT 		
 		//TNT1 A 0 A_PlaySound("LIGHTN01", 6)
 		TNT1 A 0 A_PlaySound("SPELLC01", CHAN_VOICE) 	
@@ -473,6 +271,8 @@ ACTOR Stormcast : PB_Weapon
 		LGQS MNO 1 
 
 	HoldLightning2:
+		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm",15,2)
+		goto Depletion
 		TNT1 AAA 0
 		TNT1 A 0 A_PlaySound("SHOCK")		
 		TNT1 A 0 A_JumpIfCloser(100,"RealElectricArc1")
@@ -491,10 +291,12 @@ ACTOR Stormcast : PB_Weapon
 	FinishElectricArc:
 		LGQS PQREDCBA 1 
 		LGQS A 0 A_StopSound(5)
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		Goto Ready3
 
 	RealElectricArc1:
 		TNT1 A 0 A_PlaySound("SHOCK")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",10)
 		LGQS GH 1 BRIGHT A_RailAttack(15,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,150,5,0.001,3.0,"ElectroBlastTrail2",-15)
 		//TNT1 A 0 A_RailAttack(14,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,120,5,0.001,3.0,"ElectroBlastTrail2",-15)
 		LGQS IJ 1 BRIGHT A_RailAttack(15,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,150,5,0.001,3.0,"ElectroBlastTrail3",-15)
@@ -503,6 +305,7 @@ ACTOR Stormcast : PB_Weapon
 	
 	RealElectricArc2:
 		TNT1 A 0 A_PlaySound("SHOCK")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",13)
 		LGQS GH 1 BRIGHT A_RailAttack(20,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,250,5,0.001,3.0,"ElectroBlastTrail2",-15)
 		//TNT1 A 0 A_RailAttack(16,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,220,5,0.001,3.0,"ElectroBlastTrail2",-15)
 		LGQS IJ 1 BRIGHT A_RailAttack(20,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,250,5,0.001,3.0,"ElectroBlastTrail3",-15)
@@ -511,6 +314,7 @@ ACTOR Stormcast : PB_Weapon
 
 	RealElectricArc3:
 		TNT1 A 0 A_PlaySound("SHOCK")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",15)
 		LGQS GH 1 BRIGHT A_RailAttack(25,7,0,None,None,RGF_SILENT|RGF_FULLBRIGHT,1.9,"LightningGunProjectile",0,0,450,0,1.1,0,"BlueBeamdots",-5) //A_RailAttack(10,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,700,5,0.1,3.0,"ElectroBlastTrail2",-15)
 //		TNT1 A 0 A_RailAttack(19,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,450,5,0.001,3.0,"ElectroBlastTrail3",-15)
 		LGQS IJ 1 BRIGHT A_RailAttack(25,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,450,5,0.001,3.0,"ElectroBlastTrail2",-15)
@@ -519,6 +323,7 @@ ACTOR Stormcast : PB_Weapon
 
 	RealElectricArc4:
 		TNT1 A 0 A_PlaySound("SHOCK")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",20)
 		LGQS GH 1 BRIGHT A_RailAttack(35,7,0,None,None,RGF_SILENT|RGF_FULLBRIGHT,1.9,"LightningGunProjectile",0,0,650,0,1.1,0,"BlueBeamdots",-5) //A_RailAttack(10,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,700,5,0.1,3.0,"ElectroBlastTrail3",-15)
 		TNT1 A 0 A_RailAttack(20,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,650,5,0.001,3.0,"ElectroBlastTrail2",-15)
 		LGQS IJ 1 BRIGHT A_RailAttack(35,7,0,None,None,RGF_SILENT|RGF_FULLBRIGHT,1.9,"LightningGunProjectile",0,0,650,0,1.1,0,"BlueBeamdots",-5) //BRIGHT A_RailAttack(10,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,700,5,0.1,3.0,"ElectroBlastTrail3",-15)
@@ -527,6 +332,7 @@ ACTOR Stormcast : PB_Weapon
 		
 	RealElectricArc5:
 		TNT1 A 0 A_PlaySound("SHOCK")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm",25)
 		LGQS GH 1 BRIGHT A_RailAttack(45,7,0,None,None,RGF_SILENT|RGF_FULLBRIGHT,1.9,"LightningGunProjectile",0,0,850,0,1.1,0,"BlueBeamdots",-5) //A_RailAttack(10,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningGunProjectile",3,3,700,5,0.1,3.0,"ElectroBlastTrail3",-15)
 		TNT1 A 0 A_FireCustomMissile("LightningMissile4",0,0,7,0)
 		//TNT1 A 0 A_RailAttack(25,7,0,None,None,RGF_SILENT|RGF_FULLBRIGHT,1.9,"LightningGunProjectile",0,0,850,0,1.1,0,"BlueBeamdots",-5)
@@ -539,6 +345,8 @@ ACTOR Stormcast : PB_Weapon
 		//TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 50, "Hold3")
 		//TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 25, "Hold2")
 		//TNT1 A 0 A_GiveInventory("PowerChargeStorm",1)
+		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm",10,2)
+		goto Depletion
 		TNT1 A 0
 		MEDI E 2 BRIGHT A_ChangeVelocity(cos(pitch)-1,0,-sin(pitch)+2.2,CVF_RELATIVE)
 		TNT1 A 0 A_JumpIfInventory("FiredSecondary", 1, "QuickLightning")
@@ -548,7 +356,8 @@ ACTOR Stormcast : PB_Weapon
 			
 	Hold2:
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 50, "Hold3")
-		TNT1 A 0 A_GiveInventory("PowerChargeStorm",200)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 1)
+		TNT1 A 0 A_GiveInventory("PowerChargeStorm",1)
 		CONE D 1 
 		TNT1 A 0 PB_ReFire
 		
@@ -560,45 +369,36 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 PB_ReFire 
 		
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "PlaceBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "PlaceFlameBarrel")
-		TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "PlaceIceBarrel")
-		TNT1 A 0 {
-			A_WeaponOffset(0,32);
-			A_SetRoll(0);
-			PB_HandleCrosshair(90);
-			A_SetInventory("PB_LockScreenTilt",0);
-		}
 		TNT1 A 0 A_PlaySound("PZAPCHR2")
 		SCST ABCD 1
 		SCST EFGH 1 BRIGHT
 		TNT1 A 0 PB_ReFire("AltHold")
 		goto CastInstantZap
-		//CONL A 0 A_SetBlend("Blue", 0.2, 35)
 	AltHold:
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 75, "AltHold4") 
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 50, "AltHold3")
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 25, "AltHold2")
-
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 5)
 		
 		TNT1 A 0 A_PlaySound("PZAPHUM", CHAN_WEAPON,2,1) 
 		
 		SCC1 ABCDE 1 BRIGHT A_GiveInventory("PowerChargeStorm",1)
 		TNT1 A 0 BRIGHT A_JumpIfInventory("FiredPrimary", 1, "CastPulseBall")
 		TNT1 A 0 BRIGHT A_JumpIfInventory("TossGrenade",1,"InitializeStunwallXS")
-		TNT1 A 0 A_JumpIfInventory("StartDualWield", 1, "InitializeThunderstorm2")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm2")
 		TNT1 A 0 PB_ReFire("AltHold")
 
 	AltHold2:
-		TNT1 A 0 A_JumpIfInventory("GoFatality",1, "AltHold3")
+		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm",1,2)
 		goto discharge
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 75, "AltHold4")
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 50, "AltHold3")
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 8)
 
 		TNT1 A 0 BRIGHT A_JumpIfInventory("FiredPrimary", 1, "CastStunBall")
 		TNT1 A 0 BRIGHT A_JumpIfInventory("TossGrenade",1,"InitializeStunwallSmall")
-		TNT1 A 0 A_JumpIfInventory("StartDualWield", 1, "InitializeThunderstorm2")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm2")
 		TNT1 A 0 A_PlaySound("PZAPHUM", CHAN_WEAPON,2,1) 
 		
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
@@ -610,10 +410,10 @@ ACTOR Stormcast : PB_Weapon
 		
 	AltHold3:
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 75, "AltHold4")
-		TNT1 A 0 A_TakeInventory("GoFatality", 1)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 6)
 		SCC3 D 1 BRIGHT A_JumpIfInventory("FiredPrimary", 1, "CastBallLightning")
 		TNT1 A 0 BRIGHT A_JumpIfInventory("TossGrenade",1,"InitializeStunwallSmall")
-		TNT1 A 0 A_JumpIfInventory("StartDualWield", 1, "InitializeThunderstorm2")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm2")
 		TNT1 A 0 A_PlaySound("CHRGEBL", CHAN_WEAPON,2,1) 
 		
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
@@ -635,12 +435,13 @@ ACTOR Stormcast : PB_Weapon
 		goto discharge
 		
 	AltHold4:
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 4)
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 100, "AltHold5")
 		TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",20,0,0,0)
 		TNT1 A 0 A_PlaySound("TPortalLoop", CHAN_WEAPON,2,1) 
 		SCC4 A 1 BRIGHT A_JumpIfInventory("FiredPrimary", 1, "CastBallLightning")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"InitializeStunwall")
-		TNT1 A 0 A_JumpIfInventory("StartDualWield", 1, "InitializeThunderstorm3")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm3")
 		TNT1 A 0 A_FireCustomMissile("StormFlareSpawn",25,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 		SCC4 B 1 BRIGHT A_GiveInventory("PowerChargeStorm",1)
@@ -656,11 +457,12 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 PB_ReFire("AltHold4")
 	
 	AltHold5:
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 4)
 		TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",20,0,0,0)
 		TNT1 A 0 A_PlaySound("TPortalLoop", CHAN_WEAPON,2,1) 
 		SCC4 A 1 BRIGHT A_JumpIfInventory("FiredPrimary", 1, "CastMorgenstern")
 		TNT1 A 0 BRIGHT A_JumpIfInventory("TossGrenade",1,"InitializeStunwall")
-		TNT1 A 0 A_JumpIfInventory("StartDualWield", 1, "InitializeThunderstorm4")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "InitializeThunderstorm4")
 		TNT1 A 0 A_FireCustomMissile("StormFlareSpawn",25,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 		SCC4 B 1 BRIGHT A_GiveInventory("PowerChargeStorm",1)
@@ -676,7 +478,7 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 PB_ReFire("AltHold5")		
 		
 	Discharge:
-		TNT1 A 0 A_JumpIfInventory("PB_PowerStrength",1,0)
+		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm",10,1)
 		goto Ready
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 100, "CastStorm")
 		TNT1 A 0 A_JumpIfInventory("PowerChargeStorm", 75, "CastDeadlyLightning")
@@ -707,8 +509,9 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 A_SpawnItemEx("LightningWarperA", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER|SXF_NOCHECKPOSITION)
 		TNT1 A 0 A_GiveInventory("LightningImmunity",1)
 		SCBA ABCDE 2  
-		TNT1 A 0 A_Takeinventory("PowerChargeStorm",2) 
+		TNT1 A 0 A_Takeinventory("PowerChargeStorm",200) 
 		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_Takeinventory("PowerChargeStorm",100)
 		SCBA F 5
 		Goto Ready+2
 		
@@ -731,6 +534,7 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 A_PlaySound("MULTIC01", 1) 
 		TNT1 A 0 
 		SCLA AB 2 BRIGHT
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 25)
 		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
 		SCLA C 2 BRIGHT A_FireCustomMissile("LightningMissile4",0,0,0,0)
@@ -745,6 +549,8 @@ ACTOR Stormcast : PB_Weapon
 		TNT1 A 0 A_PlaySound("MULTIC01", 1) 
 		TNT1 A 0 
 		SCLA AB 2 BRIGHT
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 25)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
 		SCLA C 2 BRIGHT A_FireCustomMissile("LightningMissile3",0,0,0,0)
 		SCLA DF 2 BRIGHT A_FireCustomMissile("LightningMissile5",0,0,0,0)
@@ -767,7 +573,7 @@ ACTOR Stormcast : PB_Weapon
 		SCLA AB 2 BRIGHT 
 		TNT1 A 0 A_PlaySound("LIGHTN01", 1) 
 		TNT1 A 0 A_PlaySound("SPELLC01", CHAN_VOICE) 	
-		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 10)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 0 A_PlaySound("LGBOMB", CHAN_WEAPON,2) 
 		SCLA CD 2 BRIGHT A_RailAttack(90,10,0,none,"9F 9F FF", RGF_SILENT|RGF_FULLBRIGHT,25,"LightningPuff",0,0,600,5,0.001,5.0,"StormTrailParticle",-15)
@@ -784,7 +590,7 @@ ACTOR Stormcast : PB_Weapon
 		
 	CastLightning:
 		SCLA AB 2 BRIGHT
-		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 10)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 0 A_PlaySound("LIGHTN01", 1) 
 		TNT1 A 0 A_PlaySound("LIGHTNA1", 6) 
@@ -800,7 +606,7 @@ ACTOR Stormcast : PB_Weapon
 		
 	CastDeadlyLightning:	
 		SCLA AB 2 BRIGHT
-		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 10)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 
 		TNT1 A 0 A_PlaySound("LIGHTN01", 1) 
@@ -949,7 +755,7 @@ ACTOR Stormcast : PB_Weapon
 		
 				
 	InitializeThunderstorm:	
-		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 10 
 		TNT1 A 0 A_SelectWeapon("ArcOfDeath_Fake")
@@ -957,7 +763,7 @@ ACTOR Stormcast : PB_Weapon
 		Goto Ready
 		
 	InitializeThunderstorm2:	
-		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 0 A_GiveInventory("CastingArcOfDeath",1)
 		TNT1 A 0 A_SelectWeapon("ArcOfDeath_Fake")
@@ -965,7 +771,7 @@ ACTOR Stormcast : PB_Weapon
 		Goto Ready
 		
 	InitializeThunderstorm3:	
-		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 0 A_GiveInventory("CastingArcOfDeath",2)
 		TNT1 A 0 A_SelectWeapon("ArcOfDeath_Fake")
@@ -973,7 +779,7 @@ ACTOR Stormcast : PB_Weapon
 		Goto Ready
 		
 	InitializeThunderstorm4:	
-		TNT1 A 0 A_TakeInventory("StartDualWield", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 		TNT1 A 0 A_GiveInventory("CastingArcOfDeath",3)
 		TNT1 A 0 A_SelectWeapon("ArcOfDeath_Fake")
@@ -988,13 +794,65 @@ ACTOR Stormcast : PB_Weapon
 		Goto Ready
 		
 	Salute:
-	    TNT1 A 0 SetPlayerProperty(0,1,0)
+	    	//TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 A_ALertMonsters
 		SALU ABCDEDCDEDCDEDCBA 4
 		TNT1 A 0 A_TakeInventory("Salute1",1)
 		TNT1 A 0 A_TakeInventory("Salute2",1)
-		TNT1 A 0 SetPlayerProperty(0,0,0)
+		//TNT1 A 0 SetPlayerProperty(0,0,0)
 		Goto Ready
+////////	
+	FlashKicking:
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelKicking")
+	   TNT1 A 0 A_ClearOverlays(10,11)
+	   MEQI A 1 A_DoPBWeaponAction
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1 
+	   MEQI A 7
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1
+	   Goto Ready
+
+	FlashAirKicking:
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelAirKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelAirKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelAirKicking")	
+	   TNT1 A 0 A_ClearOverlays(10,11)
+	   MEQI A 1 A_DoPBWeaponAction
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1 
+	   MEQI A 7
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1
+	   MEQI A 1
+	   Goto Ready
+
+	FlashSlideKicking:
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKicking")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKicking")
+	   TNT1 A 0 A_ClearOverlays(10,11)
+	   CONE A 1 A_DoPBWeaponAction
+	   CONE AB 1
+	   CONE B 35
+	   Goto Ready
+
+	FlashSlideKickingStop:
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedBarrel", 1, "FlashBarrelSlideKickingStop")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedFlameBarrel", 1, "FlashBarrelSlideKickingStop")
+	   TNT1 A 0 A_JumpIfInventory ("GrabbedIceBarrel", 1, "FlashBarrelSlideKickingStop")
+	   TNT1 A 0 A_ClearOverlays(10,11)
+	   CONE A 1 A_DoPBWeaponAction
+	   CONE B 5
+	   CONE A 1
+	   Goto Ready
 	}
 }
 
@@ -1062,8 +920,8 @@ ACTOR ArcOfDeath_Fake : MWeapLightning //replaces MWeapLightning
 	
 
     Fire:
-	TNT1 A 0 A_TakeInventory("PowerChargeStorm", 2)
-	TNT1 A 0 A_TakeInventory("PrimaryPistolAmmo", 2)
+	TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
+	TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 	TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 
 	TNT1 A 0 A_PlaySound("LIGHTNA2", 7) 
@@ -1085,8 +943,8 @@ ACTOR ArcOfDeath_Fake : MWeapLightning //replaces MWeapLightning
 	TNT1 A 0 
 	MLNG PQRST 2 BRIGHT	//showing anim with charged ball in left hand going down
 			//AltFire:
-		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 3)
-		TNT1 A 0 A_TakeInventory("PrimaryPistolAmmo", 3)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
+		TNT1 A 0 A_TakeInventory("PowerChargeStorm", 200)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
 
 		TNT1 A 0 A_PlaySound("LIGHTNA2", 7) 
@@ -4276,509 +4134,4 @@ states
 		L2NB B 2 bright
 		stop
 	}
-}
-
-//Radius_Quake (intensity, duration, damrad, tremrad, tid)
-
-actor ShakeYourAssMinor
-{
-  height 8
-  radius 4
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOSECTOR
-  +NOCLIP
-  +CLIENTSIDEONLY
-  states
-  {
-  Spawn:
-  TNT1 A 0
-  TNT1 A 0 Radius_Quake (1, 4, 0, 1, 0)
-  TNT1 A 10
-    Stop
-  }
-}
-
-
-actor ShakeYourAss
-{
-  height 8
-  radius 4
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOSECTOR
-  +NOCLIP
-  +CLIENTSIDEONLY
-  states
-  {
-  Spawn:
-  TNT1 A 0
-  TNT1 A 0 Radius_Quake (2, 6, 0, 1, 0)
-  TNT1 A 10
-    Stop
-  }
-}
-
-
-actor ShakeYourAssDouble
-{
-  height 8
-  radius 4
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOSECTOR
-  +NOCLIP
-  +CLIENTSIDEONLY
-  states
-  {
-  Spawn:
-  TNT1 A 0
-  TNT1 A 0 Radius_Quake (4, 6, 0, 1, 0)
-  TNT1 A 10
-    Stop
-  }
-}
-
-
-actor ShakeYourAssQuad
-{
-  height 8
-  radius 4
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOSECTOR
-  +NOCLIP
-  +CLIENTSIDEONLY
-  states
-  {
-  Spawn:
-  TNT1 A 0
-  TNT1 A 0 Radius_Quake (8, 6, 0, 1, 0)
-  TNT1 A 10
-    Stop
-  }
-}
-
-
-actor ExplosionQuake
-{
-  height 8
-  radius 4
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOSECTOR
-  +NOCLIP
-  +CLIENTSIDEONLY
-  states
-  {
-  Spawn:
-  TNT1 A 0
-  TNT1 A 0 Radius_Quake (1, 12, 0, 7, 0)
-  TNT1 A 10
-    Stop
-  }
-}
-
-// PB Fatality Actors
-ACTOR PoorLostSoul
-{
-	Radius 6
-	Height 8
-	Speed 22
-	Fastspeed 26
-	Damage 15
-	Projectile 
-	Scale 1.0
-	+FORCEXYBILLBOARD
-	DamageType Fire
-ExplosionRadius 70
-ExplosionDamage 50
-	Alpha 1
-	SeeSound "skull/melee"
-	DeathSound "fatso/shotx"
-	States
-	{
-	Spawn:
-		TNT1 A 0 A_CustomMissile ("FlameTrails", 24, 0, 0, 0, 0)
-		LSOL B 2 BRIGHT A_SpawnItem("RedFlare",0,0)
-		Loop
-	Death:
-	
-		LSOL F 2 BRIGHT
-		LSOL G 2 BRIGHT
-		TNT1 A 0 A_Explode
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-	TNT1 AAA 0 A_CustomMissile ("LSpart1", 42, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_CustomMissile ("LSpart3", 42, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAA 0 A_CustomMissile ("LSpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-		LSOL HI 6
-		Stop
-		Stop
-	}
-}
-
-ACTOR PoorPhantasm
-{
-	Radius 6
-	Height 8
-	Speed 28
-	Fastspeed 32
-	Damage 20
-	Projectile 
-	Scale 1.0
-	+FORCEXYBILLBOARD
-	DamageType GreenFire
-ExplosionRadius 80
-ExplosionDamage 60
-	Alpha 1
-	SeeSound "skull/melee"
-	DeathSound "LSOD"
-	States
-	{
-	Spawn:
-		TNT1 A 0 A_CustomMissile ("GreenFlameTrails", 24, 0, 0, 0, 0)
-		STLK B 1 BRIGHT A_SpawnItem("GreenFlare",0,0)
-		Loop
-	Death:
-
-		STLK F 2 BRIGHT
-		STLK G 2 BRIGHT
-		TNT1 AAA 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 A 0 A_SpawnItemEx ("BFGAltExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0)
-		TNT1 A 0 A_Explode
-		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("GreenFlameTrails", 6, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 0)
-		TNT1 AAA 0 A_CustomMissile ("Phantasmpart1", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("Phantasmpart3", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("Phantasmpart2", 42, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0
-		LSOL HI 6
-		Stop
-	}
-}
-
-ACTOR ExecutionAttackKick: KickAttack
-{
-	Damage 22
-	speed 100
-	DamageType Kick
-	Radius 2
-	Height 2
-	-ACTIVATEIMPACT
-	-ACTIVATEPCROSS
-	-ACTIVATEMCROSS
-	-CANUSEWALLS
-	States
-	{
-	Death:
-			PUFF A 0 A_PlaySound("player/cyborg/fist")
-			TNT1 A 0 A_Explode(10, 10, 0)
-			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 10
-			Stop
-		}
-}
-
-ACTOR ExecutionAttackMelee: ExecutionAttackKick
-{
-	DamageType Melee
-}
-
-ACTOR ExecutionAttackFatality: ExecutionAttackKick
-{
-	DamageType Fatality
-}
-
-ACTOR MeleeStrike1: KickAttack
-{
-DamageType Melee
-Damage (random(13,18))
-Speed 22
-States
-{
-	Spawn:
-		TNT1 A 1 BRIGHT
-		TNT1 A 1 BRIGHT
-		Stop
-	Death:
-		TNT1 A 0
-		PUFF A 0 A_PlaySound("player/cyborg/fist")
-		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 10
-		Stop
-}
-}
-
-ACTOR MeleeStrikeSuperHook: MeleeStrike1
-{
-Damage 80
-DamageType ExtremePunches
-+FORCEPAIN
-}
-
-actor PLOFT
-{
-	+NOTARGET
-Radius 10
-Height 10
-DamageType MonsterKnocked
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-	+DEHEXPLOSION
-	+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(25,150, 0)
-Stop
- }
-}
-
-actor PLOFT2
-{
-	+NOTARGET
-Radius 10
-Height 10
-DamageType Kick
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		// TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT3
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT4
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-DamageType Kick
-States
-{
-Spawn:
-TNT1 A 0
-		TNT1 A 0 A_Explode(20,30, 0)
-Stop
- }
-}
-
-actor PLOFT5
-{
-	+NOTARGET
-Radius 10
-Height 10
-+NOGRAVITY
-+NOTELEPORT
-+NODAMAGETHRUST
-+THRUGHOST
-+NORADIUSDMG
-+NOEXTREMEDEATH
-PROJECTILE
-+DEHEXPLOSION
-+ACTIVATEMCROSS
-DamageType Kick
-States
-{
-Spawn:
-TNT1 A 2
-		TNT1 A 0 A_Explode(10,30, 0)
-Stop
- }
-}
-
-// PB Elec Actors
-Actor LightningGunProjectile: FastProjectile
-{
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
-	+DONTSPLASH
-	-BLOODSPLATTER
-	+FORCERADIUSDMG
-	damage 0
-	radius 1
-	height 1
-	speed 500
-  Mass 9999999
-	renderstyle ADD
-	//alpha 0.9
-	scale .15
-	decal "none"
-	damagetype "Plasma"
-	missiletype "ElectroBlastTrail"
-	states
-		{
-		Spawn:
-			TNT1 A 1 BRIGHT
-			Loop
-			
-		Death:
-			TNT1 A 0 BRIGHT A_SpawnItem("LightningGunPuff",0)
-			TNT1 A 0 BRIGHT A_SpawnItem("BlueFlare",0)
-			TNT1 AA 0 A_SpawnItemEx("CryoRifleTrailSparksSmall", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, 128, 0)
-			TNT1 A 0 A_explode(random(12,15), 80)
-			TNT1 AAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 1 Light("LightningImpactLight")
-			Stop
-		}
-	}
-
-/*Actor LightningGunPuff
-{
-  -COUNTKILL
-  -SHOOTABLE
-  +CLIENTSIDEONLY
-  +BLOODLESSIMPACT 
-  +FORCEXYBILLBOARD
-  +THRUACTORS
-  +NOGRAVITY
-  +NODAMAGETHRUST
-  +DONTTHRUST
-  +DONTSPLASH
-  -SHOOTABLE
-  +RANDOMIZE
-  Mass 9999999
-  RenderStyle Add
-  Speed 0
-  Radius 1
-  Height 1
-	damagetype "Plasma"
-	Scale 1.12
-	States
-	{
-		Spawn:
-			TNT1 A 0
-			TNT1 A 0 A_CheckFloor("FloorCheck")
-			TNT1 A 1
-			Die:
-			DB08 ABCDEFGHIJKLM 1 bright A_SetScale(ScaleX+frandom(0.04,0.08), ScaleY+frandom(0.04,0.08))
-			DB08 NOPQRSTUVWXYZABCDEFGHIJKLM 1 bright
-				{
-					A_SetScale(ScaleX-0.08, ScaleY-0.08);
-					A_FadeOut(0.08);
-				}
-			Stop
-			
-		FloorCheck:
-			
-			TNT1 A 2			
-			TNT1 A 1
-			Goto Die	
-			
-		ConductiveDeath:
-			TNT1 A 0 BRIGHT A_SpawnItem("LightningGunPuff_Big",0)
-			TNT1 A 0 BRIGHT A_SpawnItem("ElectroBombFX",0)
-			TNT1 A 0 BRIGHT A_SpawnItem("BlueFlare",0)
-			TNT1 A 0 A_explode(random(30,35), 240,0,0,200)
-			TNT1 AA 0 A_CustomMissile("ElectroBlastTrail3",6,0,random(0,359),CMF_AIMDIRECTION|CMF_TRACKOWNER,random(30,270))
-			TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-			TNT1 A 1 Light("LightningImpactLight")
-			Stop
-	}
-}*/
-
-Actor LightningGunPuff_Big
-{
-  -COUNTKILL
-  -SHOOTABLE
-  //+CLIENTSIDEONLY
-  +BLOODLESSIMPACT 
-  +FORCEXYBILLBOARD
-  +THRUACTORS
-  +NOGRAVITY
-  +NODAMAGETHRUST
-  +DONTSPLASH
-  +RANDOMIZE
-		RenderStyle Add
-		Scale 2.50
-		States 
-		{
-		
-			Spawn:
-				DB08 ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ 1 bright 
-				{
-					A_SetScale(ScaleX-0.1, ScaleY-0.1);
-					A_FadeOut(0.03);
-				}
-				Stop
-		
-		}
-}
-
-Actor LightningGunPuff_Bigger : LightningGunPuff_Big
-{Scale 3.25}
-
-Actor ElectroBombFX
-{
-	Speed 0
-	Damage 0
-	PROJECTILE
-	RENDERSTYLE ADD
-	Damagetype plasma
-	Scale 0.35
-	+THRUGHOST
-	+THRUACTORS
-	+FORCEXYBILLBOARD
-	+NoGravity
-	+DONTSPLASH
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("LGBOMB")
-		STFL ABCDEFGHIJKLMNOP 1 Bright A_SetScale(ScaleX+0.05,ScaleY+0.05)
-		STFL ABCDE 1 BRIGHT A_FadeOut(0.2)
-		Stop
-		}
 }

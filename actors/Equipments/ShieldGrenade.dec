@@ -17,7 +17,8 @@ ACTOR ShieldGrenade: CustomInventory {
 		Pickup:
 			TNT1 A 0 A_GiveInventory("ShieldGrenadeAmmo",1) 
 			TNT1 A 20
-			Stop	}}
+			Stop	}
+		}
 			
 ACTOR ShieldGrenadeAmmo : Ammo
 {

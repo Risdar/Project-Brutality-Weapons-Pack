@@ -1,7 +1,7 @@
 Actor DemonTechMinigunType : Inventory { Inventory.MaxAmount 1 }
 
 
-ACTOR DemonTechMinigun : PB_Weapon
+ACTOR DemonTechMinigun : PBWP_Weapon
 {
    Tag "Demon-Tech Minigun"
    Weapon.SelectionOrder 10
@@ -99,7 +99,7 @@ ACTOR DemonTechMinigun : PB_Weapon
 			A_FireCustomMissile("DTechMGProjectile",Random(1,-1),0,0,0,0,Random(1,-1));
 			A_FireCustomMissile("DTechMGProjectile",Random(1,-1),0,0,0,0,Random(1,-1));}
 	  DTM0 C 2 
-      TNT1 A 0 A_ReFire
+      TNT1 A 0 PB_ReFire
 	  TNT1 A 0 A_PlaySound("weapons/expmgunspinstop",5)
 	  DTM1 EFGHI 3
 	  DTM1 JKLA 3
@@ -123,7 +123,7 @@ ACTOR DemonTechMinigun : PB_Weapon
 	  TNT1 AA 0 A_FireCustomMissile("ShrinkBeam",0,1,0,0)
 	  DTM0 B 6 Bright A_FireCustomMissile("ShrinkBeam",0,1,0,0,0,0)
 	  DTM0 C 6	  
-      TNT1 A 0 A_ReFire("Hold2")
+      TNT1 A 0 PB_ReFire("Hold2")
 	  TNT1 A 0 A_PlaySound("Weapons/BFGG/Down",5)
 	  DTM2 EFGHI 3
 	  DTM2 JKLA 3
@@ -154,7 +154,7 @@ ACTOR DemonTechMinigun : PB_Weapon
 	  DTM2 A 4 Offset(0,36)
 	  DTM2 A 4 Offset(0,32)
       DTM2 A 4 A_DoPBWeaponAction
-	  DTM2 A 3 A_Refire
+	  DTM2 A 3 PB_ReFire
       Goto Ready3
     AltFire2:
 	  DTM2 A 0
@@ -178,7 +178,7 @@ ACTOR DemonTechMinigun : PB_Weapon
 	  DTM1 A 4 Offset(0,36)
 	  DTM1 A 4 Offset(0,32)
       DTM1 A 4 A_DoPBWeaponAction
-	  DTM1 A 3 A_Refire
+	  DTM1 A 3 PB_ReFire
       Goto Ready3
    Flash:
       TNT1 A 5 A_Light1

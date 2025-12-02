@@ -1,3 +1,170 @@
+//Shopkeeper//
+$alias SlotMachine/WinRegular skeleton/sight
+$alias SlotMachine/WinAss Daina/Default/Buying
+SlotMachine/WinJackpot SLOTJPT1
+
+SlotMachine/Rolling SLOTSPIN
+SlotMachine/Stop SLOTSTOP
+
+Merchant/BuyFailure BUYFAIL
+Merchant/BuySuccess BUYSUCC
+
+$random weapons/pocket	{weapons/pocket1 weapons/pocket2}
+weapons/pocket1 PPOCKET1
+weapons/pocket2 PPOCKET2
+
+ResidentEvil/Buying1 "Sounds/ResidentEvil/Start1.ogg"
+ResidentEvil/Buying2 "Sounds/ResidentEvil/Start2.ogg"
+ResidentEvil/Buying3 "Sounds/ResidentEvil/Start3.ogg"
+ResidentEvil/Buying4 "Sounds/ResidentEvil/Start4.ogg"
+ResidentEvil/Buying5 "Sounds/ResidentEvil/Start5.ogg"
+$random ResidentEvil/Buying
+{
+	ResidentEvil/Buying1
+	ResidentEvil/Buying2
+	ResidentEvil/Buying3
+	ResidentEvil/Buying4
+	ResidentEvil/Buying5
+}
+
+ResidentEvil/GoAway1 "Sounds/ResidentEvil/End1.ogg"
+ResidentEvil/GoAway2 "Sounds/ResidentEvil/End2.ogg"
+ResidentEvil/GoAway3 "Sounds/ResidentEvil/End3.ogg"
+ResidentEvil/GoAway4 "Sounds/ResidentEvil/End4.ogg"
+$random ResidentEvil/GoAway
+{
+	ResidentEvil/GoAway1
+	ResidentEvil/GoAway2
+	ResidentEvil/GoAway3
+	ResidentEvil/GoAway4
+}
+WanderingTrader/Buying1 "Sounds/WanderingTrader/Start1.ogg"
+WanderingTrader/Buying2 "Sounds/WanderingTrader/Start2.ogg"
+WanderingTrader/Buying3 "Sounds/WanderingTrader/Start3.ogg"
+WanderingTrader/Buying4 "Sounds/WanderingTrader/Start4.ogg"
+WanderingTrader/Buying5 "Sounds/WanderingTrader/Start5.ogg"
+$random WanderingTrader/Buying
+{
+	WanderingTrader/Buying1
+	WanderingTrader/Buying2
+	WanderingTrader/Buying3
+	WanderingTrader/Buying4
+	WanderingTrader/Buying5
+}
+
+WanderingTrader/GoAway1 "Sounds/WanderingTrader/End1.ogg"
+WanderingTrader/GoAway2 "Sounds/WanderingTrader/End2.ogg"
+WanderingTrader/GoAway3 "Sounds/WanderingTrader/End3.ogg"
+$random WanderingTrader/GoAway
+{
+	WanderingTrader/GoAway1
+	WanderingTrader/GoAway2
+	WanderingTrader/GoAway3
+}
+
+//CyberdemonBoss//
+cyber/charge	cybchg
+cyber/melee	cybswg
+cyber/impact	cybimp
+
+//EMG Doomblaster//
+$random D2016Blaster/Fire {PLMF1 PLMF1 PLMF1}
+PLMF1 PLMF1
+D2016Blaster/Select		D4BREDY
+D2016Blaster/Charge		D4BCHR2
+D2016Blaster/Charge/Loop	D4BCHLP
+D2016Blaster/Charge/Click	D4BREDY
+$random D2016Blaster/Charge/Fire { PLMCF1 }
+PLMCF1 PLMCF1
+
+//Sentinel Hammer//
+$random hamexpl { 
+hamexpla
+hamexplb
+hamexplc
+hamexpld 
+hamexple
+}
+hamexpla hamexpla
+hamexplb hamexplb
+hamexplc hamexplc
+hamexpld hamexpld
+hamexple hamexple
+HSLM HSLM
+HMIDLE HMIDLE
+HMSWING HMSWING
+HMUPGR HMUPGR
+HMSLCT HMSLCT
+
+//AutoCannon Weapon Sounds//
+ACNIN ACNIN
+Weapons/AutoCannon/BOLTCHARGE ACBOLT
+Weapons/AMrifle/magout MHC_MAGO
+Weapons/AutoCannon/BOXIN	ACNBXIN
+Weapons/AutoCannon/BOXOUT	ACNOUT
+Weapons/AMrifle/magout MHC_MAGO
+Weapons/AMrifle/magin MHC_MAGI
+Weapons/AMrifle/bolt MHC_BOLT
+Weapons/AMrifle/lock MHC_LOCK
+
+//UZI SOUNDS//
+PISFIRE PISFIRE
+RELO1 RELO1
+RELO2 RELO2
+UZICLIP UZICLIP
+
+//44PDW Weapon Sounds//
+44MAGFIR 44MAGFIR
+RELO1 RELO1
+RELO2 RELO2
+
+//HexaLionShotgunSounds//
+HEXAFIR1 HEXAFIR1
+HEXAFIR2 HEXAFIR2
+HEXAFIR3 HEXAFIR3
+HEXAFIR4 HEXAFIR4
+HEXAFIR5 HEXAFIR5
+HEXAFIR6 HEXAFIR6
+HEXAFIR7 HEXAFIR7
+HEXAOPEN HEXAOPEN
+HEXALOAD HEXALOAD
+HEXACLOS HEXACLOS
+
+//RotatingDoubleBarrel Weapon Sounds//
+weapons/SpinSpin/MINISHOTSPI    "sounds/combat/weapons/slot - 3/RotatingShotgun/MINISHOTSPI"
+weapons/SpinSpin/MINISHOTSPI    "sounds/combat/weapons/slot - 3/RotatingShotgun/MINISHOTSTO"
+weapons/SpinSpin/MINISHOTSPI    "sounds/combat/weapons/slot - 3/RotatingShotgun/MINISHOTSTA"
+
+//JohnnyDeagle
+glot glot
+
+//LEGACYUNMAKER//
+ZTMSWTC ZTMSWTC
+ZTMFLY1 ZTMFLY1
+ZTMUP ZTMUP
+ZTMCHG2 ZTMCHG2
+$random ztmbal { ZTMBAL1 ZTMBAL2 }
+ZTMBAL1 ZTMBAL1
+ZTMBAL2 ZTMBAL2
+$rolloff ztmbal 900 1300
+$random ztmalt { ZTMALT1 ZTMALT2 ZTMALT3 ZTMALT4 ZTMALT5 ZTMALT6 }
+ZTMSWT2 ZTMSWT2
+ZTMALT1 ZTMALT1
+ZTMALT2 ZTMALT2
+ZTMALT3 ZTMALT3
+ZTMALT4 ZTMALT4
+ZTMALT5 ZTMALT5
+ZTMALT6 ZTMALT6
+$rolloff ztmalt 900 1300
+ZTMRLS ZTMRLS
+ZTMPCK ZTMPCK
+ZTMSTA ZTMSTA
+ZTMLOP ZTMLOP
+ZTMSTO ZTMSTO
+ZTMIDL ZTMIDL
+ZTMCHG ZTMCHG
+SZZLL SZZLL
+
 //LoR Calamity Blade
 Weapon/HeatwaveUp DSCALMUP
 Weapon/HeatwaveCharge DSHETCHG
@@ -2688,6 +2855,7 @@ ZAP1 ZAP1
 ZAP2 ZAP2
 ZAP3 ZAP3
 ZAP4 ZAP4
+STATIC STATIC
 
 //THUNDERCROSSBOW
 PLSM9 PLSM9

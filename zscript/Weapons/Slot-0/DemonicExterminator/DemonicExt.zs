@@ -3,7 +3,7 @@ class UMDE_Select_IncinerationMode : inventory{default{inventory.maxamount 1;}}
 class UMDE_Select_LightningMode : inventory{default{inventory.maxamount 1;}}
 Class RespectDemonExt : Inventory{Default{Inventory.MaxAmount 1;}}
 Class SoulCharge: Ammo{Default{Inventory.MaxAmount 333;Ammo.BackpackMaxAmount 666;}}
-Class PB_DemonExt : PB_WeaponBase
+Class PB_DemonExt : PBWP_Weapon
 {
 	default
 	{
@@ -66,11 +66,11 @@ Class PB_DemonExt : PB_WeaponBase
 			TNT1 A 0 A_stopsound(chan_unmkidle);
 			TNT1 A 0 A_JumpIf(invoker.ExterminatorMode == 2,"DeselectSoul");
 			UNMD ABCDE 1; 
-			TNT1 A 0 A_Lower(120);
+			TNT1 A 0 A_Lower;
 			wait;
 		DeselectSoul:
 			UNMD FGHIJ 1;
-			TNT1 A 0 A_Lower(120);
+			TNT1 A 0 A_Lower;
 			wait;
 		
 		Ready:

@@ -39,7 +39,7 @@ Actor RemintongRepeater : PB_UpgradeItem
 	}
 }
 
-ACTOR BlackRemintong : PB_Weapon
+ACTOR BlackRemintong : PBWP_Weapon
 {
 	Game Doom
 	SpawnID 27
@@ -187,7 +187,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireNow")
 		Goto Pump1
 	RefireNow:
-		TNT1 A 0 A_Refire("FireII")
+		TNT1 A 0 PB_ReFire("FireII")
 		Goto Pump1
 		
 	FireII:
@@ -213,7 +213,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3TF C 1 
 		J3TF DE 1
 		J3TG A 1
-		TNT1 A 0 A_Refire("FireIII")
+		TNT1 A 0 PB_ReFire("FireIII")
 		Goto Pump1II
 		
 	FireIII:
@@ -264,7 +264,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireTheSlug")
 		Goto Pump1
 	RefireTheSlug:
-		TNT1 A 0 A_Refire("SlugFireII")
+		TNT1 A 0 PB_ReFire("SlugFireII")
 		Goto Pump1
 		
 	SlugFireII:
@@ -290,7 +290,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3TF C 1 
 		J3TF DE 1
 		J3TG A 1
-		TNT1 A 0 A_Refire("SlugFireIII")
+		TNT1 A 0 PB_ReFire("SlugFireIII")
 		Goto Pump1II
 		
 	SlugFireIII:
@@ -337,7 +337,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireTheBreath")
 		Goto Pump1
 	RefireTheBreath:
-		TNT1 A 0 A_Refire("BreathFireII")
+		TNT1 A 0 PB_ReFire("BreathFireII")
 		Goto Pump1
 		
 	BreathFireII:
@@ -359,7 +359,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3TF C 1 
 		J3TF DE 1
 		J3TG A 1
-		TNT1 A 0 A_Refire("BreathFireIII")
+		TNT1 A 0 PB_ReFire("BreathFireIII")
 		Goto Pump1II
 		
 	BreathFireIII:
@@ -551,7 +551,7 @@ ACTOR BlackRemintong : PB_Weapon
         J3L5 C 1 Offset(9,40) //
         J3L5 D 1 Offset(4,40) //
         J3L5 A 1 Offset(0,32) //
-        J3TG A 0 A_Refire
+        J3TG A 0 PB_ReFire
 		Goto Ready3
 		
 	Fire2:
@@ -576,7 +576,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireNow2")
 		Goto Pump3
 	RefireNow2:
-		TNT1 A 0 A_Refire("Fire2II")
+		TNT1 A 0 PB_ReFire("Fire2II")
 		Goto Pump3
 		
 	Fire2II:
@@ -596,7 +596,7 @@ ACTOR BlackRemintong : PB_Weapon
                 PB_WeaponRecoil(-0.50,-0.50);
                 }
 		J3T9 GHIA 1
-		TNT1 A 0 A_Refire("Fire2III")
+		TNT1 A 0 PB_ReFire("Fire2III")
 		Goto Pump3II
 		
 	Fire2III:
@@ -636,7 +636,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireTheSlug2")
 		Goto Pump3
 	RefireTheSlug2:
-		TNT1 A 0 A_Refire("SlugFire2II")
+		TNT1 A 0 PB_ReFire("SlugFire2II")
 		Goto Pump3
 		
 	SlugFire2II:
@@ -656,7 +656,7 @@ ACTOR BlackRemintong : PB_Weapon
                 PB_WeaponRecoil(-0.50,-0.50);
                 }
 		J3T9 GHIA 1
-		TNT1 A 0 A_Refire("SlugFire2III")
+		TNT1 A 0 PB_ReFire("SlugFire2III")
 		Goto Pump3II
 		
 	SlugFire2III:
@@ -692,7 +692,7 @@ ACTOR BlackRemintong : PB_Weapon
 		TNT1 A 0 A_JumpIfInventory("RepeaterShot",1,"RefireTheBreath2")
 		Goto Pump3
 	RefireTheBreath2:
-		TNT1 A 0 A_Refire("BreathFire2II")
+		TNT1 A 0 PB_ReFire("BreathFire2II")
 		Goto Pump3
 		
 	BreathFire2II:
@@ -708,7 +708,7 @@ ACTOR BlackRemintong : PB_Weapon
                 PB_WeaponRecoil(-0.50,-0.50);
                 }
 		J3T9 GHIA 1
-		TNT1 A 0 A_Refire("BreathFire2III")
+		TNT1 A 0 PB_ReFire("BreathFire2III")
 		Goto Pump3II
 		
 	BreathFire2III:
@@ -747,7 +747,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3T9 KJM 1
 		J3T9 A 1 A_JumpIfInventory("RemAmmo",1, 1)
 		Goto Reload
-		J3TG A 0 A_REfire
+		J3TG A 0 PB_ReFire
 		Goto Ready2
 		
 	Pump3II:
@@ -788,7 +788,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3T9 KJM 1
 		J3T9 A 1 A_JumpIfInventory("RemAmmo",1, 1)
 		Goto Reload
-		J3TG A 0 A_REfire
+		J3TG A 0 PB_ReFire
 		Goto Ready2
 		
 	Pump3III:
@@ -846,7 +846,7 @@ ACTOR BlackRemintong : PB_Weapon
 		J3T9 KJM 1
 		J3T9 A 1 A_JumpIfInventory("RemAmmo",1, 1)
 		Goto Reload
-		J3TG A 0 A_REfire
+		J3TG A 0 PB_ReFire
 		Goto Ready2
 	
 	PumpNoReload:	
