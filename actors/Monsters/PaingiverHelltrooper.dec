@@ -8,6 +8,10 @@ Actor HellTrooperPaingiver : PB_DemonTechZombie //Inherits from the Demon Tech T
 	FastSpeed 14
 	SpawnID 1290
 	PainChance 150
+	//PainChance
+	PainChance "BloodPunch", 255
+	DropItem "Crucible", 5
+	WoundHealth 40
 	PainChance "Avoid", 100
 	PainChance "Kick", 200
 	PainChance "ExtremePunches", 256
