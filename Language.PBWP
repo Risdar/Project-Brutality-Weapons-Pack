@@ -4,7 +4,7 @@
 PBWP_WeaponBehaviour_OPTIONS = "\ch⍟\c- Weapon Behaviour Settings";
 PBWP_WeaponSpawns_OPTIONS = "\cg☠\c- Weapon Spawn Settings";
 PBWP_MonsterDrop_OPTIONS = "\cv⛧\c- Monster Drop Settings";
-PBWP_COMBAT_POINTS_SHOP = "\cf★\c- Combat Points Weapons Shop";
+PBWP_MERCHANT_SHOPKEEPER = "\cf★\c- Merchant Shopkeeper";
 PBWP_QUICKSWITCHER = "\ct⦻\c- Random Weapon Quick-Switcher";
 PBWP_BEHOLD = "\cd⛒\c- BEHOLD! Settings";
 PBWP_DOORBUSTER = "\cy⑄\c- DOORBUSTER Settings";

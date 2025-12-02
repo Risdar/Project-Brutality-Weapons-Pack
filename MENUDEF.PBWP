@@ -68,7 +68,7 @@ OptionMenu "ttwcoptions"
     StaticText "-------Extras-------"
 	StaticText ""
 	StaticText ""
-	SubMenu "$PBWP_COMBAT_POINTS_SHOP", "AmmunitionShopSystem"
+	SubMenu "$PBWP_MERCHANT_SHOPKEEPER", "MerchantMenu"
 	StaticText ""
 	Submenu "$PBWP_QUICKSWITCHER", "SwitchItUpOptions"
 	StaticText ""
@@ -238,208 +238,68 @@ OptionMenu "WeaponPackSpawnSettings"
 	Option "Spawn Phase Eradicator", "PBSpawnPhaseEradicatorBFG", "OnOff"
 }
 
-
-OptionMenu "AmmunitionShopSystem"
+////////
+OptionMenu "MerchantMenu"
 {
-	Title "Project Brutality Combat Points Weapons Shop"
-	StaticText "---------- Combat Points Weapons Shop ----------", 1
-	StaticText " "
-	Command "Buy 20 Shells (50 Points)",		"PukeName BuyShells"
-	
-	Command "Buy 100 Rifle Ammo (50 Points)",		"PukeName BuyRFLClip"
-
-	Command "Buy 100 Plasma Ammo (75 Points)",		"PukeName BuyCell"
-
-	Command "Buy 12 Rockets (80 Points)",		"PukeName BuyRocket"
-
-	Command "Buy 100 Pistol Bullets (50 Points)",		"PukeName BuyPistolClip"
-
-	Command "Buy SoulSphere (500 Points)",		"PukeName BuySoulSphere"
-
-	Command "Buy Heavy Armor (500 Points)",		"PukeName BuyBlueArmor"
-
-	Command "Buy MegaSphere (500 Points)",		"PukeName BuySoulArmor"
-
-	Command "Buy Berserker (500 Points)",		"PukeName BuyBerserk"
-
-	Command "Buy Random Weapon Upgrade (1000 Points)",		"PukeName BuyRanUpgrade"
-
-	Command "Buy Speed Powerup (500 Points)",		"PukeName BuySpeedPower"
-
-	Command "Buy Quad-Damage (1000 Points)",		"PukeName BuyQuad"
-	StaticText " "
-			
-
-	StaticText "------------ MELEE WEAPONS ------------", 1
-
-	Command "Buy Beam Katana (500 Points)",		"PukeName BuyBeamKatana"
-
-	Command "Buy Battle Axe (500 Points)",		"PukeName BuyBattleAxe"
-
-	Command "Buy Sentinel Hammer (500 Points)",		"PukeName BuySentinelHammer"
-	StaticText " "
-	
-	StaticText "------------ PISTOLS & SMGs ------------", 1
-
-	Command "Buy 44PDW (500 Points)",		"PukeName Buy44PDW"
-
-	Command "Buy Hell Pistoler (500 Points)",		"PukeName BuyHellPistoler"
-
-	Command "Buy Silverhands Deagle (500 Points)",		"PukeName BuySilverhandsDeagle"
-
-	Command "Buy W_SMG (500 Points)",		"PukeName BuyW_SMG"
-
-	Command "Buy P_SMG (700 Points)",		"PukeName BuyP_SMG"
-
-	Command "Buy UZI SMG (500 Points)",		"PukeName BuyUZISMG"
-	StaticText " "
-	
-	StaticText "------------ SHOTGUNS ------------", 1
-
-	Command "Buy HASG (500 Points)",		"PukeName BuyHASG"
-
-	Command "Buy HexaLion Shotgun (500 Points)",		"PukeName BuyHexaLionShotgun"
-
-	Command "Buy SSG (500 Points)",		"PukeName BuySSG"
-
-	Command "Buy Rotational SG (500 Points)",		"PukeName BuyRotationalSG"
-
-	Command "Buy Cryo Shotgun (500 Points)",		"PukeName BuyCryoShotgun"
-
-	Command "Buy Doom 2016 Shotgun (500 Points)",		"PukeName BuyDoom2016Shotgun"
-
-	Command "Buy Demon Tech Shotgun (500 Points)",		"PukeName BuyDemonTechShotgun"
-
-	Command "Buy M1887 (500 Points)",		"PukeName BuyM1887"
-
-	Command "Buy Rotating Double Barrel (500 Points)",		"PukeName BuyRotatingDoubleBarrel"
-	StaticText " "
-	
-	StaticText "------------ RIFLES ------------", 1
-
-	Command "Buy AK-47 (500 Points)",		"PukeName BuyAK47"
-
-	Command "Buy Heavy Sniper Rifle (500 Points)",		"PukeName BuyHeavySniperRifle"
-
-	Command "Buy Magnum Sniper Rifle (500 Points)",		"PukeName BuyMagnumSniperRifle"
-
-	Command "Buy Bolt Rifle (500 Points)",		"PukeName BuyBoltRifle"
-
-	Command "Buy M41A (500 Points)",		"PukeName BuyM41A"
-
-	Command "Buy Heavy Assault Rifle (500 Points)",		"PukeName BuyHeavyAssaultRifle"
-
-	Command "Buy D4 Machinegun (500 Points)",		"PukeName BuyD4Machinegun"
-
-	Command "Buy Dark Fate (500 Points)",		"PukeName BuyDarkFate"
-	StaticText " "
-	
-	StaticText "------------ HEAVY WEAPONS ------------", 1
-
-	Command "Buy IN MiniGun (500 Points)",		"PukeName BuyINMiniGun"
-
-	Command "Buy IN NailGun (500 Points)",		"PukeName BuyINNailGun"
-
-	Command "Buy OLD HMG (500 Points)",		"PukeName BuyOLDHMG"
-
-	Command "Buy Super Nailgun (500 Points)",		"PukeName BuySuperNailgun"
-
-	Command "Buy Auto Cannon (500 Points)",		"PukeName BuyAutoCannon"
-
-	Command "Buy Super Grenade Launcher (500 Points)",		"PukeName BuySuperGrenadeLauncher"
-
-	Command "Buy Excavator (500 Points)",		"PukeName BuyExcavator"
-
-	Command "Buy Cyberdemons Missile Launcher (500 Points)",		"PukeName BuyCyberdemonsMissileLauncher"
-
-	Command "Buy Mastermind Chaingun (500 Points)",		"PukeName BuyMastermindChaingun"
-
-	Command "Buy Paingiver (500 Points)",		"PukeName BuyPaingiver"
-
-	Command "Buy D4 Rocket Launcher (500 Points)",		"PukeName BuyD4RocketLauncher"
-	StaticText " "
-	
-	StaticText "------------ ENERGY WEAPONS ------------", 1
-
-	Command "Buy Power Overwhelming (500 Points)",		"PukeName BuyPowerOverwhelming"
-
-	Command "Buy Phase Eradicator BFG (500 Points)",		"PukeName BuyPhaseEradicatorBFG"
-
-	Command "Buy Plasma Rifle Assault (500 Points)",		"PukeName BuyPlasmaRifleAssault"
-
-	Command "Buy Ion Heavy (500 Points)",		"PukeName BuyIonHeavy"
-
-	Command "Buy Extinction Ray (500 Points)",		"PukeName BuyExtinctionRay"
-
-	Command "Buy Bio Acid Launcher (500 Points)",		"PukeName BuyBioAcidLauncher"
-
-	Command "Buy Thunder Carrier TI (500 Points)",		"PukeName BuyThunderCarrierTI"
-
-	Command "Buy Lightning Gun (500 Points)",		"PukeName BuyLightningGun"
-
-	Command "Buy Gauss Cannon (500 Points)",		"PukeName BuyGaussCannon"
-
-	Command "Buy D4 Plasma Gun (500 Points)",		"PukeName BuyD4PlasmaGun"
-
-	Command "Buy D4 Vortex Rifle (500 Points)",		"PukeName BuyD4VortexRifle"
-
-	Command "Buy Tech Blaster (500 Points)",		"PukeName BuyTechBlaster"
-
-	Command "Buy Thunder Crossbow (500 Points)",		"PukeName BuyThunderCrossbow"
-
-	Command "Buy Unmaker64 (500 Points)",		"PukeName BuyUnmaker64"
-
-	Command "Buy Ballistagun (500 Points)",		"PukeName BuyBallistagun"
-
-	Command "Buy LoR Calamity Blade (500 Points)",		"PukeName BuyLoRCalamityBlade"
-
-	Command "Buy Demon Tech Minigun (500 Points)",		"PukeName BuyDemonTechMinigun"
-
-	Command "Buy Legacy Unmaker (500 Points)",		"PukeName BuyLegacyUnmaker"
-
-	Command "Buy Stormcast (500 Points)",		"PukeName BuyStormcast"
-
-	Command "Buy Mancubus Flame Cannon (500 Points)",		"PukeName BuyMancubusFlameCannon"
-	StaticText " "
-	
-	StaticText "------------ SPECIAL WEAPONS ------------", 1
-
-	Command "Buy Razorjack (500 Points)",		"PukeName BuyRazorjack"
-
-	Command "Buy Doom Blaster (500 Points)",		"PukeName BuyDoomBlaster"
-
-	Command "Buy Dragon Slayer (500 Points)",		"PukeName BuyDragonSlayer"
-
-	Command "Buy Duke Nukem Ripper (500 Points)",		"PukeName BuyDukeNukemRipper"
-
-	Command "Buy Ancient Crossbow (500 Points)",		"PukeName BuyAncientCrossbow"
-
-	StaticText "---------------- HOW TO EARN COMBAT POINTS / CHALLENGE LIST ----------------", 1
-	StaticText "- Weapon Combos: Switch Weapons Fast And Kill Demons, You Will Get Health/Armor", 1
-	StaticText "- Earn 75 Points When You Finish a Level", 1
-	StaticText " "
-	StaticText " "
-	StaticText "- Ultimate Slimming - Kill Mancubus With Flamethrower/Unmaker/Demon Tech Rifle", 1
-	StaticText " "
-	StaticText "- Tomatoes! - Kill Cacodemon By Axe/Chainsaw", 1
-	StaticText " "
-	StaticText "- HUGE GUTS! - Kill Cyberdemon With Your Hands", 1
-	StaticText " "
-	StaticText "- I Don't Need What You Have! - Kill Axe Guy Or Chainsaw Guy With Your Hands", 1
-	StaticText " "
-	StaticText "- You Can't Hide From Me - Kill Archvile Or Hellion Using Railgun 500 Map Units Away", 1
-	StaticText " "
-	StaticText "- BLOODBATH - Kill More Than 3 Enemies At Once", 1
-	StaticText " "
-	StaticText "- DEATH INCARNATE - Kill More Than 6 Enemies At Once", 1
-	StaticText " "
-	StaticText "- Now We Cooking With Gas! - Kill Cyber-Baron Using Flamethrower", 1
-	StaticText " "
-	StaticText "- Deadeye - Kill Any Demon Using Rocket-Launcher 750 Units Away", 1
-	StaticText " "
+	Title "Merchant Options"
+
+	Slider "Max Merchants Per Map", "hdm_maxmerchants", 1, 3, 1, 0
+	StaticText ""
+	FlagOption "Marines Drop Cards", "hdm_enablebucks", "YesNo", 0
+	StaticText ""
+	FlagOption "Bucks From Escort", "hdm_enablebucks", "YesNo", 1
+	StaticText "Escorting merchants to the end rewards you with a flat amount of cash.", "White"
+	StaticText ""
+	FlagOption "Bucks From Secrets", "hdm_enablebucks", "YesNo", 2
+	StaticText "This gets an additive bonus from the number of merchants escorted.", "White"
+	StaticText ""
+	Option "Enable Slot Machines", "hdm_enableslots", "YesNo"
+	StaticText ""
+	Slider "Card Scale", "hdm_cardscale", 0.1, 3.0, 0.1, 1
+	StaticText ""
+	StaticText "---------- WEAPON MERCHANTS ----------", "Teal"
+	Slider "Weapon Chance", "hdm_chance_weapon", 0.05, 1.0, 0.05, 2
+	StaticText "Chance a weapon will be sold by the merchant.", "White"
+	StaticText ""
+	FlagOption "Resident Evil", "hdm_skin_weapon", "OnOff", 0
+	FlagOption "Hobo", "hdm_skin_weapon", "OnOff", 1
+	FlagOption "[RETRO]Wandering Trader", "hdm_skin_weapon", "OnOff", 12
+	StaticText ""
+	StaticText "---------- AMMO MERCHANTS ----------", "Teal"
+	Slider "Ammo Chance", "hdm_chance_ammo", 0.05, 1.0, 0.05, 2
+	StaticText "Chance an ammo type will be sold by the merchant.", "White"
+	StaticText ""
+	Option "Ammo Amount", "hdm_stock_ammo", "AmmoStock"
+	StaticText "Multiplier for how much ammo the merchant can sell.", "White"
+	StaticText ""
+	FlagOption "Resident Evil", "hdm_skin_ammo", "OnOff", 0
+	FlagOption "Hobo", "hdm_skin_ammo", "OnOff", 1
+	FlagOption "[RETRO]Wandering Trader", "hdm_skin_ammo", "OnOff", 12
+	StaticText ""
+	StaticText "---------- ITEM MERCHANTS ----------", "Teal"
+	Slider "Item Chance", "hdm_chance_item", 0.05, 1.0, 0.05, 2
+	StaticText "Chance an item will be sold by the merchant.", "White"
+	StaticText ""
+	FlagOption "Resident Evil", "hdm_skin_item", "OnOff", 0
+	FlagOption "Hobo", "hdm_skin_item", "OnOff", 1
+	FlagOption "[RETRO]Wandering Trader", "hdm_skin_item", "OnOff", 12
 }
 
+OptionValue "AmmoStock"
+{
+	1, "Standard"
+	2, "Double the fun"
+	5, "Black Friday"
+	10, "I won the jackpot"
+	25, "Intergalactic resupply"
+}
 
+AddOptionMenu "OptionsMenu"
+{
+	Submenu "Merchant", "MerchantMenu"
+}
+
+////////
 OptionMenu "SwitchItUpOptions" 
 {
 	Title "$RW_TITLE"

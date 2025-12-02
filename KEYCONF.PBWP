@@ -1,8 +1,3 @@
-
-AddkeySection "Combat Rating Point Shop" PB_CRSys
-AddMenukey "Show Combat Points" PB_CRSHW
-Alias PB_CRSHW "pukename ShowPoints"
-
 //AddKeySection "Meat Hook Options" Extra_ZDoom_controls
 //AddMenuKey "Use Meat Hook" meathook
 //alias meathook "puke 6005"
