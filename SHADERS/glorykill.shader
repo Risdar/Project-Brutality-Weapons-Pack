@@ -1,4 +1,3 @@
-// This is for GK compatibility only
 //BASED ON D4D SHADER, sorry guys
 //Replaced Dots to lines
 

@@ -1,66 +1,158 @@
-//Shopkeeper//
-$alias SlotMachine/WinRegular skeleton/sight
-$alias SlotMachine/WinAss Daina/Default/Buying
-SlotMachine/WinJackpot SLOTJPT1
+//GloryKill Equipment//
+BONECR1 BONECR1
+BONECR2 BONECR2
+CYBPAIN CYBPAIN
 
-SlotMachine/Rolling SLOTSPIN
-SlotMachine/Stop SLOTSTOP
+items/armor/Sshard			armrshrd
 
-Merchant/BuyFailure BUYFAIL
-Merchant/BuySuccess BUYSUCC
+Health_Small "Sounds/SOULCUBE/HealthSmall.ogg"
+Health_Med	 "Sounds/SOULCUBE/HealthMed.ogg"
 
-$random weapons/pocket	{weapons/pocket1 weapons/pocket2}
-weapons/pocket1 PPOCKET1
-weapons/pocket2 PPOCKET2
+//==== LOW-HEALTH SOUNDS ====//
 
-ResidentEvil/Buying1 "Sounds/ResidentEvil/Start1.ogg"
-ResidentEvil/Buying2 "Sounds/ResidentEvil/Start2.ogg"
-ResidentEvil/Buying3 "Sounds/ResidentEvil/Start3.ogg"
-ResidentEvil/Buying4 "Sounds/ResidentEvil/Start4.ogg"
-ResidentEvil/Buying5 "Sounds/ResidentEvil/Start5.ogg"
-$random ResidentEvil/Buying
+$Random LOWHEALTH { LowHealthWarning/LowHealth/Warning1 LowHealthWarning/LowHealth/Warning2 LowHealthWarning/LowHealth/Warning3 LowHealthWarning/LowHealth/Warning4 LowHealthWarning/LowHealth/Warning5 LowHealthWarning/LowHealth/Warning6 LowHealthWarning/LowHealth/Warning7 LowHealthWarning/LowHealth/Warning8 LowHealthWarning/LowHealth/Warning9 LowHealthWarning/LowHealth/Warning10 LowHealthWarning/LowHealth/Warning11 LowHealthWarning/LowHealth/Warning12 LowHealthWarning/LowHealth/Warning13 LowHealthWarning/LowHealth/Warning14 LowHealthWarning/LowHealth/Warning15 LowHealthWarning/LowHealth/Warning16 }
+	
+LowHealthWarning/LowHealth/Warning1 "Sounds/Player/LowHealthWarning01.ogg"
+LowHealthWarning/LowHealth/Warning2 "Sounds/Player/LowHealthWarning02.ogg"
+LowHealthWarning/LowHealth/Warning3 "Sounds/Player/LowHealthWarning03.ogg"
+LowHealthWarning/LowHealth/Warning4 "Sounds/Player/LowHealthWarning04.ogg"
+LowHealthWarning/LowHealth/Warning5 "Sounds/Player/LowHealthWarning05.ogg"
+LowHealthWarning/LowHealth/Warning6 "Sounds/Player/LowHealthWarning06.ogg"
+LowHealthWarning/LowHealth/Warning7 "Sounds/Player/LowHealthWarning07.ogg"
+LowHealthWarning/LowHealth/Warning8 "Sounds/Player/LowHealthWarning08.ogg"
+LowHealthWarning/LowHealth/Warning9 "Sounds/Player/LowHealthWarning09.ogg"
+LowHealthWarning/LowHealth/Warning10 "Sounds/Player/LowHealthWarning10.ogg"
+LowHealthWarning/LowHealth/Warning11 "Sounds/Player/LowHealthWarning11.ogg"
+LowHealthWarning/LowHealth/Warning12 "Sounds/Player/LowHealthWarning12.ogg"
+LowHealthWarning/LowHealth/Warning13 "Sounds/Player/LowHealthWarning13.ogg"
+LowHealthWarning/LowHealth/Warning14 "Sounds/Player/LowHealthWarning14.ogg"
+LowHealthWarning/LowHealth/Warning15 "Sounds/Player/LowHealthWarning15.ogg"
+LowHealthWarning/LowHealth/Warning16 "Sounds/Player/LowHealthWarning16.ogg"
+
+//==== LOW-ARMOR SOUNDS ====//
+
+$Random LOWARMOR { LowArmorWarning/LowArmor/Warning1 LowArmorWarning/LowArmor/Warning2 LowArmorWarning/LowArmor/Warning3 LowArmorWarning/LowArmor/Warning4 LowArmorWarning/LowArmor/Warning5 LowArmorWarning/LowArmor/Warning6 LowArmorWarning/LowArmor/Warning7 LowArmorWarning/LowArmor/Warning8 LowArmorWarning/LowArmor/Warning9 }
+	
+LowArmorWarning/LowArmor/Warning1 "Sounds/Player/LowArmorWarning01.ogg"
+LowArmorWarning/LowArmor/Warning2 "Sounds/Player/LowArmorWarning02.ogg"
+LowArmorWarning/LowArmor/Warning3 "Sounds/Player/LowArmorWarning03.ogg"
+LowArmorWarning/LowArmor/Warning4 "Sounds/Player/LowArmorWarning04.ogg"
+LowArmorWarning/LowArmor/Warning5 "Sounds/Player/LowArmorWarning05.ogg"
+LowArmorWarning/LowArmor/Warning6 "Sounds/Player/LowArmorWarning06.ogg"
+LowArmorWarning/LowArmor/Warning7 "Sounds/Player/LowArmorWarning07.ogg"
+LowArmorWarning/LowArmor/Warning8 "Sounds/Player/LowArmorWarning08.ogg"
+LowArmorWarning/LowArmor/Warning9 "Sounds/Player/LowArmorWarning09.ogg"
+
+AmmoBig   "Sounds/Pickups/AmmoBigger.ogg"
+AmmoSmall "Sounds/Pickups/Ammo.ogg"
+Beep	  "Sounds/Player/Beep.ogg"
+
+Glorykill   "Sounds/Glorykill/GloryKillDing.ogg"
+Bloodpunch	"Sounds/Glorykill/fistblod.ogg"
+BpunchReady	"Sounds/Glorykill/BPCharge.ogg"
+
+Equip_Activate	 "Sounds/FlameBelch/cannonlaunch.ogg"
+Equip_Iceready	 "Sounds/FlameBelch/icebombready.ogg"
+Equip_flameready "Sounds/FlameBelch/flamebelchready.ogg"
+Equip_notready	 "Sounds/FlameBelch/equipnotready.ogg"
+Flame_belch1	 "Sounds/FlameBelch/flamebelch1.ogg"
+Flame_belch2	 "Sounds/FlameBelch/flamebelch2.ogg"
+Flame_belch3	 "Sounds/FlameBelch/flamebelch3.ogg"
+Flame_belch4	 "Sounds/FlameBelch/flamebelch4.ogg"
+
+//==============================================================================
+// Crucible
+//==============================================================================
+Crucible_Deselect		"Sounds/Crucible/Deselect.ogg"
+Crucible_Deploy			"Sounds/Crucible/Deploy.ogg"
+Crucible_Select			"Sounds/Crucible/Select.ogg"
+Crucible_Pickup			"Sounds/Crucible/Pickup.ogg"
+Crucible_Idle			"Sounds/Crucible/Idle.ogg"
+Crucible_AmmoPickup		"Sounds/Crucible/AmmoPickup.ogg"
+
+Eternal/Crucible/Swing1	  "Sounds/Crucible/Swing1.ogg"
+Eternal/Crucible/Swing2	  "Sounds/Crucible/Swing2.ogg"
+Eternal/Crucible/Swing3	  "Sounds/Crucible/Swing3.ogg"
+Eternal/Crucible/Swing4	  "Sounds/Crucible/Swing4.ogg"
+Eternal/Crucible/Swing5	  "Sounds/Crucible/Swing5.ogg"
+Eternal/Crucible/Swing6	  "Sounds/Crucible/Swing6.ogg"
+Eternal/Crucible/Swing7	  "Sounds/Crucible/Swing7.ogg"
+Eternal/Crucible/Return1  "Sounds/Crucible/Return1.ogg"
+Eternal/Crucible/Return2  "Sounds/Crucible/Return2.ogg"
+Eternal/Crucible/Return3  "Sounds/Crucible/Return3.ogg"
+Eternal/Crucible/Return4  "Sounds/Crucible/Return4.ogg"
+Eternal/Crucible/Return5  "Sounds/Crucible/Return5.ogg"
+Eternal/Crucible/Slice1	  "Sounds/Crucible/Slice1.ogg"
+Eternal/Crucible/Slice2	  "Sounds/Crucible/Slice2.ogg"
+Eternal/Crucible/Slice3	  "Sounds/Crucible/Slice3.ogg"
+Eternal/Crucible/Slice4	  "Sounds/Crucible/Slice4.ogg"
+Eternal/Crucible/Slice5	  "Sounds/Crucible/Slice5.ogg"
+Eternal/Crucible/Slice6	  "Sounds/Crucible/Slice6.ogg"
+
+Eternal/Crucible/Hit1	"Sounds/Crucible/cruciblehit1.ogg"
+Eternal/Crucible/Hit2	"Sounds/Crucible/cruciblehit2.ogg"
+Eternal/Crucible/Hit3	"Sounds/Crucible/cruciblehit3.ogg"
+
+$Random Crucible_Slice
 {
-	ResidentEvil/Buying1
-	ResidentEvil/Buying2
-	ResidentEvil/Buying3
-	ResidentEvil/Buying4
-	ResidentEvil/Buying5
+  Eternal/Crucible/Slice1
+  Eternal/Crucible/Slice2
+  Eternal/Crucible/Slice3
+  Eternal/Crucible/Slice4
+  Eternal/Crucible/Slice5
+  Eternal/Crucible/Slice6
 }
 
-ResidentEvil/GoAway1 "Sounds/ResidentEvil/End1.ogg"
-ResidentEvil/GoAway2 "Sounds/ResidentEvil/End2.ogg"
-ResidentEvil/GoAway3 "Sounds/ResidentEvil/End3.ogg"
-ResidentEvil/GoAway4 "Sounds/ResidentEvil/End4.ogg"
-$random ResidentEvil/GoAway
+$Random Crucible_Swing
 {
-	ResidentEvil/GoAway1
-	ResidentEvil/GoAway2
-	ResidentEvil/GoAway3
-	ResidentEvil/GoAway4
-}
-WanderingTrader/Buying1 "Sounds/WanderingTrader/Start1.ogg"
-WanderingTrader/Buying2 "Sounds/WanderingTrader/Start2.ogg"
-WanderingTrader/Buying3 "Sounds/WanderingTrader/Start3.ogg"
-WanderingTrader/Buying4 "Sounds/WanderingTrader/Start4.ogg"
-WanderingTrader/Buying5 "Sounds/WanderingTrader/Start5.ogg"
-$random WanderingTrader/Buying
-{
-	WanderingTrader/Buying1
-	WanderingTrader/Buying2
-	WanderingTrader/Buying3
-	WanderingTrader/Buying4
-	WanderingTrader/Buying5
+  Eternal/Crucible/Swing1	Eternal/Crucible/Swing2	Eternal/Crucible/Swing3
+  Eternal/Crucible/Swing4	Eternal/Crucible/Swing5	Eternal/Crucible/Swing6
+  Eternal/Crucible/Swing7
 }
 
-WanderingTrader/GoAway1 "Sounds/WanderingTrader/End1.ogg"
-WanderingTrader/GoAway2 "Sounds/WanderingTrader/End2.ogg"
-WanderingTrader/GoAway3 "Sounds/WanderingTrader/End3.ogg"
-$random WanderingTrader/GoAway
+$Random Crucible_Return
 {
-	WanderingTrader/GoAway1
-	WanderingTrader/GoAway2
-	WanderingTrader/GoAway3
+  Eternal/Crucible/Return1
+  Eternal/Crucible/Return2
+  Eternal/Crucible/Return3
+  Eternal/Crucible/Return4
+  Eternal/Crucible/Return5
 }
+
+$Random Crucible_Lighting
+{
+  PZPCHR2	
+  LGEnd1 
+  LGEnd2	
+  STNBOMB	
+  LGBOMB
+}
+
+$Random Crucible_Hit
+{
+  Eternal/Crucible/Hit1
+  Eternal/Crucible/Hit2
+  Eternal/Crucible/Hit3
+}
+
+//--- Flame Belch Flame Crackle Sound ---//
+
+FlameBelch/FlameCrackle "Sounds/FlameBelchFlameCrackle/FlameBelchFlameCrackle.ogg"
+
+$Volume FlameBelch/FlameCrackle 0.2
+$Limit  FlameBelch/FlameCrackle 2
+
+$Random Flamebelch
+{
+  Flame_belch1
+  Flame_belch2
+  Flame_belch3
+  Flame_belch4
+}
+
+$Limit Crucible_Swing 0
+$Limit Crucible_Slice 0
+$Limit Eternal/Crucible/Return 0
 
 //CyberdemonBoss//
 cyber/charge	cybchg

@@ -1,0 +1,15 @@
+GloryKillMechanics - BrutalDoom Black Edition's Team
+Pinata pickup sound - BrutalDoom Black Edition's Team
+Glory Kill Shader - D4D Teams
+Crucible sprite , Sound, FlameBelch sound - D4D Teams, EOA Teams
+Crucible trail - Embers Of Armageddon
+Pinata, Ammo Sprites - D4D Teams, LJG2023
+BloodPunch Effect - EOA Teams
+Low Health Sound - D4D Teams
+Item Collecting Mechanics - D4D Teams
+CYBERDEMON FATALITY - SgtMarkIV (BrutalDoom)
+MATSTERMIND FATALITY - SgtMarkIV (BrutalDoom)
+Flamethrower Crucible Mod - a90doomguy , Tunasz & Officer_D
+Hud Graphic Soucce - EOA Teams
+
+thx :D

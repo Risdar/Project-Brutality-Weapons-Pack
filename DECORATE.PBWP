@@ -6,6 +6,17 @@
 #include actors/Equipments/hook.dec
 #include actors/Weapons/Doom4WeaponPack/ItemsUpgrades.dec // What even is this?
 #include actors/Weapons/Doom4WeaponPack/UpgradeStation.dec // This doesn't even work
+
+//GloryKill Equipment//
+#include actors/GK/Crucible.dec
+#include actors/GK/SOULCUBE.dec
+#include actors/GK/RANDOMAMMO.dec
+#include actors/GK/ParticleEffect.dec
+#include actors/GK/EquipmentLauncher.dec
+#include actors/GK/BloodPunch.dec
+#include actors/GK/HardSettings.dec
+
+
 // RemoteGrenades
 #include actors/Equipments/RemoteGrenades/Prosurv_Swarm.dec
 #include actors/Equipments/RemoteGrenades/AcidCharge.dec

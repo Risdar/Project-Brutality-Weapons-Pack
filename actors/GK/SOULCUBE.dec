@@ -1,0 +1,661 @@
+actor Boolean: Inventory
+{
+    Inventory.MaxAmount 1
+    +UNDROPPABLE
+    -INVBAR
+}
+
+ACTOR HealthPinata : Health
+{
+	var int user_timer;
+	var int user_curtime;
+	-COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 1
+	Inventory.MaxAmount 200
+	Inventory.PickupMessage "$GOTPINATAHEALTH"
+	Inventory.PickupSound "Health_Small"
+	Gravity 0.65
+	scale 0.4
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetUserVar("user_curtime",0)
+		TNT1 A 0 A_SetUserVar("user_timer",35*11)
+		PINH A 0
+		{
+			A_SpawnItemEx("BluePinataParticles",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER,0,3);
+		}
+	SpawnLoop:
+		"####" "#" 1
+		{
+			if (user_timer >= DelayVacuum)
+			{
+				A_RearrangePointers(DefPtr,DefPtr,NullPtr,4);
+				if (A_CheckProximity("Null","PlayerPawn",RadiusPull,1,CPXF_CHECKSIGHT|CPXF_SETTRACER|CPXF_ANCESTOR))
+				{
+					return state("Suckage");
+				}
+			}
+			return state(0);
+		}		
+	Loop
+	Fade:
+		PINH A 4 bright A_FadeOut(0.2)
+		PINH A 4 A_FadeOut(0.2)
+		loop
+	Suckage:
+		PINH A 4 bright
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		PINH A 4
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		"####" "#" 1
+		{
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_ChangeFlag(NOCLIP,true);
+				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
+				A_SetTics(2); A_ChangeVelocity(cos(-pitch)*PSpeed,0,sin(pitch)*PSpeed,CVF_RELATIVE|CVF_REPLACE);
+			}
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
+				A_ChangeFlag(NOCLIP,false);
+				A_ChangeFlag(NOINTERACTION,false);
+				A_ChangeFlag(NOBLOCKMAP,false);
+			}
+			return state(0);
+		}
+		Loop	
+	}
+}
+
+ACTOR ArmorPinata : BasicArmorBonus
+{
+	var int user_timer;
+	var int user_curtime;
+	-COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Armor.Saveamount 2
+	Armor.Maxsaveamount 200
+	Inventory.PickupSound "items/armor/Sshard"
+	Inventory.PickupMessage "$GOTPINATAARMOR"
+	scale 0.4
+	Gravity 0.65
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetUserVar("user_curtime",0)
+		TNT1 A 0 A_SetUserVar("user_timer",35*11)
+		PINA A 0
+		{
+			A_SpawnItemEx("GreenPinataParticles",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER,0,3);
+		}
+	SpawnLoop:
+		"####" "#" 1
+		{
+			if (user_timer >= DelayVacuum)
+			{
+				A_RearrangePointers(DefPtr,DefPtr,NullPtr,4);
+				if (A_CheckProximity("Null","PlayerPawn",RadiusPull,1,CPXF_CHECKSIGHT|CPXF_SETTRACER|CPXF_ANCESTOR))
+				{
+					return state("Suckage");
+				}
+			}
+			return state(0);
+		}
+	Loop
+	Fade:
+		PINA A 4 bright A_FadeOut(0.2)
+		PINA A 4 A_FadeOut(0.2)
+		loop
+	Suckage:
+		PINA A 4 bright
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		PINA A 4
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		"####" "#" 1
+		{
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_ChangeFlag(NOCLIP,true);
+				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
+			}
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
+				A_ChangeFlag(NOCLIP,false);
+				A_ChangeFlag(NOINTERACTION,false);
+				A_ChangeFlag(NOBLOCKMAP,false);
+			}
+			return state(0);
+		}
+		Loop		
+	}
+}
+
+ACTOR HealthPinataPermL0 : HealthPinata
+{
+	scale 0.4
+	Inventory.Amount 1
+}	
+
+ACTOR HealthPinataPermL1 : HealthPinata
+{
+	Inventory.Amount 2
+	Inventory.PickupSound "Health_Med"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetUserVar("user_curtime",0)
+		TNT1 A 0 A_SetUserVar("user_timer",35*11)
+		PILH A 0
+		{
+			A_SpawnItemEx("PinkPinataParticles",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER,0,3);
+		}
+	SpawnLoop:
+		"####" "#" 1
+		{
+			if (user_timer >= DelayVacuum)
+			{
+				A_RearrangePointers(DefPtr,DefPtr,NullPtr,4);
+				if (A_CheckProximity("Null","PlayerPawn",RadiusPull,1,CPXF_CHECKSIGHT|CPXF_SETTRACER|CPXF_ANCESTOR))
+				{
+					return state("Suckage");
+				}
+			}
+			return state(0);
+		}
+	Loop
+	Fade:
+		PILH A 4 bright A_FadeOut(0.2)
+		PILH A 4 A_FadeOut(0.2)
+		loop
+	Suckage:
+		PILH A 4 bright
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		PILH A 4
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		"####" "#" 1
+		{
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_ChangeFlag(NOCLIP,true);
+				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
+			}
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
+				A_ChangeFlag(NOCLIP,false);
+				A_ChangeFlag(NOINTERACTION,false);
+				A_ChangeFlag(NOBLOCKMAP,false);
+			}
+			return state(0);
+		}
+		Loop		
+	}
+}
+
+ACTOR HealthPinataPermL2 : HealthPinata
+{
+	Inventory.Amount 3
+}	
+
+ACTOR HealthPinataPermL3 : HealthPinata
+{
+	Inventory.Amount 16
+}	
+
+ACTOR HealthPinataPermL4 : HealthPinata
+{
+	Inventory.Amount 20
+}
+
+ACTOR HealthPinataPermL5 : HealthPinata
+{
+	Inventory.Amount 24
+}	
+
+ACTOR ArmorPinataL0 : ArmorPinata
+{
+	scale 0.4
+	Armor.Saveamount 2
+}
+
+ACTOR ArmorPinataL1 : ArmorPinata
+{
+	Armor.Saveamount 3
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetUserVar("user_curtime",0)
+		TNT1 A 0 A_SetUserVar("user_timer",35*11)
+		PIMA A 0
+		{
+			A_SpawnItemEx("GoldPinataParticles",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER,0,3);
+		}
+	SpawnLoop:
+		"####" "#" 1
+		{
+			if (user_timer >= DelayVacuum)
+			{
+				A_RearrangePointers(DefPtr,DefPtr,NullPtr,4);
+				if (A_CheckProximity("Null","PlayerPawn",RadiusPull,1,CPXF_CHECKSIGHT|CPXF_SETTRACER|CPXF_ANCESTOR))
+				{
+					return state("Suckage");
+				}
+			}
+			return state(0);
+		}
+	Loop
+	Fade:
+		PIMA A 4 bright A_FadeOut(0.2)
+		PIMA A 4 A_FadeOut(0.2)
+		loop
+	Suckage:
+		PIMA A 4 bright
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		PIMA A 4
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		"####" "#" 1
+		{
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_ChangeFlag(NOCLIP,true);
+				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
+			}
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
+				A_ChangeFlag(NOCLIP,false);
+				A_ChangeFlag(NOINTERACTION,false);
+				A_ChangeFlag(NOBLOCKMAP,false);
+			}
+			return state(0);
+		}
+		Loop	
+	}
+}
+
+ACTOR ArmorPinataL2 : ArmorPinata
+{
+	Armor.Saveamount 4
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetUserVar("user_curtime",0)
+		TNT1 A 0 A_SetUserVar("user_timer",35*11)
+	SpawnLoop:
+		"####" "#" 1
+		{
+			if (user_timer >= DelayVacuum)
+			{
+				A_RearrangePointers(DefPtr,DefPtr,NullPtr,4);
+				if (A_CheckProximity("Null","PlayerPawn",RadiusPull,1,CPXF_CHECKSIGHT|CPXF_SETTRACER|CPXF_ANCESTOR))
+				{
+					return state("Suckage");
+				}
+			}
+			return state(0);
+		}
+	Loop
+	Fade:
+		PILA A 4 bright A_FadeOut(0.2)
+		PILA A 4 A_FadeOut(0.2)
+		loop
+	Suckage:
+		PILA A 4 bright
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		PILA A 4
+		{
+			if(user_curtime > user_timer)
+			{
+				return state("Fade");
+			}
+			else
+			{
+				user_curtime += 4;
+				return state(0);
+			}
+		}
+		"####" "#" 1
+		{
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_ChangeFlag(NOCLIP,true);
+				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
+			}
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("ExecutionToken",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
+			{
+				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
+				A_ChangeFlag(NOCLIP,false);
+				A_ChangeFlag(NOINTERACTION,false);
+				A_ChangeFlag(NOBLOCKMAP,false);
+			}
+			return state(0);
+		}
+	Loop
+	}
+}
+
+ACTOR ArmorPinataL3 : ArmorPinata
+{
+	Armor.Saveamount 15
+}
+
+ACTOR ArmorPinataL4 : ArmorPinata
+{
+	Armor.Saveamount 20
+}
+
+ACTOR ArmorPinataL5 : ArmorPinata
+{
+	Armor.Saveamount 25
+}
+
+Actor GloryLowPinataSpawn
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			Stop
+		AmmoSpawn:
+			TNT1 AA 0 A_SpawnItemEx("RandomDice",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			Stop
+		HardAmmoSpawn:
+			TNT1 AA 0 A_SpawnItemEx("RandomDiceH",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop
+	}
+}
+
+Actor GloryLowPinataSpawn2
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			stop
+		Spawn2:
+			TNT1 AA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			stop	
+		AmmoSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("RandomDice",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"HardSpawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			stop
+		HardSpawn2:
+			TNT1 A 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			stop	
+		HardAmmoSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("RandomDiceH",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop	
+	}
+}
+
+
+Actor GloryMedPinataSpawn
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			Stop	
+		AmmoSpawn:
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			Stop	
+		HardAmmoSpawn:
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2H",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop	
+	}
+}
+
+Actor GloryMedPinataSpawn2
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			Stop
+		Spawn2:
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			stop
+		AmmoSpawn:
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"HardSpawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			Stop
+		HardSpawn2:
+			TNT1 A 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			stop
+		HardAmmoSpawn:
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2H",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop	
+	}
+}
+
+Actor GloryHightPinataSpawn
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			stop
+		AmmoSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("RandomDiceBonus",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			stop		
+		HardAmmoSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3H",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("RandomDiceBonusH",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop	
+	}
+}
+
+Actor GloryHightPinataSpawn2
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKBonus") == 0,"NoSpawn")
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(GetCvar("be_GKHard") == 1,"HardSpawn")
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			Stop	
+		Spawn2:
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
+			stop
+		AmmoSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("RandomDiceBonus",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		HardSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"HardSpawn2")
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			Stop	
+		HardSpawn2:
+			TNT1 AA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"HardAmmoSpawn")
+			stop
+		HardAmmoSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3H",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("RandomDiceBonusH",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			stop
+		NoSpawn:
+			TNT1 A 0
+			stop	
+	}
+}

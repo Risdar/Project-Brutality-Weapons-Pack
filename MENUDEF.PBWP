@@ -70,6 +70,8 @@ OptionMenu "ttwcoptions"
 	StaticText ""
 	SubMenu "$PBWP_COMBAT_RATING_SHOP", "AmmunitionShopSystem"
 	StaticText ""
+	SubMenu "$PBWP_GloryKill_Equipment", "Glorykills"
+	StaticText ""
 	Submenu "$PBWP_QUICKSWITCHER", "SwitchItUpOptions"
 	StaticText ""
 	Submenu "$PBWP_BEHOLD", "BeholdOptions"
@@ -441,6 +443,47 @@ OptionMenu "AmmunitionShopSystem"
 	StaticText "- Deadeye - Kill Any Demon Using Rocket-Launcher 750 Units Away", 1
 	StaticText " "
 }
+////////
+
+OptionMenu "Glorykills"
+{
+    Title "Glorykill Options"
+	Option "Glory kill", "be_ExecutionsON", YesNo
+	Option "Holdable Crucible", "be_holdablesaw", YesNo
+	Option "Protection during Glory kill", "be_Protection", YesNo
+	Option "Fear during Glory kill", "be_Fear", YesNo
+	Slider  "Stun duration","be_StaggerLenght",2 ,12, 1
+	Option "Hardmode", "be_GKHard", YesNo
+	StaticText "Glory Kill Health bonus halved. if ammo drop enabled, ammo drop chance to 1/3."
+	StaticText " "
+	Option "Health & Armor Drop", "be_GKBonus", YesNo
+	Option "Additional Bonus Drop", "be_AdditionalBonus", YesNo
+	Option "Ammo Bonus Drop", "be_AmmoBonus", YesNo
+	Option "Crucible Ammo Bonus", "be_GSAmmoBonus", YesNo
+	StaticText " "
+	Option "Bonus Trail Effect", "PinataParticles", YesNo
+	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,200, 1
+	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,200, 1
+	StaticText " "
+	Slider  "Flame Belch Cooldown","sv_Flamebelch_Cool",10 ,60, 1
+	Slider  "Ice Bomb Cooldown","sv_Icebomb_Cool",10 ,60, 1
+	Option "Equipment Launcher Ammo Consumption", "be_UseELammo", YesNo
+	Option "Flame Belch Performance Mode", "be_FBperformance", YesNo
+	StaticText " "
+	StaticText "Glory HUD"
+	Option "Glory Hud Enable", "be_fuelhud", YesNo
+	Option "Glory Hud Style", "sv_fuelhud_background", "BackStyle"
+	Option "Glory Hud Size", "sv_fuelhud_size", "FHudsize"
+	Slider  "Glory Hud X","sv_fuelhud_x",-1024 ,1024, 1
+	Slider  "Glory Hud Y","sv_fuelhud_y",-768 ,768, 1
+	StaticText " "
+	StaticText "Sound Notification"
+	Option "Low Health Notification", "be_LowHealthAlert", YesNo
+	Slider  "Low Health Value","sv_LowHealthValue",0 ,100, 1
+	Option "Low Armor Notification", "be_LowArmorAlert", YesNo
+	Slider  "Low Armor Value","sv_LowArmorValue",0 ,100, 1
+}
+
 ////////
 OptionMenu "SwitchItUpOptions" 
 {

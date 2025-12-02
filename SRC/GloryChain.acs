@@ -1,0 +1,12 @@
+#library "commands"
+#include "zcommon.acs"
+
+Script 6000 (VOID) NET
+{
+ GiveInventory("DoGloryMelee",1);
+}
+
+Script 6001 (VOID) NET
+{
+ TakeInventory("DoGloryMelee",1);
+}
