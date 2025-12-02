@@ -1,16 +1,33 @@
-//Shopkeeper//
-server bool hdm_debug = false;
-server int hdm_enablebucks = 5;
-server bool hdm_enableslots = true;
-server float hdm_cardscale = 1.0;
-server int hdm_maxmerchants = 1;
-server float hdm_chance_weapon = 0.6;
-server float hdm_chance_ammo = 0.8;
-server float hdm_chance_item = 0.7;
-server int hdm_stock_ammo = 1;
-user int hdm_skin_weapon = 1;
-user int hdm_skin_ammo = 2;
-user int hdm_skin_item = 4064;
+//GLORY KILLS PORTED FROM D4D, BrutalDoom BlackEdition
+server cheat bool be_ExecutionsON = true;
+server noarchive bool be_ExecutionHighlight = true;
+server noarchive bool be_MonsterStagger = true;
+server noarchive bool be_NoisyStagger = true;
+server bool be_GKHard = false;
+server bool be_GKBonus = true;
+server bool be_AdditionalBonus = true;
+server bool be_AmmoBonus = true;
+server bool be_GSAmmoBonus = true;
+server bool be_Protection = true;
+server bool be_Fear = true;
+server int be_StaggerLenght = 4;
+server bool PinataParticles = true;
+server int sv_bonusrange = 0;
+server int sv_ammorange = 0;
+server bool be_UseELammo = true;
+server bool be_holdablesaw = true;
+server bool be_FBperformance = false;
+server bool be_fuelhud = false;
+server int sv_fuelhud_background = 0;
+server int sv_fuelhud_size = 0;
+server int sv_fuelhud_x = 0;
+server int sv_fuelhud_y = 0;
+server int sv_Flamebelch_Cool = 12;
+server int sv_Icebomb_Cool = 35;
+server bool be_LowHealthAlert = true;
+server int sv_LowHealthValue = 30;
+server bool be_LowArmorAlert = true;
+server int sv_LowArmorValue = 25;
 
 //Hook//
 Server NoArchive Bool sv_allowhookshot = True;

@@ -1,0 +1,148 @@
+Actor DoGloryMelee : Inventory {inventory.maxamount 1}
+Actor CrucibleToken : Inventory {inventory.maxamount 1}
+Actor CrucibleEnergy : Inventory {inventory.maxamount 3}
+
+ACTOR Crucible : Custominventory 
+{
+    Game Doom
+	Scale 0.4
+	+DONTGIB
+	+FLOORCLIP
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickUpMessage "Picked up a Crucible Energy"
+	Inventory.PickUpSound "Crucible_AmmoPickup"
+	Inventory.Amount 1
+    Inventory.MaxAmount 1
+	
+	States
+	{
+	Spawn:
+	//	CURB A 6 bright
+		CRUD ABCDEFGHIJ 3 bright
+		TNT1 A 0 A_SpawnItemEx("CrucibleEffect",0,0,random(2,16))
+		TNT1 A 0 A_PlaySound("DTCHHUM", 1, 1,1)
+		loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("CrucibleEnergy", 1)
+		Stop
+	}
+}
+
+Actor CruciblePuff : BulletPuff
+{
+	+NOINTERACTION
+	+ALLOWTHRUFLAGS	//to ignore pinky's shield
+	+THRUGHOST
+	+PUFFGETSOWNER
+	+PUFFONACTORS
+	+NOTIMEFREEZE
+	damageType "Crucible"
+	+BLOODLESSIMPACT
+	+NOEXTREMEDEATH
+	States
+	{
+	Spawn:
+	Melee:
+		TNT1 A 0
+		TNT1 AB 1 bright
+		TNT1 A 0 A_Jump (128,3)
+		TNT1 A 0 A_SpawnItem ("Sparks", 0)
+		TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
+		TNT1 AAAA 0 A_CustomMissile ("HitSpark", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+	    TNT1 AA 0 A_CustomMissile ("HitSpark22", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+	    TNT1 A 0 A_CustomMissile ("HitSpark23", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		BPUF C 1 bright A_PlaySound("Crucible_Hit")
+		BPUF D 1 bright
+		Stop
+	}
+}
+
+
+ACTOR CrucibleBladeWave //Sprite modified from Guncaster.
+{
+	Projectile
+	Renderstyle "Add"
+	Alpha 0.99
+	Scale 0.3
+	+FLATSPRITE
+	+NOINTERACTION
+	+DONTBLAST
+	+DONTTHRUST
+	States
+	{
+	Spawn:
+		CWAV F 1 NoDelay Bright
+		{
+			A_FadeOut(0.10);
+		}
+		Wait
+	}
+}
+
+Actor GlorySawPinataLow
+{
+	States
+	{
+		Spawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_GSAmmoBonus") == 1,"AmmoSpawn")
+			stop
+		AmmoSpawn:
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			stop
+	}
+}
+Actor GlorySawPinataMed
+{
+	States
+	{
+		Spawn:
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_GSAmmoBonus") == 1,"AmmoSpawn")
+			Stop
+		AmmoSpawn:
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("RandomDice2",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			stop
+	}
+}
+
+Actor GlorySawPinataHight
+{
+	States
+	{
+		Spawn:
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_GSAmmoBonus") == 1,"AmmoSpawn")
+			Stop	
+		AmmoSpawn:
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("RandomDice3",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDiceBonus",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			stop
+	}
+}
+
+Actor GlorySawPinataMax
+{
+	States
+	{
+		Spawn:
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_JumpIf(GetCvar("be_GSAmmoBonus") == 1,"AmmoSpawn")
+			Stop	
+		AmmoSpawn:
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("RandomDice3",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("RandomDiceBonus",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			stop
+	}
+}
