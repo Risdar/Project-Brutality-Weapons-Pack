@@ -1,8 +1,5 @@
 version "4.11.3"
 
-//GK Weapons
-#include "zscript/AmmoBonus.zsc"
-
 // Monster Drop Handler
 #include "zscript/PBWP_Core/BeefHandler.zs"
 #include "zscript/PBWP_Core/BeefCore.zs"
