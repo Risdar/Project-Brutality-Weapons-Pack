@@ -6,8 +6,6 @@ See PB Weapon Pack Options to configure:
 
 - Combat Points Weapons Shop
 
-- GloryKill Equipment
-
 - Random Weapon Switcher by BROS_ETT_311:  Allows you to randomize the weapons in your hand at random intervals.
 
 - Behold! by BobQuickSaveSmith: Allows you to revive upon death (works when alive as well); giving you a handful of weapons and random Boss Enemies to battle.
@@ -57,6 +55,7 @@ TEAM MEMBERS:
 - Demon-Tech Pistol
 - Doom Blaster
 - Holy Bastard
+- Johnny Silverhands' Deagle
 - Plasma Annihilator Pistol
 - UZI SMG
 
@@ -125,6 +124,7 @@ TEAM MEMBERS:
 - Bio-Acid Launcher
 - Ballista
 - Stormcast from Schism
+- Thunder Crossbow from Brutal Hexen
 
 ---------------Slot 0 weapons---------------
 

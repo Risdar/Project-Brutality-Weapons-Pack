@@ -6,17 +6,6 @@
 //addmenukey "Select Sentinel Hammer" SHSelect
 //alias SHSelect "pukename SelectHammer"
 
-addkeysection "Glory kill" GloryKill             
-addmenukey "Crucible" +glorysaw
-addmenukey "Flame Belch" shouldercannon
-addmenukey "Ice Bomb" shouldercannonswitch
-
-alias +glorysaw "puke 6000"
-alias -glorysaw "puke 6001"
-
-alias shouldercannon "puke 6003"
-alias shouldercannonswitch "puke 6005"
-
 addkeysection "Combat Rating Points" PB_CRSys
 addmenukey "Show combat points" PB_CRSHW
    alias PB_CRSHW "pukename ShowPoints"
