@@ -36,10 +36,11 @@ Weapons are currently being made compatible with the latest Project Brutality St
 TEAM MEMBERS:
 
 - RENEGADE ANDROiD
-
 - BeefRice / LovecraftNeko
-
 - Warcarlsson
+- Doc
+- JhulkerCraft
+
 -----------------
 
 ---------------Slot 1 weapons---------------
@@ -47,14 +48,16 @@ TEAM MEMBERS:
 - Argent Sith
 - BattleAxe and Shield from Schism
 - Razorjack from Russian Overkill
-- Sentinel Hammer
 
 ---------------Slot 2 weapons---------------
 
 - 44 PDW
+- Beretta 92
+- Beretta 92 Silenced
 - Demon-Tech Pistol
 - Doom Blaster
 - Holy Bastard
+- Johnny Silverhands' Deagle
 - Plasma Annihilator Pistol
 - UZI SMG
 
@@ -123,6 +126,7 @@ TEAM MEMBERS:
 - Bio-Acid Launcher
 - Ballista
 - Stormcast from Schism
+- Thunder Crossbow from Brutal Hexen
 
 ---------------Slot 0 weapons---------------
 
