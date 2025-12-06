@@ -40,6 +40,9 @@
 #INCLUDE actors/Weapons/Special/OverwhelmingProjectile.dec
 #INCLUDE actors/Weapons/Special/RazorjackProjectile.dec
 
+//MELEE//
+#include actors/Weapons/Melee/JohnnyFlames.dec
+
 //Weapons
 	//Slot-1
 #include actors/Weapons/Slot-1/BeamKatana.dec
